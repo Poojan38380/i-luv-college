@@ -9,6 +9,7 @@ import protectRoute from "../middlewares/ProtectRoute.js";
 
 const UserRouter = express.Router();
 
+// FIXME: Signup should be only done by logged in users
 UserRouter.post("/signup", signup);
 UserRouter.post("/login", login);
 UserRouter.get("/logout", logout);

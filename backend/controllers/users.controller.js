@@ -27,7 +27,7 @@ export const signup = async (req, res) => {
     });
     await generateTokenandSetCookie(newUser.email, res);
 
-    // TODO: Dont send user password
+    // FIXME: Dont send user password
     res.status(200).json(newUser);
   } catch (error) {
     console.log("Error in signup controller", error.message);
