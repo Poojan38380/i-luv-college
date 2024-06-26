@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
+import { IoLogOut } from "react-icons/io5";
+import { useAuthContext } from "@/contexts/useAuthContext";
+import useLogOut from "@/hooks/UseLogout";
 
 const Header = () => {
+  const { authUser } = useAuthContext();
+  const { logout } = useLogOut();
   return (
     <div>
       <div className="fixed w-full z-10 border-b bg-zinc-950  shadow-md">
@@ -21,6 +26,13 @@ const Header = () => {
               </svg>
             </Link>
           </div>
+          {authUser ? (
+            <div>
+              <IoLogOut className="text-red-600 h-6 w-6" onClick={logout} />
+            </div>
+          ) : (
+            ""
+          )}
         </nav>
       </div>
     </div>

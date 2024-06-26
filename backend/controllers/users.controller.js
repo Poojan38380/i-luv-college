@@ -4,7 +4,7 @@ import generateTokenandSetCookie from "../utils/generateToken.js";
 
 export const signup = async (req, res) => {
   const { email, fullName, password } = req.body;
-  if (!email || !password || !fullName) {
+  if (!email || !password) {
     return res.status(400).json({ error: "All the fields are required." });
   }
 
@@ -21,7 +21,6 @@ export const signup = async (req, res) => {
     const newUser = await prisma.user.create({
       data: {
         email,
-        fullname: fullName,
         password: hashedPassword,
       },
     });
