@@ -6,22 +6,18 @@ const protectRoute = async (req, res, next) => {
     const token = req.cookies.token;
 
     if (!token) {
-      return res
-        .status(401)
-        .json({ error: "Unauthorized - No Token Provided" });
+      return res.status(401).json({ error: "Login First" });
     }
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log("Decoded", decoded);
 
     if (!decoded) {
-      return res.status(401).json({ error: "Unauthorized - Invalid Token" });
+      return res.status(401).json({ error: "Invalid User" });
     }
 
-    const email = decoded.user;
-    console.log(email);
+    const username = decoded.user;
 
     const user = await prisma.user.findUnique({
-      where: { email },
+      where: { username },
     });
 
     if (!user) {

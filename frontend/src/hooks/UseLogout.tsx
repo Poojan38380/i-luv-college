@@ -8,14 +8,14 @@ const useLogOut = () => {
 
   const logout = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/users/logout");
+      const res = await fetch("/api/users/logout");
 
       const data = await res.json();
       if (data.error) {
         throw new Error(data.error);
       }
 
-      localStorage.removeItem("user-token");
+      localStorage.removeItem("i-luv-college-local-token");
 
       setAuthUser(null);
     } catch (error) {

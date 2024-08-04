@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import { Button } from "../ui/button";
-import UseLogin from "@/hooks/UseLogin";
+import { useState } from "react";
+import UseSignup from "@/hooks/UseSignup";
 
-const LoginForm = () => {
-  const [email, setEmail] = useState("");
+const SignupForm = () => {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { loading, login } = UseLogin();
+  const { loading, signup } = UseSignup();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    await login(email, password);
+    console.log(username, password);
+    await signup(username, password);
   };
 
   return (
@@ -21,12 +22,12 @@ const LoginForm = () => {
           <input
             className="mb-4 p-2 appearance-none block w-full bg-gray-200 placeholder-gray-950 rounded border focus:border-teal-500"
             type="text"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <input
-            className="mb-4  p-2 appearance-none block w-full bg-gray-200 placeholder-gray-950 rounded border focus:border-teal-500"
+            className="mb-4 p-2 appearance-none block w-full bg-gray-200 placeholder-gray-950 rounded border focus:border-teal-500"
             type="password"
             placeholder="Password"
             value={password}
@@ -43,7 +44,7 @@ const LoginForm = () => {
               {loading ? (
                 <span className="loading loading-spinner"></span>
               ) : (
-                <Link to="/">Log In</Link>
+                <Link to="/">Sign Up</Link>
               )}
             </Button>
           </div>
@@ -53,4 +54,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SignupForm;

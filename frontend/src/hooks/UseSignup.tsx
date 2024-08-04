@@ -6,16 +6,16 @@ const UseSignup = () => {
   const [loading, setLoading] = useState(false);
 
   const { setAuthUser } = useAuthContext();
-  const signup = async (email: string, password: string) => {
+  const signup = async (username: string, password: string) => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:5000/api/users/signup", {
+      const res = await fetch("/api/users/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email,
+          username,
           password,
         }),
       });
@@ -25,7 +25,7 @@ const UseSignup = () => {
         throw new Error(data.error);
       }
 
-      localStorage.setItem("user-token", JSON.stringify(data));
+      localStorage.setItem("i-luv-college-local-token", JSON.stringify(data));
       setAuthUser(data);
     } catch (error) {
       console.log("Error in UseSignup hook ");

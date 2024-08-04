@@ -3,16 +3,16 @@ import bcrypt from "bcryptjs";
 import generateTokenandSetCookie from "../utils/generateToken.js";
 
 export const signup = async (req, res) => {
-  const { email, fullName, password } = req.body;
-  if (!email || !password) {
+  const { username, password } = req.body;
+  if (!username || !password) {
     return res.status(400).json({ error: "All the fields are required." });
   }
 
   try {
-    const user = await prisma.user.findFirst({ where: { email } });
+    const user = await prisma.user.findFirst({ where: { username } });
 
     if (user) {
-      return res.status(400).json({ error: "Email already exists" });
+      return res.status(400).json({ error: "Username already exists" });
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -20,48 +20,50 @@ export const signup = async (req, res) => {
 
     const newUser = await prisma.user.create({
       data: {
-        email,
+        username,
         password: hashedPassword,
       },
     });
-    await generateTokenandSetCookie(newUser.email, res);
+    await generateTokenandSetCookie(newUser.username, res);
 
-    // FIXME: Dont send user password
-    res.status(200).json(newUser);
+    res.status(200).json({ msg: "Successfully created" });
   } catch (error) {
     console.log("Error in signup controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
 export const login = async (req, res) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
-    return res.status(400).json({ error: "Email and password are required." });
+  const { username, password } = req.body;
+  if (!username || !password) {
+    return res
+      .status(400)
+      .json({ error: "Username and password are required." });
   }
 
   try {
-    const user = await prisma.user.findUnique({
-      where: { email },
+    const user = await prisma.user.findFirst({
+      where: { username },
     });
 
     if (!user) {
-      return res.status(401).json({ error: "Invalid email or password." });
+      return res.status(401).json({ error: "Invalid username or password." });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return res.status(401).json({ error: "Invalid email or password." });
+      return res.status(401).json({ error: "Invalid username or password." });
     }
 
-    await generateTokenandSetCookie(user.email, res);
+    await generateTokenandSetCookie(user.username, res);
 
-    return res.json(user);
+    return res.json({ msg: "Login Successful" });
   } catch (error) {
     console.log("Error in login controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
 export const logout = async (req, res) => {
   try {
     res.cookie("token", "", { maxAge: 0 });
