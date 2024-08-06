@@ -1,38 +1,13 @@
 import "./App.css";
-import { Navigate, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import Login from "./pages/Login/Login";
-import Signup from "./pages/Signup/Signup";
-import Header from "./components/Layout/Header";
-import Footer from "./components/Layout/Footer";
-import { useAuthContext } from "./contexts/useAuthContext";
+import CommonRoutes from "./routes/CommonRoutes";
+import ProtectedRoutes from "./routes/ProtectedRoutes";
 
 function App() {
-  const { authUser } = useAuthContext();
-
   return (
-    <div className="min-h-screen bg-zinc-300">
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              <Header />
+    <div className="">
+      <CommonRoutes />
 
-              <Home />
-              <Footer />
-            </div>
-          }
-        />
-        <Route
-          path="/login"
-          element={authUser ? <Navigate to="/" /> : <Login />}
-        />
-        <Route
-          path="/signup"
-          element={authUser ? <Navigate to="/" /> : <Signup />}
-        />
-      </Routes>
+      <ProtectedRoutes />
     </div>
   );
 }

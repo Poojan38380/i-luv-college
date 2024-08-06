@@ -5,7 +5,7 @@ const generateTokenandSetCookie = (user, res) => {
     expiresIn: "1d",
   });
 
-  res.cookie("i-luv-token-login-token", token, {
+  res.cookie("i-luv-college-login-token", token, {
     maxAge: 1 * 24 * 60 * 60 * 1000,
     httpOnly: true,
     sameSite: "strict",

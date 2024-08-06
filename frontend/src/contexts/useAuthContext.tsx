@@ -20,9 +20,7 @@ interface AuthContextProviderProps {
 
 export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   const [authUser, setAuthUser] = useState<any>(() => {
-    // Stores the data from the "user-token" in the authUer
-
-    const storedUser = localStorage.getItem("user-token");
+    const storedUser = localStorage.getItem("i-luv-college-local-token");
     return storedUser ? JSON.parse(storedUser) : null;
   });
 
