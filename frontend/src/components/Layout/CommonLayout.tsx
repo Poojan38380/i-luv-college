@@ -4,8 +4,9 @@ import Footer from "./Footer";
 
 const CommonLayout = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="" data-theme="light">
       <Header />
+      <div className="h-16 mq725:h-14"></div>
       <Outlet />
 
       <Footer />

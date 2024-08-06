@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { Button } from "../ui/button";
 import UseLogin from "@/hooks/UseLogin";
 
 const LoginForm = () => {
@@ -81,8 +80,8 @@ const LoginForm = () => {
             </span>
           </div>
           <div className="flex items-center">
-            <Button
-              className="ml-auto w-1/2 bg-gray-800 text-white p-2 rounded font-semibold"
+            <button
+              className="btn btn-accent ml-auto w-1/2  p-2 rounded font-semibold"
               type="submit"
               disabled={loading}
             >
@@ -91,7 +90,7 @@ const LoginForm = () => {
               ) : (
                 <Link to="/">Log In</Link>
               )}
-            </Button>
+            </button>
           </div>
         </form>
       </div>

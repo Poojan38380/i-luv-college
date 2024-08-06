@@ -52,6 +52,45 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      screens: {
+        mq1024: {
+          raw: "screen and (max-width: 1024px)",
+        },
+        mq1050: {
+          raw: "screen and (max-width: 1050px)",
+        },
+        mq1000: {
+          raw: "screen and (max-width: 1000px)",
+        },
+        mq900: {
+          raw: "screen and (max-width: 900px)",
+        },
+        mq800: {
+          raw: "screen and (max-width: 800px)",
+        },
+        mq725: {
+          raw: "screen and (max-width: 725px)",
+        },
+        mq700: {
+          raw: "screen and (max-width: 700px)",
+        },
+        mq600: {
+          raw: "screen and (max-width: 600px)",
+        },
+        mq500: {
+          raw: "screen and (max-width: 500px)",
+        },
+
+        mq450: {
+          raw: "screen and (max-width: 450px)",
+        },
+        mq375: {
+          raw: "screen and (max-width: 375px)",
+        },
+        mq320: {
+          raw: "screen and (max-width: 320px)",
+        },
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -74,4 +113,7 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate"), require("daisyui")],
+  daisyui: {
+    themes: ["light", "dark"],
+  },
 };
