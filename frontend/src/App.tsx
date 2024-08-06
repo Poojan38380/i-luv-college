@@ -1,13 +1,10 @@
 import "./App.css";
 import CommonRoutes from "./routes/CommonRoutes";
-import ProtectedRoutes from "./routes/ProtectedRoutes";
 
 function App() {
   return (
-    <div className="">
+    <div>
       <CommonRoutes />
-
-      <ProtectedRoutes />
     </div>
   );
 }
