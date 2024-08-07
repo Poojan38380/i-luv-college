@@ -3,8 +3,22 @@
 
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "/backend/server.js"
+    },
+    {
       "src": "/(.*)",
-      "dest": "backend/server.js"
+      "dest": "/frontend/dist/$1",
+      "headers": {
+        "cache-control": "s-maxage=1, stale-while-revalidate"
+      }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/backend/server.js"
     }
   ]
 }
