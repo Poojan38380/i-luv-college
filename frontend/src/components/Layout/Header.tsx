@@ -23,7 +23,7 @@ const Header = () => {
             </div>
           ) : (
             <Link to={"/login"}>
-              <button className="btn btn-primary mq725:btn-sm">Login</button>
+              <button className="btn btn-primary  mq725:btn-sm">Login</button>
             </Link>
           )}
         </div>

@@ -114,6 +114,70 @@ module.exports = {
   },
   plugins: [require("tailwindcss-animate"), require("daisyui")],
   daisyui: {
-    themes: ["light", "dark"],
+    logs: false, // Shows info about daisyUI version and used config in the console when building your CSS
+    themes: [
+      {
+        "light-theme": {
+          primary: "#ff6347", // Tomato
+          "primary-content": "#ffffff", // White
+
+          secondary: "#ffa500", // Orange
+          "secondary-content": "#ffffff", // White
+
+          accent: "#20b2aa", // Light Sea Green
+          "accent-content": "#ffffff", // White
+
+          neutral: "#333333", // Dark Gray
+          "neutral-content": "#ffffff", // White
+
+          "base-100": "#f5f5f5", // Whitesmoke
+          "base-200": "#e0e0e0", // Light Gray (slightly darker)
+          "base-300": "#c0c0c0", // Silver (even darker)
+          "base-content": "#333333", // Dark Gray
+
+          info: "#1e90ff", // Dodger Blue
+          "info-content": "#ffffff", // White
+
+          success: "#28a745", // Green
+          "success-content": "#ffffff", // White
+
+          warning: "#ffc107", // Yellow
+          "warning-content": "#333333", // Dark Gray
+
+          error: "#dc3545", // Red
+          "error-content": "#ffffff", // White
+        },
+        "dark-theme": {
+          primary: "#ff4500", // Orange Red
+          "primary-content": "#ffffff", // White
+
+          secondary: "#ff8c00", // Dark Orange
+          "secondary-content": "#ffffff", // White
+
+          accent: "#20b2aa", // Light Sea Green
+          "accent-content": "#ffffff", // White
+
+          neutral: "#2f4f4f", // Dark Slate Gray
+          "neutral-content": "#f5f5f5", // Whitesmoke
+
+          "base-100": "#2f4f4f", // Dark Slate Gray
+          "base-200": "#2c3e50", // Darker Slate Gray
+          "base-300": "#263238", // Even Darker Slate Gray
+          "base-content": "#f5f5f5", // Whitesmoke
+
+          info: "#1e90ff", // Dodger Blue
+          "info-content": "#ffffff", // White
+
+          success: "#28a745", // Green
+          "success-content": "#ffffff", // White
+
+          warning: "#ffc107", // Yellow
+          "warning-content": "#2f4f4f", // Dark Slate Gray
+
+          error: "#dc3545", // Red
+          "error-content": "#ffffff", // White
+        },
+      },
+    ],
   },
 };
