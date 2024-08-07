@@ -34,7 +34,7 @@ const HeaderThemeToggle: React.FC<HeaderThemeToggleProps> = ({
     <div className="dropdown dropdown-hover dropdown-end">
       <button
         tabIndex={0}
-        className="btn m-1 mq725:btn-sm text-current"
+        className="btn m-1   text-current"
         aria-label="Theme Selector"
       >
         <img

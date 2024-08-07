@@ -3,7 +3,7 @@ import prisma from "../prisma/prisma-client.js";
 
 const protectRoute = async (req, res, next) => {
   try {
-    const token = req.cookies.token;
+    const token = req.cookies["i-luv-college-login-token"]; // Use the correct cookie name
 
     if (!token) {
       return res.status(401).json({ error: "Login First" });

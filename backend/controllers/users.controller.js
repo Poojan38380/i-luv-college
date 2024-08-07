@@ -15,6 +15,8 @@ export const signup = async (req, res) => {
       return res.status(400).json({ error: "Username already exists" });
     }
 
+    const profilePicLink = `https://api.dicebear.com/9.x/notionists-neutral/svg?seed=${username}`;
+
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -22,6 +24,7 @@ export const signup = async (req, res) => {
       data: {
         username,
         password: hashedPassword,
+        profilePicLink,
       },
     });
     await generateTokenandSetCookie(newUser.username, res);

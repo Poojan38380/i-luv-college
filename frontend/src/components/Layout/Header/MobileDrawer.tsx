@@ -56,8 +56,13 @@ const MobileDrawer = ({ theme }: { theme: string }) => {
             </div>
           </div>
         </div>
-        <div className="pt-20 px-5">
-          <ul className="menu px-1">
+        <div
+          className="pt-20 px-5 "
+          onClick={() => {
+            setNavactive(false);
+          }}
+        >
+          <ul className="menu px-1 font-semibold">
             <HeaderMenu />
           </ul>
         </div>

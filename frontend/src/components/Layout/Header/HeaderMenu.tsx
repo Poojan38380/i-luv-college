@@ -1,10 +1,10 @@
-import { RiHomeSmileLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const HeaderMenu = () => {
   return (
     <>
       <li>
-        <a className="font-semibold">
+        <Link to={"/"}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-4 w-4"
@@ -20,7 +20,7 @@ const HeaderMenu = () => {
             />
           </svg>
           Home
-        </a>
+        </Link>
       </li>
       <li>
         <details>

@@ -29,15 +29,20 @@ const Header: React.FC<HeaderProps> = ({ theme, onThemeChange }) => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 ">
           <HeaderMenu />
         </ul>
       </div>
       <div className="navbar-end gap-1">
         <HeaderThemeToggle onThemeChange={onThemeChange} />
         {authUser ? (
-          <div>
-            <IoLogOut className="text-red-600 h-6 w-6" onClick={logout} />
+          <div
+            className="tooltip tooltip-error tooltip-bottom"
+            data-tip="Logout"
+          >
+            <button className="btn btn-ghost">
+              <IoLogOut className=" text-red-600 h-6 w-6" onClick={logout} />
+            </button>
           </div>
         ) : (
           <Link to={"/login"}>
