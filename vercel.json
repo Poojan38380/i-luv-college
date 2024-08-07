@@ -1,24 +1,5 @@
 {
   "version": 2,
-
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/backend/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/frontend/dist/index.html",
-      "headers": {
-        "cache-control": "s-maxage=1, stale-while-revalidate"
-      }
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/backend/server.js"
-    }
-  ]
+  "builds": [{ "src": "./index.js", "use": "@vercel/node" }],
+  "routes": [{ "src": "./(.*)", "dest": "/" }]
 }
