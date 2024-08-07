@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
-import { IoLogOut } from "react-icons/io5";
-import { useAuthContext } from "@/contexts/useAuthContext";
-import useLogOut from "@/hooks/UseLogout";
 import { NavLogoDark, NavLogoLight } from "@/constants/images";
 import HeaderThemeToggle from "./HeaderThemeToggle";
 import MobileDrawer from "./MobileDrawer";
 import HeaderMenu from "./HeaderMenu";
+import UserProfileIcon from "./UserProfileIcon";
 
 interface HeaderProps {
   theme: string;
@@ -13,9 +11,6 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ theme, onThemeChange }) => {
-  const { authUser } = useAuthContext();
-  const { logout } = useLogOut();
-
   return (
     <div className="navbar bg-base-100 fixed w-full z-[99]  shadow-md px-5 mq725:px-1  ">
       <div className="navbar-start gap-2">
@@ -33,22 +28,9 @@ const Header: React.FC<HeaderProps> = ({ theme, onThemeChange }) => {
           <HeaderMenu />
         </ul>
       </div>
-      <div className="navbar-end gap-1">
+      <div className="navbar-end gap-2">
         <HeaderThemeToggle onThemeChange={onThemeChange} />
-        {authUser ? (
-          <div
-            className="tooltip tooltip-error tooltip-bottom"
-            data-tip="Logout"
-          >
-            <button className="btn btn-ghost">
-              <IoLogOut className=" text-red-600 h-6 w-6" onClick={logout} />
-            </button>
-          </div>
-        ) : (
-          <Link to={"/login"}>
-            <button className="btn btn-primary mq725:btn-sm">Login</button>
-          </Link>
-        )}
+        <UserProfileIcon />
       </div>
     </div>
   );

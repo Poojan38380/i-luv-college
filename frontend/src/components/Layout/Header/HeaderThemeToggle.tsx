@@ -31,7 +31,7 @@ const HeaderThemeToggle: React.FC<HeaderThemeToggleProps> = ({
   };
 
   return (
-    <div className="dropdown dropdown-hover dropdown-end">
+    <div className="dropdown  dropdown-end">
       <button
         tabIndex={0}
         className="btn m-1   text-current"

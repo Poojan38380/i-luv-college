@@ -20,16 +20,15 @@ export const signup = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const newUser = await prisma.user.create({
-      data: {
-        username,
-        password: hashedPassword,
-        profilePicLink,
-      },
-    });
-    await generateTokenandSetCookie(newUser.username, res);
+    // Create user data without password
+    const userData = {
+      username: newUser.username,
+      profilePicLink: newUser.profilePicLink,
+    };
 
-    res.status(200).json({ msg: "Successfully created" });
+    await generateTokenandSetCookie(userData, res);
+
+    res.status(200).json(userData);
   } catch (error) {
     console.log("Error in signup controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
@@ -58,9 +57,15 @@ export const login = async (req, res) => {
       return res.status(401).json({ error: "Invalid username or password." });
     }
 
-    await generateTokenandSetCookie(user.username, res);
+    // Create user data without password
+    const userData = {
+      username: user.username,
+      profilePicLink: user.profilePicLink,
+    };
 
-    return res.json({ msg: "Login Successful" });
+    await generateTokenandSetCookie(userData, res);
+
+    return res.json(userData);
   } catch (error) {
     console.log("Error in login controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
