@@ -56,7 +56,7 @@ const MobileDrawer = ({ theme }: { theme: string }) => {
             </div>
           </div>
         </div>
-        <div className="pt-20">
+        <div className="pt-20 px-5">
           <ul className="menu px-1">
             <HeaderMenu />
           </ul>
