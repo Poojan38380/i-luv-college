@@ -5,6 +5,7 @@ import useLogOut from "@/hooks/UseLogout";
 import { NavLogoDark, NavLogoLight } from "@/constants/images";
 import HeaderThemeToggle from "./HeaderThemeToggle";
 import MobileDrawer from "./MobileDrawer";
+import HeaderMenu from "./HeaderMenu";
 
 interface HeaderProps {
   theme: string;
@@ -29,25 +30,7 @@ const Header: React.FC<HeaderProps> = ({ theme, onThemeChange }) => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
+          <HeaderMenu />
         </ul>
       </div>
       <div className="navbar-end gap-1">

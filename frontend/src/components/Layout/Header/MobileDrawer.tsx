@@ -2,6 +2,7 @@ import { NavLogoDark, NavLogoLight } from "@/constants/images";
 import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import HeaderMenu from "./HeaderMenu";
 
 const MobileDrawer = ({ theme }: { theme: string }) => {
   const [navactive, setNavactive] = useState(false);
@@ -54,6 +55,11 @@ const MobileDrawer = ({ theme }: { theme: string }) => {
               <IoClose className="text-2xl" />
             </div>
           </div>
+        </div>
+        <div className="pt-20">
+          <ul className="menu px-1">
+            <HeaderMenu />
+          </ul>
         </div>
       </div>
     </>
