@@ -2,8 +2,8 @@
   "version": 2,
   "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "backend/server.js"
+      "source": "/(.*)",
+      "destination": "backend/server.js"
     }
   ]
 }
