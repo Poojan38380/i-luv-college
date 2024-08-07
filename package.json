@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node backend/server.js",
     "devstart": "nodemon backend/server.js",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend && npm run prisma",
+    "build": "npm install && npx prisma generate && npm install --prefix frontend && npm run build --prefix frontend ",
     "prisma": "npx prisma generate"
   },
   "author": "",
