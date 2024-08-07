@@ -1,23 +1,46 @@
 import { useEffect, useState } from "react";
 
-const HeaderThemeToggle = () => {
-  const [isdark, setIsdark] = useState(
-    JSON.parse(localStorage.getItem("isdark")!)
+const themes = [
+  "light-theme",
+  "dark-theme",
+  "cyberpunk",
+  "garden",
+  "cupcake",
+  "synthwave",
+];
+
+const HeaderThemeToggle = ({
+  onThemeChange,
+}: {
+  onThemeChange: (theme: string) => void;
+}) => {
+  const [selectedTheme, setSelectedTheme] = useState(
+    localStorage.getItem("selectedTheme") || themes[0]
   );
+
   useEffect(() => {
-    localStorage.setItem("isdark", JSON.stringify(isdark));
-  }, [isdark]);
+    localStorage.setItem("selectedTheme", selectedTheme);
+    onThemeChange(selectedTheme);
+  }, [selectedTheme, onThemeChange]);
+
   return (
-    <input
-      type="checkbox"
-      value="synthwave"
-      className="toggle theme-controller"
-      checked={isdark}
-      onChange={() => {
-        setIsdark(!isdark);
-        window.location.reload();
-      }}
-    />
+    <div className="dropdown dropdown-hover">
+      <div tabIndex={0} role="button" className="btn m-1 mq725:btn-sm">
+        Select Theme
+      </div>
+      <ul
+        tabIndex={0}
+        className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+      >
+        {themes.map((theme) => (
+          <li key={theme}>
+            <a href="#" onClick={() => setSelectedTheme(theme)}>
+              {theme.charAt(0).toUpperCase() + theme.slice(1)}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

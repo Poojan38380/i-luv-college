@@ -4,16 +4,22 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 const CommonLayout = () => {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("light-theme");
 
   useEffect(() => {
-    const isdark = JSON.parse(localStorage.getItem("isdark")!);
-    setTheme(isdark ? "dark" : "light");
+    const savedTheme = localStorage.getItem("selectedTheme") || "light-theme";
+    setTheme(savedTheme);
+    document.body.setAttribute("data-theme", savedTheme);
   }, []);
+
+  const handleThemeChange = (newTheme: string) => {
+    setTheme(newTheme);
+    document.body.setAttribute("data-theme", newTheme);
+  };
 
   return (
     <div className="" data-theme={theme}>
-      <Header />
+      <Header theme={theme} onThemeChange={handleThemeChange} />
       <div className="pt-16 mq725:pt-14">
         <Outlet />
       </div>
