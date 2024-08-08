@@ -28,9 +28,13 @@ const UseSignup = () => {
       localStorage.setItem("i-luv-college-local-token", JSON.stringify(data));
       setAuthUser(data);
     } catch (error) {
-      console.log("Error in UseSignup hook ");
+      console.log("Error in UseSignup hook");
 
-      ErrorToast(error);
+      if (error instanceof Error) {
+        ErrorToast(error.message);
+      } else {
+        ErrorToast("An unexpected error occurred.");
+      }
     } finally {
       setLoading(false);
     }

@@ -9,8 +9,12 @@ export default function Login() {
         <div className="absolute inset-0 bg-primary" />
 
         <div className="relative z-20 mt-auto">
-          <h1 className="text-2xl font-bold mb-4">
-            Share The Worst About Your College!
+          <h1 className="text-5xl font-bold mb-4 font-bangers tracking-wider">
+            Share The{" "}
+            <span className="text-base-content underline underline-offset-8">
+              Worst
+            </span>{" "}
+            About Your College!
           </h1>
           <p className="mb-4">
             Create an account to unlock the full experience. By joining, you
@@ -18,17 +22,23 @@ export default function Login() {
           </p>
           <ul className="text-left list-disc list-inside space-y-2">
             <li>
-              <span className="font-semibold">Post Anonymously:</span> Share
-              your college frustrations and experiences without revealing your
-              identity.
+              <span className="font-semibold text-base-content  ">
+                Post Anonymously:
+              </span>{" "}
+              Share your college frustrations and experiences without revealing
+              your identity.
             </li>
             <li>
-              <span className="font-semibold">Engage with Others:</span> Connect
-              with fellow students and comment on their stories.
+              <span className="font-semibold text-base-content  ">
+                Engage with Others:
+              </span>{" "}
+              Connect with fellow students and comment on their stories.
             </li>
             <li>
-              <span className="font-semibold">Get Real-Time Feedback:</span> See
-              how others react to your posts.
+              <span className="font-semibold text-base-content  ">
+                Get Real-Time Feedback:
+              </span>{" "}
+              See how others react to your posts.
             </li>
           </ul>
           <p className="mt-6">

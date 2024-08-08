@@ -1,14 +1,14 @@
 import { ToastAction } from "../ui/toast";
 import { toast } from "../ui/use-toast";
 
-const ErrorToast = (error: any) => {
+const ErrorToast = (message: string) => {
   toast({
     variant: "destructive",
     title: "Error",
-    description: error.message,
+    description: message,
     action: (
       <ToastAction altText="Try again" onClick={() => window.location.reload()}>
-        Try again
+        Reload Page
       </ToastAction>
     ),
   });

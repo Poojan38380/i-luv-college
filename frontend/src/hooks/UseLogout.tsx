@@ -21,7 +21,11 @@ const useLogOut = () => {
     } catch (error) {
       console.log("Error in UseLogout hook ");
 
-      ErrorToast(error);
+      if (error instanceof Error) {
+        ErrorToast(error.message);
+      } else {
+        ErrorToast("An unexpected error occurred.");
+      }
     } finally {
       setLoading(false);
     }

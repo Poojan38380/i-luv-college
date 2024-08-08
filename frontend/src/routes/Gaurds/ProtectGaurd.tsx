@@ -8,7 +8,7 @@ const ProtectGaurd = ({ element }: any) => {
   if (!authUser) {
     const error = new Error();
     error.message = "You need to be logged in.";
-    ErrorToast(error);
+    ErrorToast(error.message);
     return <Navigate to="/login" />;
   }
 

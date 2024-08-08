@@ -20,6 +20,14 @@ export const signup = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
+    const newUser = await prisma.user.create({
+      data: {
+        username,
+        password: hashedPassword,
+        profilePicLink,
+      },
+    });
+
     // Create user data without password
     const userData = {
       username: newUser.username,

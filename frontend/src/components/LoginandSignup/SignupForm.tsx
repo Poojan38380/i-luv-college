@@ -1,16 +1,21 @@
 import { useState } from "react";
 import UseSignup from "@/hooks/UseSignup";
+import ErrorToast from "../Toasts/ErrorToast";
 
 const SignupForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState(""); // State for confirm password
   const [showPassword, setShowPassword] = useState(false);
 
   const { loading, signup } = UseSignup();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(username, password);
+    if (password !== confirmPassword) {
+      ErrorToast("Passwords do not match");
+      return;
+    }
     await signup(username, password);
   };
 
@@ -21,7 +26,7 @@ const SignupForm = () => {
   return (
     <>
       <div className="">
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
             className="mb-4 p-2 appearance-none block w-full bg-gray-200 placeholder-gray-950 rounded border focus:border-teal-500"
             type="text"
@@ -29,9 +34,9 @@ const SignupForm = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          <div className="relative">
+          <div className="relative mb-4">
             <input
-              className="mb-4 p-2 appearance-none block w-full bg-gray-200 placeholder-gray-950 rounded border focus:border-teal-500"
+              className="p-2 appearance-none block w-full bg-gray-200 placeholder-gray-950 rounded border focus:border-teal-500"
               type={showPassword ? "text" : "password"}
               placeholder="Password"
               value={password}
@@ -79,12 +84,20 @@ const SignupForm = () => {
               )}
             </span>
           </div>
+          <div className="relative mb-4">
+            <input
+              className="p-2 appearance-none block w-full bg-gray-200 placeholder-gray-950 rounded border focus:border-teal-500"
+              type="password"
+              placeholder="Confirm Password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+          </div>
           <div className="flex items-center">
             <button
-              className="btn btn-accent ml-auto w-1/2 p-2  font-semibold"
+              className="btn btn-accent ml-auto w-1/2 p-2 font-semibold"
               type="submit"
               disabled={loading}
-              onClick={handleSubmit}
             >
               {loading ? (
                 <span className="loading loading-spinner"></span>
