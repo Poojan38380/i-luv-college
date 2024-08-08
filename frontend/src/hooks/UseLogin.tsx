@@ -30,7 +30,7 @@ const UseLogin = () => {
     } catch (error: any) {
       console.log("Error in Uselogin hook ");
 
-      ErrorToast(error);
+      ErrorToast(error.message);
     } finally {
       setLoading(false);
     }

@@ -28,7 +28,7 @@ const SignupForm = () => {
       <div className="">
         <form onSubmit={handleSubmit}>
           <input
-            className="mb-4 p-2 appearance-none block w-full bg-base-300 placeholder-base-content rounded "
+            className="mb-4   w-full input input-bordered "
             type="text"
             placeholder="Username"
             value={username}
@@ -36,7 +36,7 @@ const SignupForm = () => {
           />
           <div className="relative mb-4">
             <input
-              className="p-2 appearance-none block w-full bg-base-300 placeholder-base-content rounded "
+              className="  w-full input input-bordered "
               type={showPassword ? "text" : "password"}
               placeholder="Password"
               value={password}
@@ -86,7 +86,7 @@ const SignupForm = () => {
           </div>
           <div className="relative mb-4">
             <input
-              className="p-2 appearance-none block w-full bg-base-300 placeholder-base-content rounded "
+              className=" block w-full input input-bordered "
               type="password"
               placeholder="Confirm Password"
               value={confirmPassword}

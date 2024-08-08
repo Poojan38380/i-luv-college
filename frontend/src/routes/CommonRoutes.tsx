@@ -8,6 +8,7 @@ import ProtectGaurd from "./Gaurds/ProtectGaurd";
 import Profile from "@/pages/Profile";
 import NoFooterLayout from "@/components/Layout/NoFooterLayout";
 import Colleges from "@/pages/Colleges";
+import AddNewCollegePortal from "@/components/Colleges/AddNewCollegePortal";
 
 const CommonRoutes = () => {
   const { authUser } = useAuthContext();
@@ -16,6 +17,7 @@ const CommonRoutes = () => {
       <Route path="" element={<CommonLayout />}>
         <Route index element={<Home />} />
         <Route path="/colleges" element={<Colleges />} />
+        <Route path="/colleges/add" element={<AddNewCollegePortal />} />
       </Route>
       <Route
         path="/profile"
