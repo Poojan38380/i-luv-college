@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Footer = ({ theme }: { theme: string }) => {
   return (
-    <footer className="footer footer-center bg-primary text-primary-content p-10">
+    <footer className="footer footer-center bg-base-300 text-base-content p-10">
       <aside>
         <Link to={"/"}>
           {theme === "dark-theme" || theme === "synthwave" ? (
