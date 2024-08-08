@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import UseSignup from "@/hooks/UseSignup";
 
@@ -90,7 +89,7 @@ const SignupForm = () => {
               {loading ? (
                 <span className="loading loading-spinner"></span>
               ) : (
-                <Link to="/">Sign Up</Link>
+                "Sign Up"
               )}
             </button>
           </div>

@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import UseLogin from "@/hooks/UseLogin";
 
@@ -88,7 +87,7 @@ const LoginForm = () => {
               {loading ? (
                 <span className="loading loading-spinner"></span>
               ) : (
-                <Link to="/">Log In</Link>
+                "Log In"
               )}
             </button>
           </div>
