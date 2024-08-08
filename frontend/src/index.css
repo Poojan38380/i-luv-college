@@ -12,3 +12,6 @@ body {
 ::after {
   border-width: 0;
 }
+.text-stroke {
+  -webkit-text-stroke: 0.1px black; /* width and color of the stroke */
+}

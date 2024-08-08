@@ -7,15 +7,16 @@ const Signup = () => {
     <div className="relative   flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
       <div className="relative hidden h-full flex-col bg-muted p-10 text-primary-content lg:flex dark:border-r">
         <div className="absolute inset-0 bg-primary" />
+        <div className="relative pt-16 flex items-center">
+          <h1 className="text-5xl font-bold mb-4 font-bangers tracking-wider">
+            Share The <span className="text-accent  text-stroke">Worst</span>{" "}
+            About Your{" "}
+            <span className="text-accent  text-stroke">College,</span>{" "}
+            Anonymously!
+          </h1>
+        </div>
 
         <div className="relative z-20 mt-auto">
-          <h1 className="text-5xl font-bold mb-4 font-bangers tracking-wider">
-            Share The{" "}
-            <span className="text-base-content underline underline-offset-8">
-              Worst
-            </span>{" "}
-            About Your College!
-          </h1>
           <p className="mb-4">
             Create an account to unlock the full experience. By joining, you
             can:
