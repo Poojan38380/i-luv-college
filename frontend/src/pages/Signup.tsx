@@ -1,58 +1,57 @@
 import SignupForm from "@/components/LoginandSignup/SignupForm";
+import { AuthHero } from "@/constants/images";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
   return (
-    <div className="relative h-screen pt-16  flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-      <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
-        <div className="absolute inset-0 bg-zinc-950" />
-        <div className="relative z-20 flex items-center text-lg font-medium">
-          <Link to={"/"}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="mr-2 h-6 w-6"
-            >
-              <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
-            </svg>
-            Logo
-          </Link>
-        </div>
+    <div className="relative   flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
+      <div className="relative hidden h-full flex-col bg-muted p-10 text-primary-content lg:flex dark:border-r">
+        <div className="absolute inset-0 bg-primary" />
+
         <div className="relative z-20 mt-auto">
-          <blockquote className="space-y-2">
-            <p className="text-lg">
-              &ldquo;Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Quasi dolorem, sequi dicta vel libero fugiat culpa recusandae vero
-              porro, possimus, accusamus minima repudiandae consequatur maiores
-              omnis alias placeat animi? Quas.&rdquo;
-            </p>
-            <footer className="text-sm">Lorem Ipsum</footer>
-          </blockquote>
+          <h1 className="text-2xl font-bold mb-4">
+            Share The Worst About Your College!
+          </h1>
+          <p className="mb-4">
+            Create an account to unlock the full experience. By joining, you
+            can:
+          </p>
+          <ul className="text-left list-disc list-inside space-y-2">
+            <li>
+              <span className="font-semibold">Post Anonymously:</span> Share
+              your college frustrations and experiences without revealing your
+              identity.
+            </li>
+            <li>
+              <span className="font-semibold">Engage with Others:</span> Connect
+              with fellow students and comment on their stories.
+            </li>
+            <li>
+              <span className="font-semibold">Get Real-Time Feedback:</span> See
+              how others react to your posts.
+            </li>
+          </ul>
+          <p className="mt-6">
+            Join our community today—your anonymous voice can make a difference!
+          </p>
         </div>
       </div>
-      <div className="flex h-full bg-white items-center p-4 lg:p-8">
-        <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+      <div className="flex h-full min-h-screen pt-20 items-center bg-base-100 p-4 lg:p-8">
+        <div className="mx-auto flex w-full flex-col justify-center  space-y-6 sm:w-[350px]">
+          <img src={AuthHero} className="w-72 mx-auto" />
           <div className="flex flex-col space-y-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">
               Create an account
             </h1>
-            <p className="text-sm text-muted-foreground">
-              Enter your username below to create your account
-            </p>
           </div>
           <SignupForm />
           <div className="flex px-8 text-center text-sm text-muted-foreground space-x-2 ">
             <p>Already have an account ?</p>
-            <Link to={"/login"}>
-              <p className="text-zinc-700 font-semibold">Log In</p>
+            <Link to={"/auth/login"}>
+              <p className="font-semibold">Log In</p>
             </Link>
           </div>
-          <p className="px-8 text-center text-sm text-muted-foreground">
+          {/* <p className="px-8 text-center text-sm text-muted-foreground">
             By clicking continue, you agree to our
             <Link
               to="/terms"
@@ -68,7 +67,7 @@ const Signup = () => {
               Privacy Policy
             </Link>
             .
-          </p>
+          </p> */}
         </div>
       </div>
     </div>
