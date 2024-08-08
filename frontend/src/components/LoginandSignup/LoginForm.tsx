@@ -81,7 +81,7 @@ const LoginForm = () => {
           </div>
           <div className="flex items-center">
             <button
-              className="btn btn-accent ml-auto w-1/2  p-2 rounded font-semibold"
+              className="btn btn-accent ml-auto w-1/2  p-2  font-semibold"
               type="submit"
               disabled={loading}
             >

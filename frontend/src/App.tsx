@@ -3,7 +3,7 @@ import CommonRoutes from "./routes/CommonRoutes";
 
 function App() {
   return (
-    <div>
+    <div className="font-poppins">
       <CommonRoutes />
     </div>
   );

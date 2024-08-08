@@ -12,7 +12,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ theme, onThemeChange }) => {
   return (
-    <div className="navbar bg-base-100 fixed w-full z-[99]  shadow-md px-5 mq725:px-1  ">
+    <div className="navbar bg-base-100 fixed w-full z-[99]  backdrop-blur-md  bg-opacity-80 shadow-md px-10 mq725:px-1  ">
       <div className="navbar-start gap-2">
         <MobileDrawer theme={theme} />
         <Link to={"/"}>
