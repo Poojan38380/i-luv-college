@@ -17,9 +17,15 @@ const Header: React.FC<HeaderProps> = ({ theme, onThemeChange }) => {
         <MobileDrawer theme={theme} />
         <Link to={"/"}>
           {theme === "dark-theme" || theme === "synthwave" ? (
-            <img src={NavLogoDark} className="h-14 mq725:h-10" />
+            <img
+              src={NavLogoDark}
+              className="h-14 mq725:h-10  mq500:h-8 mq450:h-7 mq375:h-5"
+            />
           ) : (
-            <img src={NavLogoLight} className="h-14 mq725:h-10" />
+            <img
+              src={NavLogoLight}
+              className="h-14 mq725:h-10  mq500:h-8 mq450:h-7 mq375:h-5"
+            />
           )}
         </Link>
       </div>
@@ -28,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({ theme, onThemeChange }) => {
           <HeaderMenu />
         </ul>
       </div>
-      <div className="navbar-end gap-2 flex items-center">
+      <div className="navbar-end gap-2 mq450:gap-0 flex items-center">
         <HeaderThemeToggle onThemeChange={onThemeChange} />
         <UserProfileIcon />
       </div>

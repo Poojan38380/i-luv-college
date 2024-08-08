@@ -29,7 +29,7 @@ const UserProfileIcon = () => {
         </div>
       ) : (
         <Link to={"/auth/login"}>
-          <button className="btn btn-primary ">Login</button>
+          <button className="btn btn-primary mq450:btn-ghost  ">Login</button>
         </Link>
       )}
     </>
