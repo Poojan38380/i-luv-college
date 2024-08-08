@@ -16,7 +16,7 @@ const UserProfileIcon = () => {
               <img src={authUser.profilePicLink} />
             </div>
           </div>
-          <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+          <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow-lg border-base-300 border-2">
             <li>
               <a>Item 2</a>
             </li>

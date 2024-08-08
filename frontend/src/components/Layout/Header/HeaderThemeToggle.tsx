@@ -34,13 +34,13 @@ const HeaderThemeToggle: React.FC<HeaderThemeToggleProps> = ({
     <div className="dropdown  dropdown-end">
       <button
         tabIndex={0}
-        className="btn m-1 btn-outline hover:bg-base-300 border-base-content border-2 mq450:btn-ghost mq450:m-0  text-current"
+        className="btn m-1 btn-ghost   mq450:m-0  "
         aria-label="Theme Selector"
       >
         <img
           src={themeIcon}
           alt="Theme Icon"
-          className={`w-5 ${
+          className={`w-5   ${
             selectedTheme === "dark-theme" || selectedTheme === "synthwave"
               ? "invert"
               : ""
@@ -49,7 +49,7 @@ const HeaderThemeToggle: React.FC<HeaderThemeToggleProps> = ({
       </button>
       <ul
         tabIndex={0}
-        className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+        className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow-lg border-base-300 border-2"
       >
         {themes.map((theme) => (
           <li key={theme}>
