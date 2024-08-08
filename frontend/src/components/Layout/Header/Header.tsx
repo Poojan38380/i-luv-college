@@ -8,11 +8,20 @@ import UserProfileIcon from "./UserProfileIcon";
 interface HeaderProps {
   theme: string;
   onThemeChange: (newTheme: string) => void;
+  showHeader: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ theme, onThemeChange }) => {
+const Header: React.FC<HeaderProps> = ({
+  theme,
+  onThemeChange,
+  showHeader,
+}) => {
   return (
-    <div className="navbar bg-base-100 fixed w-full z-[99]  backdrop-blur-md  bg-opacity-80 shadow-md px-10 mq725:px-1 mq725:pr-3  ">
+    <div
+      className={`navbar bg-base-100 fixed w-full z-[99] backdrop-blur-md bg-opacity-80 shadow-md px-10 mq725:px-1 mq725:pr-3 transition-transform duration-300 ${
+        showHeader ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="navbar-start gap-2">
         <MobileDrawer theme={theme} />
         <Link to={"/"}>
