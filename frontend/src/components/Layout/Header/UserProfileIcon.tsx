@@ -10,12 +10,12 @@ const UserProfileIcon = () => {
   return (
     <>
       {authUser ? (
-        <div className="dropdown dropdown-end">
-          <div className="avatar cursor-pointer">
-            <div className="ring-accent ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
+        <details className="dropdown dropdown-end">
+          <summary className="avatar cursor-pointer">
+            <div className="ring-accent ring-offset-base-100 w-10   rounded-full ring ring-offset-2">
               <img src={authUser.profilePicLink} />
             </div>
-          </div>
+          </summary>
           <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow-lg border-base-300 border-2">
             <li>
               <a>Item 2</a>
@@ -26,7 +26,7 @@ const UserProfileIcon = () => {
               </a>
             </li>
           </ul>
-        </div>
+        </details>
       ) : (
         <Link to={"/auth/login"}>
           <button className="btn btn-primary mq450:btn-ghost  ">Login</button>
