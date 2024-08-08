@@ -8,7 +8,7 @@ const Colleges = () => {
         <WelcomeUser />
       </div>
 
-      <div className="flex flex-wrap py-10">
+      <div className="flex flex-wrap mq450:justify-center py-10 mq450:flex-col w-full">
         <AddNew />
       </div>
     </div>

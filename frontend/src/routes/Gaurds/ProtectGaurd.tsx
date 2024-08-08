@@ -7,9 +7,9 @@ const ProtectGaurd = ({ element }: any) => {
 
   if (!authUser) {
     const error = new Error();
-    error.message = "You need to be logged in.";
+    error.message = "Create an anonymous account first!";
     ErrorToast(error.message);
-    return <Navigate to="/login" />;
+    return <Navigate to="/auth/login" />;
   }
 
   return element;

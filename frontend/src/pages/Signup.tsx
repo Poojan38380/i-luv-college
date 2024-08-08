@@ -8,10 +8,11 @@ const Signup = () => {
       <div className="relative hidden h-full flex-col bg-muted p-10 text-primary-content lg:flex dark:border-r">
         <div className="absolute inset-0 bg-primary" />
         <div className="relative pt-16 flex items-center">
-          <h1 className="text-5xl font-bold mb-4 font-bangers tracking-wider">
-            Share The <span className="text-accent  text-stroke">Worst</span>{" "}
+          <h1 className="text-5xl font-bold mb-4 ">
+            Share The{" "}
+            <span className="text-base-content  text-stroke">"Worst"</span>{" "}
             About Your{" "}
-            <span className="text-accent  text-stroke">College,</span>{" "}
+            <span className="text-base-content  text-stroke">College,</span>{" "}
             Anonymously!
           </h1>
         </div>

@@ -5,10 +5,9 @@ import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
 import { Navigate, Route, Routes } from "react-router-dom";
 import ProtectGaurd from "./Gaurds/ProtectGaurd";
-import Profile from "@/pages/Profile";
 import NoFooterLayout from "@/components/Layout/NoFooterLayout";
 import Colleges from "@/pages/Colleges";
-import AddNewCollegePortal from "@/components/Colleges/AddNewCollegePortal";
+import AddNewCollegePortal from "@/pages/AddNewCollegePortal";
 
 const CommonRoutes = () => {
   const { authUser } = useAuthContext();
@@ -17,14 +16,12 @@ const CommonRoutes = () => {
       <Route path="" element={<CommonLayout />}>
         <Route index element={<Home />} />
         <Route path="/colleges" element={<Colleges />} />
-        <Route path="/colleges/add" element={<AddNewCollegePortal />} />
+        <Route
+          path="/colleges/add"
+          element={<ProtectGaurd element={<AddNewCollegePortal />} />}
+        />
       </Route>
-      <Route
-        path="/profile"
-        element={<ProtectGaurd element={<CommonLayout />} />}
-      >
-        <Route index element={<Profile />} />
-      </Route>
+      // Routes with no footer
       <Route path="/auth" element={<NoFooterLayout />}>
         <Route
           path="login"
