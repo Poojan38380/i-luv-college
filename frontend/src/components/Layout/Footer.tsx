@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Footer = ({ theme }: { theme: string }) => {
   return (
-    <footer className="footer footer-center bg-base-300 text-base-content p-10">
-      <aside>
+    <footer className="footer footer-center bg-base-300 text-base-content p-10 py-24">
+      <aside className="flex flex-col gap-5">
         <Link to={"/"}>
           {theme === "dark-theme" || theme === "synthwave" ? (
             <img src={FooterLogoDark} className="h-14 mq725:h-10" />
@@ -12,7 +12,7 @@ const Footer = ({ theme }: { theme: string }) => {
             <img src={FooterLogoLight} className="h-14 mq725:h-10" />
           )}
         </Link>
-        <p className="font-bold">
+        <p className="font-bold ">
           I 🖤 College
           <br />
           Providing this anonymous platform since August 2024

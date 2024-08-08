@@ -7,6 +7,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import ProtectGaurd from "./Gaurds/ProtectGaurd";
 import Profile from "@/pages/Profile";
 import NoFooterLayout from "@/components/Layout/NoFooterLayout";
+import Colleges from "@/pages/Colleges";
 
 const CommonRoutes = () => {
   const { authUser } = useAuthContext();
@@ -14,6 +15,7 @@ const CommonRoutes = () => {
     <Routes>
       <Route path="" element={<CommonLayout />}>
         <Route index element={<Home />} />
+        <Route path="/colleges" element={<Colleges />} />
       </Route>
       <Route
         path="/profile"

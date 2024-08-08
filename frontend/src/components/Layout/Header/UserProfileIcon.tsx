@@ -12,7 +12,7 @@ const UserProfileIcon = () => {
       {authUser ? (
         <div className="dropdown dropdown-end">
           <div className="avatar cursor-pointer">
-            <div className="ring-accent ring-offset-base-100 w-12 rounded-full ring ring-offset-2">
+            <div className="ring-accent ring-offset-base-100 w-10 rounded-full ring ring-offset-2">
               <img src={authUser.profilePicLink} />
             </div>
           </div>

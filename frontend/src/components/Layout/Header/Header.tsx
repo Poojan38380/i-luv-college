@@ -28,7 +28,7 @@ const Header: React.FC<HeaderProps> = ({ theme, onThemeChange }) => {
           <HeaderMenu />
         </ul>
       </div>
-      <div className="navbar-end gap-2">
+      <div className="navbar-end gap-2 flex items-center">
         <HeaderThemeToggle onThemeChange={onThemeChange} />
         <UserProfileIcon />
       </div>

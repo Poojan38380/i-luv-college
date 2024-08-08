@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
+import { FaUniversity } from "react-icons/fa";
 
 const HeaderMenu = () => {
   return (
     <>
       <li>
-        <Link to={"/"}>
+        <Link to={"/"} className="flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-4 w-4"
@@ -22,6 +23,14 @@ const HeaderMenu = () => {
           Home
         </Link>
       </li>
+
+      <li>
+        <Link to={"/colleges"} className="flex items-center">
+          <FaUniversity />
+          Colleges
+        </Link>
+      </li>
+
       <li>
         <details>
           <summary>Parent</summary>
@@ -34,9 +43,6 @@ const HeaderMenu = () => {
             </li>
           </ul>
         </details>
-      </li>
-      <li>
-        <a>Item 3</a>
       </li>
     </>
   );
