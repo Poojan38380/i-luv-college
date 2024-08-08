@@ -23,7 +23,7 @@ const CommonLayout = () => {
       <div className="">
         <Outlet />
       </div>
-      <Footer />
+      <Footer theme={theme} />
     </div>
   );
 };

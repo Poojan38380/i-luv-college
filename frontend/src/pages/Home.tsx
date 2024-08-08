@@ -2,7 +2,7 @@ import { HeroImage } from "@/constants/images";
 
 const Home = () => {
   return (
-    <div className="min-h-screen px-10 mq725:px-5 pt-16 grid grid-cols-2 mq725:grid-cols-1 mq725:min-h-full items-center bg-base-100">
+    <div className="min-h-screen px-10 mq725:px-5 pt-16 grid grid-cols-2 mq725:grid-cols-1 mq725:min-h-full items-center bg-base-100 mq725:pb-24">
       <div className="order-1 mq725:order-2 flex flex-col gap-10 mq725:gap-5">
         <div className="font-bangers text-9xl mq725:text-7xl">
           <span className="text-accent">College</span> Got You{" "}

@@ -1,5 +1,13 @@
 import NavLogoLight from "@/assets/images/NavLogoLight.png";
 import NavLogoDark from "@/assets/images/NavLogoDark.png";
 import HeroImage from "@/assets/images/HeroImage.png";
+import FooterLogoLight from "@/assets/images/FooterLogoLight.png";
+import FooterLogoDark from "@/assets/images/FooterLogoDark.png";
 
-export { NavLogoLight, NavLogoDark, HeroImage };
+export {
+  NavLogoLight,
+  NavLogoDark,
+  HeroImage,
+  FooterLogoLight,
+  FooterLogoDark,
+};
