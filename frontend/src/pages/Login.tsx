@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
-    <div className="relative h-screen flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
+    <div className="relative h-screen pt-16 flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
       <div className="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
         <div className="absolute inset-0 bg-zinc-950" />
         <div className="relative z-20 flex items-center text-lg font-medium">
@@ -45,7 +45,7 @@ export default function Login() {
           <LoginForm />
           <div className="flex px-8 w-full text-center text-sm text-muted-foreground space-x-2 ">
             <p>Don't have an account ?</p>
-            <Link to={"/signup"}>
+            <Link to={"/auth/signup"}>
               <p className="text-zinc-700 font-semibold">Sign Up</p>
             </Link>
           </div>

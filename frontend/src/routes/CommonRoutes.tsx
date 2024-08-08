@@ -6,6 +6,7 @@ import Signup from "@/pages/Signup";
 import { Navigate, Route, Routes } from "react-router-dom";
 import ProtectGaurd from "./Gaurds/ProtectGaurd";
 import Profile from "@/pages/Profile";
+import NoFooterLayout from "@/components/Layout/NoFooterLayout";
 
 const CommonRoutes = () => {
   const { authUser } = useAuthContext();
@@ -13,20 +14,22 @@ const CommonRoutes = () => {
     <Routes>
       <Route path="" element={<CommonLayout />}>
         <Route index element={<Home />} />
-        <Route
-          path="/login"
-          element={authUser ? <Navigate to="/" /> : <Login />}
-        />
-        <Route
-          path="/signup"
-          element={authUser ? <Navigate to="/" /> : <Signup />}
-        />
       </Route>
       <Route
         path="/profile"
         element={<ProtectGaurd element={<CommonLayout />} />}
       >
         <Route index element={<Profile />} />
+      </Route>
+      <Route path="/auth" element={<NoFooterLayout />}>
+        <Route
+          path="login"
+          element={authUser ? <Navigate to="/" /> : <Login />}
+        />
+        <Route
+          path="signup"
+          element={authUser ? <Navigate to="/" /> : <Signup />}
+        />
       </Route>
     </Routes>
   );

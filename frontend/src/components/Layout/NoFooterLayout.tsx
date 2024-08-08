@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header/Header";
-import Footer from "./Footer";
-
-const CommonLayout = () => {
+const NoFooterLayout = () => {
   const [theme, setTheme] = useState("light-theme");
 
   useEffect(() => {
@@ -23,9 +21,8 @@ const CommonLayout = () => {
       <div className="">
         <Outlet />
       </div>
-      <Footer />
     </div>
   );
 };
 
-export default CommonLayout;
+export default NoFooterLayout;

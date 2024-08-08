@@ -31,7 +31,7 @@ const UserProfileIcon = () => {
           </ul>
         </details>
       ) : (
-        <Link to={"/login"}>
+        <Link to={"/auth/login"}>
           <button className="btn btn-primary ">Login</button>
         </Link>
       )}
