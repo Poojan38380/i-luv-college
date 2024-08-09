@@ -7,7 +7,6 @@ const LikeCollege = ({
   collegeId,
   collegeLikes,
 }: {
-  userId: string;
   collegeId: string;
   collegeLikes: number;
 }) => {
