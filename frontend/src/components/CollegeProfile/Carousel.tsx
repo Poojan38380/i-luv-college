@@ -126,15 +126,15 @@ const Carousel = ({ images }: CarouselProps) => {
       </div>
 
       {/* Dots indicators */}
-      <div className="absolute flex justify-center left-2 gap-1 bottom-3">
+      <div className="absolute flex  items-center left-2 gap-1 bottom-3">
         {images.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className="opacity-70 hover:opacity-100 transition-opacity"
+            className=" hover:text-xl "
           >
             {currentIndex === index ? (
-              <GoDotFill className="text-accent" />
+              <GoDotFill className="text-accent text-xl" />
             ) : (
               <GoDot className="text-gray-400" />
             )}
