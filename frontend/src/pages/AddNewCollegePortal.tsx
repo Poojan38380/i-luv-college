@@ -9,19 +9,20 @@ const AddNewCollegePortal: React.FC = () => {
   const [files, setFiles] = useState<File[]>([]);
   const { createCollege, loading } = UseAddNewCollege();
 
+  const MAX_COLLEGE_NAME_LENGTH = 200;
+  const MAX_DESCRIPTION_LENGTH = 500;
+
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const selectedFiles = Array.from(event.target.files);
       const validFiles: File[] = [];
 
       selectedFiles.forEach((file) => {
-        // Check if the file is an image
         if (!file.type.startsWith("image/")) {
           ErrorToast("Only image files are allowed.");
           return;
         }
 
-        // Check if the file size is less than 10MB
         if (file.size > 10 * 1024 * 1024) {
           ErrorToast(
             `${file.name} is too large. Please upload images smaller than 10MB.`
@@ -43,6 +44,14 @@ const AddNewCollegePortal: React.FC = () => {
 
     if (!collegeName || !description) {
       return ErrorToast("Please fill in all required fields.");
+    }
+
+    if (collegeName.length > MAX_COLLEGE_NAME_LENGTH) {
+      return ErrorToast("College name exceeds the maximum character limit.");
+    }
+
+    if (description.length > MAX_DESCRIPTION_LENGTH) {
+      return ErrorToast("Description exceeds the maximum character limit.");
     }
 
     await createCollege(collegeName, description, files);
@@ -71,6 +80,9 @@ const AddNewCollegePortal: React.FC = () => {
               <span className="label-text text-lg font-semibold">
                 College Name
               </span>
+              <span className="label-text-alt">
+                {collegeName.length}/{MAX_COLLEGE_NAME_LENGTH} characters
+              </span>
             </label>
             <input
               type="text"
@@ -78,6 +90,7 @@ const AddNewCollegePortal: React.FC = () => {
               className="input input-bordered w-full focus:outline-none focus:ring-2 focus:ring-primary"
               value={collegeName}
               onChange={(e) => setCollegeName(e.target.value)}
+              maxLength={MAX_COLLEGE_NAME_LENGTH}
               required
             />
           </div>
@@ -87,12 +100,16 @@ const AddNewCollegePortal: React.FC = () => {
               <span className="label-text text-lg font-semibold">
                 Description
               </span>
+              <span className="label-text-alt">
+                {description.length}/{MAX_DESCRIPTION_LENGTH} characters
+              </span>
             </label>
             <textarea
               placeholder="Go on, write the most outrageous description about your college! Don't hold back..."
               className="textarea textarea-bordered w-full h-32 focus:outline-none focus:ring-2 focus:ring-primary"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
+              maxLength={MAX_DESCRIPTION_LENGTH}
               required
             ></textarea>
           </div>

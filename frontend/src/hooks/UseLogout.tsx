@@ -19,7 +19,7 @@ const useLogOut = () => {
 
       setAuthUser(null);
     } catch (error) {
-      console.log("Error in UseLogout hook ");
+      console.error("Error in UseLogout hook ");
 
       if (error instanceof Error) {
         ErrorToast(error.message);

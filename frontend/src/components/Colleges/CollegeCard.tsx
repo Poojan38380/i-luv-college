@@ -18,7 +18,7 @@ const CollegeCard: React.FC<CollegeCardProps> = ({
     description.length > 200 ? `${description.slice(0, 200)}...` : description;
 
   return (
-    <div key={id} className="card bg-base-100 shadow-xl">
+    <div key={id} className="card glass  shadow-xl">
       <figure>
         {imageURL ? (
           <img src={imageURL} alt={name} className="w-full h-48 object-cover" />
@@ -33,7 +33,7 @@ const CollegeCard: React.FC<CollegeCardProps> = ({
         <p>{truncatedDescription}</p>
         <div className="card-actions justify-end">
           <Link to={`/colleges/page/${id}`}>
-            <button className="btn btn-primary">View Details</button>
+            <button className="btn  btn-primary">Enter the hellhole !</button>
           </Link>
         </div>
       </div>

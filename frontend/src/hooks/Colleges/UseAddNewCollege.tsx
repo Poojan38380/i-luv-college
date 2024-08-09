@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 const UseAddNewCollege = () => {
   const [loading, setLoading] = useState(false);
   const { authUser } = useAuthContext();
-  console.log(authUser);
   const navigate = useNavigate();
 
   const uploadImagesToCloudinary = async (files: File[]) => {
@@ -72,7 +71,7 @@ const UseAddNewCollege = () => {
       navigate("/colleges");
       SuccessToast("College added successfully");
     } catch (error: any) {
-      console.log("Error in UseAddNewCollege hook ", error.message);
+      console.error("Error in UseAddNewCollege hook ", error.message);
       ErrorToast(error.message);
     } finally {
       setLoading(false);

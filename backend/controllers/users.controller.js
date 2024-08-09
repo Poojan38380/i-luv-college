@@ -39,7 +39,7 @@ export const signup = async (req, res) => {
 
     res.status(200).json(userData);
   } catch (error) {
-    console.log("Error in signup controller", error.message);
+    console.error("Error in signup controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -77,7 +77,7 @@ export const login = async (req, res) => {
 
     return res.json(userData);
   } catch (error) {
-    console.log("Error in login controller", error.message);
+    console.error("Error in login controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -87,7 +87,7 @@ export const logout = async (req, res) => {
     res.cookie("token", "", { maxAge: 0 });
     return res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
-    console.log("Error in logout controller", error.message);
+    console.error("Error in logout controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -101,7 +101,7 @@ export const allUsers = async (req, res) => {
     });
     return res.status(200).json(allUsers);
   } catch (error) {
-    console.log("Error in allUsers controller", error.message);
+    console.error("Error in allUsers controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };

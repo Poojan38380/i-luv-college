@@ -40,7 +40,7 @@ const UseGetAllColleges = () => {
 
         setColleges(data);
       } catch (error: any) {
-        console.log("Error in UseGetAllColleges hook ");
+        console.error("Error in UseGetAllColleges hook ");
 
         ErrorToast(error);
       } finally {

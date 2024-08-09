@@ -34,7 +34,7 @@ export const createCollege = async (req, res) => {
       college: newCollege,
     });
   } catch (error) {
-    console.log("Error in createCollege controller", error.message);
+    console.error("Error in createCollege controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -58,7 +58,7 @@ export const AllColleges = async (req, res) => {
 
     return res.status(200).json(allColleges);
   } catch (error) {
-    console.log("Error in AllColleges controller", error.message);
+    console.error("Error in AllColleges controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };

@@ -9,7 +9,6 @@ const UseLogin = () => {
   const login = async (username: string, password: string) => {
     setLoading(true);
     try {
-      console.log(username, password);
       const res = await fetch("/api/users/login", {
         method: "POST",
         headers: {
@@ -28,7 +27,7 @@ const UseLogin = () => {
 
       setAuthUser(data);
     } catch (error: any) {
-      console.log("Error in Uselogin hook ");
+      console.error("Error in Uselogin hook ");
 
       ErrorToast(error.message);
     } finally {
