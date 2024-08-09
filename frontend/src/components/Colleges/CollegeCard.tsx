@@ -23,7 +23,7 @@ const CollegeCard: React.FC<CollegeCardProps> = ({
         {imageURL ? (
           <img src={imageURL} alt={name} className="w-full h-48 object-cover" />
         ) : (
-          <div className="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500">
+          <div className="w-full h-48 bg-base-300 flex items-center justify-center text-gray-500">
             Be the first to upload an image!
           </div>
         )}
@@ -32,8 +32,10 @@ const CollegeCard: React.FC<CollegeCardProps> = ({
         <h2 className="card-title uppercase">{name}</h2>
         <p>{truncatedDescription}</p>
         <div className="card-actions justify-end">
-          <Link to={`/colleges/page/${id}`}>
-            <button className="btn  btn-primary">Enter the hellhole !</button>
+          <Link to={`/colleges/page/${id}`} className="w-full">
+            <button className="btn  btn-primary  mt-5 btn-block">
+              View Student Reviews
+            </button>
           </Link>
         </div>
       </div>

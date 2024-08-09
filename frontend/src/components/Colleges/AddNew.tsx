@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const AddNew = () => {
   return (
-    <div className="card bg-primary  text-primary-content mq450:w-full">
+    <div className="card bg-primary shadow-xl  text-primary-content mq450:w-full">
       <div className="card-body flex flex-col justify-between">
         <div>
           <h2 className="card-title text-3xl">

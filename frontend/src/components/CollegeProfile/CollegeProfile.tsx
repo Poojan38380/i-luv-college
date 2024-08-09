@@ -19,13 +19,13 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
 
   return (
     <div className="">
-      <div className="flex items-center mq800:items-start mq800:flex-col gap-10">
+      <div className="flex items-center  mq800:flex-col gap-10">
         <div className="">
           {college.images.length > 0 && (
             <Carousel images={college.images.slice(0, 5)} />
           )}
           {college.images.length === 0 && (
-            <div className="min-w-full w-96 relative bg-base-200 h-96 rounded-box shadow-lg flex items-center justify-center text-gray-500">
+            <div className=" mq800:mx-auto w-96 mq500:w-full mq500:px-14 relative bg-base-200 h-96 rounded-box shadow-lg flex items-center justify-center text-gray-500">
               Be the first to upload an image!
             </div>
           )}
@@ -44,7 +44,7 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
                 Created at {formattedDate}
               </p>
             </div>
-            <div>
+            <div className="mt-[-15px]">
               <LikeCollege
                 collegeId={college.id}
                 collegeLikes={college.likes}
