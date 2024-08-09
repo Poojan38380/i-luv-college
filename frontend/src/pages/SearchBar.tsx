@@ -19,7 +19,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         type="text"
         value={query}
         onChange={handleChange}
-        placeholder="Search colleges..."
+        placeholder="Search colleges...."
         className="grow"
       />
       <svg
