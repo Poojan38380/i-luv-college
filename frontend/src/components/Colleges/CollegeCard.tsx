@@ -18,7 +18,7 @@ const CollegeCard: React.FC<CollegeCardProps> = ({
     description.length > 200 ? `${description.slice(0, 200)}...` : description;
 
   return (
-    <div key={id} className="card glass  shadow-xl">
+    <div key={id} className="card   shadow-xl">
       <figure>
         {imageURL ? (
           <img src={imageURL} alt={name} className="w-full h-48 object-cover" />

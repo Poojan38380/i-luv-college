@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 export type College = {
   id: string;
-  createdAt: string;
+  createdAt: Date;
   name: string;
   description: string;
   createdBy: string;
