@@ -98,6 +98,14 @@ export const allUsers = async (req, res) => {
       orderBy: {
         createdAt: "desc",
       },
+      select: {
+        id: true,
+        createdAt: true,
+        username: true,
+        profilePicLink: true,
+        College: true,
+        likedColleges: true,
+      },
     });
     return res.status(200).json(allUsers);
   } catch (error) {

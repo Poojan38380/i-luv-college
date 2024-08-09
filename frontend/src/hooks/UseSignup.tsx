@@ -1,4 +1,5 @@
 import ErrorToast from "@/components/Toasts/ErrorToast";
+import SuccessToast from "@/components/Toasts/SuccessToast";
 import { useAuthContext } from "@/contexts/useAuthContext";
 import { useState } from "react";
 
@@ -27,6 +28,7 @@ const UseSignup = () => {
 
       localStorage.setItem("i-luv-college-local-token", JSON.stringify(data));
       setAuthUser(data);
+      SuccessToast("Let your frustrations out !!!");
     } catch (error) {
       console.error("Error in UseSignup hook");
 

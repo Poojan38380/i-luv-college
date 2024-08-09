@@ -1,4 +1,5 @@
 import ErrorToast from "@/components/Toasts/ErrorToast";
+import SuccessToast from "@/components/Toasts/SuccessToast";
 import { useAuthContext } from "@/contexts/useAuthContext";
 import { useState } from "react";
 
@@ -18,6 +19,8 @@ const useLogOut = () => {
       localStorage.removeItem("i-luv-college-local-token");
 
       setAuthUser(null);
+
+      SuccessToast("Come back soon...");
     } catch (error) {
       console.error("Error in UseLogout hook ");
 

@@ -13,7 +13,10 @@ model User {
   password       String
   username       String    @unique
   profilePicLink String
-  College        College[]
+  College        College[] // Colleges created by the user
+
+  // Relation to track which colleges this user has liked
+  likedColleges UserCollegeLike[]
 }
 
 model College {
@@ -22,14 +25,31 @@ model College {
 
   name        String @unique
   description String
-  // Reference to the User who created the college
-  createdBy   String @db.ObjectId
-  creator     User   @relation(fields: [createdBy], references: [id]) // Update relation here
+  likes       Int    @default(0)
 
-  // Array of image URLs with their respective like counts and uploader info
+  // Reference to the User who created the college
+  createdBy String @db.ObjectId
+  creator   User   @relation(fields: [createdBy], references: [id])
+
   images Image[]
 
+  // Relation to track which users have liked this college
+  likedBy UserCollegeLike[]
+
   @@index([createdBy])
+}
+
+model UserCollegeLike {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String @db.ObjectId
+  collegeId String @db.ObjectId
+
+  user    User    @relation(fields: [userId], references: [id])
+  college College @relation(fields: [collegeId], references: [id])
+
+  createdAt DateTime @default(now()) @db.Date
+
+  @@unique([userId, collegeId]) // Ensure a user can like a college only once
 }
 
 // Embedded type for images within the College model
@@ -39,7 +59,8 @@ model Image {
   likes    Int    @default(0)
 
   // Reference to the User who uploaded the image
-  uploadedBy String @db.ObjectId
+  uploadedBy String    @db.ObjectId
+  uploadedAt DateTime? @default(now()) @db.Date
 
   College   College? @relation(fields: [collegeId], references: [id])
   collegeId String?  @db.ObjectId

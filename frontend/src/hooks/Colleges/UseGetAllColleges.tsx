@@ -7,6 +7,7 @@ export type College = {
   name: string;
   description: string;
   createdBy: string;
+  likes: number;
   creator: {
     username: string;
   };

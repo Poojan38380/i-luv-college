@@ -1,6 +1,7 @@
 import { College } from "@/hooks/Colleges/UseGetAllColleges";
 import Tabs from "./Tabs";
 import Carousel from "./Carousel";
+import LikeCollege from "./LikeCollege";
 
 interface CollegeProfileProps {
   college: College;
@@ -29,18 +30,26 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
             </div>
           )}
         </div>
-        <div className="flex flex-col   ">
+        <div className="flex flex-col w-full     ">
           <div>
             <h1 className="text-3xl font-bold">{college.name}</h1>
             <h1 className="text-lg font-semibold">{college.description}</h1>
           </div>
-          <div className="mt-7">
-            <p className="text-sm text-base-content">
-              Created by {college.creator.username}
-            </p>
-            <p className="text-sm text-base-content">
-              Created at {formattedDate}
-            </p>
+          <div className="mt-7 flex justify-between">
+            <div>
+              <p className="text-sm text-base-content">
+                Created by {college.creator.username}
+              </p>
+              <p className="text-sm text-base-content">
+                Created at {formattedDate}
+              </p>
+            </div>
+            <div>
+              <LikeCollege
+                collegeId={college.id}
+                collegeLikes={college.likes}
+              />
+            </div>
           </div>
         </div>
       </div>
