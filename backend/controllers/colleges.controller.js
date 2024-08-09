@@ -41,12 +41,22 @@ export const createCollege = async (req, res) => {
 
 export const AllColleges = async (req, res) => {
   try {
-    const AllColleges = await prisma.college.findMany({
+    const allColleges = await prisma.college.findMany({
       orderBy: {
         createdAt: "desc",
       },
+      include: {
+        creator: {
+          // Use the correct relation name here
+          select: {
+            username: true, // Include only the username of the creator
+          },
+        },
+        images: true, // Include all associated images
+      },
     });
-    return res.status(200).json(AllColleges);
+
+    return res.status(200).json(allColleges);
   } catch (error) {
     console.log("Error in AllColleges controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
