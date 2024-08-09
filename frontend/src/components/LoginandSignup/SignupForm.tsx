@@ -30,8 +30,9 @@ const SignupForm = () => {
           <input
             className="mb-4   w-full input input-bordered "
             type="text"
-            placeholder="Username"
+            placeholder="Isaac Nuttyon"
             value={username}
+            required
             onChange={(e) => setUsername(e.target.value)}
           />
           <div className="relative mb-4">
@@ -40,6 +41,7 @@ const SignupForm = () => {
               type={showPassword ? "text" : "password"}
               placeholder="Password"
               value={password}
+              required
               onChange={(e) => setPassword(e.target.value)}
             />
             <span
@@ -90,6 +92,7 @@ const SignupForm = () => {
               type="password"
               placeholder="Confirm Password"
               value={confirmPassword}
+              required
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
