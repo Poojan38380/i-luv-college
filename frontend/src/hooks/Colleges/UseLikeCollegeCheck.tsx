@@ -5,11 +5,18 @@ import axios from "axios";
 
 const UseLikeCollegeCheck = (collegeId: string) => {
   const [loading, setLoading] = useState(true);
-  const [hasLiked, setHasLiked] = useState<boolean | null>(null);
+  const [hasLiked, setHasLiked] = useState<boolean>(false); // Default to false
   const { authUser } = useAuthContext();
 
   useEffect(() => {
     const checkIfLiked = async () => {
+      if (!authUser) {
+        // If authUser is null, set hasLiked to false and stop loading
+        setHasLiked(false);
+        setLoading(false);
+        return;
+      }
+
       try {
         const response = await axios.post("/api/colleges/checkliked", {
           userId: authUser.id,

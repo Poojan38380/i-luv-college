@@ -142,19 +142,28 @@ export const likeCollege = async (req, res) => {
       },
     });
 
-    // Increment the likes count on the College
-    await prisma.college.update({
+    // Get the current likes count
+    const college = await prisma.college.findUnique({
       where: { id: collegeId },
-      data: {
-        likes: {
-          increment: 1,
-        },
-      },
+      select: { likes: true },
     });
 
-    res.status(200).json({ message: "College liked successfully." });
+    if (college) {
+      // Update the likes count
+      await prisma.college.update({
+        where: { id: collegeId },
+        data: {
+          likes: college.likes + 1,
+        },
+      });
+
+      res.status(200).json({ message: "College liked successfully." });
+    } else {
+      res.status(404).json({ message: "College not found." });
+    }
   } catch (error) {
-    res.status(500).json({ error: "Something went wrong." });
+    console.error("Error in likeCollege controller", error.message);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
@@ -188,18 +197,27 @@ export const unlikeCollege = async (req, res) => {
       },
     });
 
-    // Decrement the likes count on the College
-    await prisma.college.update({
+    // Get the current likes count
+    const college = await prisma.college.findUnique({
       where: { id: collegeId },
-      data: {
-        likes: {
-          decrement: 1,
-        },
-      },
+      select: { likes: true },
     });
 
-    res.status(200).json({ message: "Like removed successfully." });
+    if (college) {
+      // Update the likes count
+      await prisma.college.update({
+        where: { id: collegeId },
+        data: {
+          likes: college.likes - 1,
+        },
+      });
+
+      res.status(200).json({ message: "Like removed successfully." });
+    } else {
+      res.status(404).json({ message: "College not found." });
+    }
   } catch (error) {
-    res.status(500).json({ error: "Something went wrong." });
+    console.error("Error in unlikeCollege controller", error.message);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 };
