@@ -62,3 +62,28 @@ export const AllColleges = async (req, res) => {
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+export const SingleCollege = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const college = await prisma.college.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        creator: {
+          // Use the correct relation name here
+          select: {
+            username: true, // Include only the username of the creator
+          },
+        },
+        images: true, // Include all associated images
+      },
+    });
+
+    return res.status(200).json(college);
+  } catch (error) {
+    console.error("Error in SingleCollege controller", error.message);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
