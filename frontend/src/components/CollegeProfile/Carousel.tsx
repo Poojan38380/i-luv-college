@@ -105,7 +105,7 @@ const Carousel = ({ images }: CarouselProps) => {
   };
 
   return (
-    <div className="carousel mq800:w-full w-96 relative bg-base-200 rounded-box shadow-lg overflow-hidden">
+    <div className="carousel mq800:w-full w-96 relative  rounded-box  overflow-hidden">
       <div
         className="carousel-inner flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
