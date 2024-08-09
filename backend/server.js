@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import path from "path";
 
 import UserRouter from "./routes/user.routes.js";
+import CollegeRouter from "./routes/college.routes.js";
 
 const PORT = process.env.PORT || 3001;
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/users", UserRouter);
+app.use("/api/colleges", CollegeRouter);
 
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 

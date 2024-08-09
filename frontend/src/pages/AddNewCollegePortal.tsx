@@ -1,36 +1,72 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import WelcomeUser from "@/components/utils/WelcomeUser";
+import ErrorToast from "@/components/Toasts/ErrorToast";
+import UseAddNewCollege from "@/hooks/Colleges/UseAddNewCollege";
 
 const AddNewCollegePortal: React.FC = () => {
-  const [images, setImages] = useState<string[]>([]);
+  const [collegeName, setCollegeName] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [files, setFiles] = useState<File[]>([]);
+  const { createCollege, loading } = UseAddNewCollege();
 
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
-      const files = Array.from(event.target.files);
-      const imageUrls = files.map((file) => URL.createObjectURL(file));
-      setImages(imageUrls);
+      const selectedFiles = Array.from(event.target.files);
+      const validFiles: File[] = [];
+
+      selectedFiles.forEach((file) => {
+        // Check if the file is an image
+        if (!file.type.startsWith("image/")) {
+          ErrorToast("Only image files are allowed.");
+          return;
+        }
+
+        // Check if the file size is less than 10MB
+        if (file.size > 10 * 1024 * 1024) {
+          ErrorToast(
+            `${file.name} is too large. Please upload images smaller than 10MB.`
+          );
+          return;
+        }
+
+        validFiles.push(file);
+      });
+
+      if (validFiles.length > 0) {
+        setFiles(validFiles);
+      }
     }
+  };
+
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
+
+    if (!collegeName || !description) {
+      return ErrorToast("Please fill in all required fields.");
+    }
+
+    await createCollege(collegeName, description, files);
   };
 
   return (
     <div className="min-h-screen px-10 mq725:px-5 py-24 mq725:pb-24">
       <WelcomeUser />
 
-      <div className=" mx-auto">
+      <div className="mx-auto">
         <div className="card bg-primary mt-7 text-primary-content shadow-xl mb-8">
           <div className="card-body">
             <h2 className="card-title text-4xl font-bold mb-4">
               Add Your College
             </h2>
             <p className="text-lg">
-              Ready to spill the tea? Write the real truth about your college,
-              you are given comple freedom
+              Ready to spill the tea? Add your college here, so that everyone
+              can see the real side of your useless college.
             </p>
           </div>
         </div>
 
-        <form className="bg-base-100  space-y-6">
-          <div className="form-control ">
+        <form className="bg-base-100 space-y-6" onSubmit={handleSubmit}>
+          <div className="form-control">
             <label className="label">
               <span className="label-text text-lg font-semibold">
                 College Name
@@ -39,7 +75,10 @@ const AddNewCollegePortal: React.FC = () => {
             <input
               type="text"
               placeholder="What's your college called?"
-              className="input  input-bordered w-full focus:outline-none focus:ring-2 focus:ring-primary"
+              className="input input-bordered w-full focus:outline-none focus:ring-2 focus:ring-primary"
+              value={collegeName}
+              onChange={(e) => setCollegeName(e.target.value)}
+              required
             />
           </div>
 
@@ -50,21 +89,25 @@ const AddNewCollegePortal: React.FC = () => {
               </span>
             </label>
             <textarea
-              placeholder="Go on, tell us the most outrageous stories about your college! Don't hold back..."
-              className="textarea   textarea-bordered w-full h-32 focus:outline-none focus:ring-2 focus:ring-primary"
+              placeholder="Go on, write the most outrageous description about your college! Don't hold back..."
+              className="textarea textarea-bordered w-full h-32 focus:outline-none focus:ring-2 focus:ring-primary"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
             ></textarea>
           </div>
 
           <div className="form-control">
             <label className="label">
               <span className="label-text text-lg font-semibold">
-                Add College Images
+                Add College Images (Optional)
               </span>
             </label>
             <input
               type="file"
               multiple
-              className="file-input  file-input-bordered w-full focus:outline-none focus:ring-2 focus:ring-primary"
+              accept="image/*"
+              className="file-input file-input-bordered w-full focus:outline-none focus:ring-2 focus:ring-primary"
               onChange={handleImageUpload}
             />
             <p className="mt-2 text-sm text-base-content mb-5">
@@ -73,15 +116,15 @@ const AddNewCollegePortal: React.FC = () => {
             </p>
 
             {/* Image Preview Section */}
-            {images.length > 0 && (
+            {files.length > 0 && (
               <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-4">
-                {images.map((src, index) => (
+                {files.map((file, index) => (
                   <div
                     key={index}
                     className="w-full h-52 border border-base-content rounded-lg overflow-hidden"
                   >
                     <img
-                      src={src}
+                      src={URL.createObjectURL(file)}
                       alt={`Uploaded preview ${index + 1}`}
                       className="w-full h-full object-cover"
                     />
@@ -92,8 +135,14 @@ const AddNewCollegePortal: React.FC = () => {
           </div>
 
           <div className="form-control mt-8">
-            <button className="btn btn-accent btm-nav-lg w-full text-xl my-6 mb-16">
-              Share Your Dumprack College with the World
+            <button
+              className="btn btn-accent btm-nav-lg w-full text-xl my-6 mb-16"
+              type="submit"
+              disabled={loading}
+            >
+              {loading
+                ? "Sharing Your Dumprack College..."
+                : "Share Your Dumprack College with the World"}
             </button>
           </div>
         </form>

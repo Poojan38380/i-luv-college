@@ -15,7 +15,7 @@ const AddNew = () => {
         </div>
         <div className="card-actions mt-3  justify-center">
           <Link to={"add"} className="w-full">
-            <button className="btn btn-block ">
+            <button className="btn btn-block  ">
               <FaPlus /> Add Your College
             </button>
           </Link>

@@ -32,6 +32,7 @@ export const signup = async (req, res) => {
     const userData = {
       username: newUser.username,
       profilePicLink: newUser.profilePicLink,
+      id: newUser.id,
     };
 
     await generateTokenandSetCookie(userData, res);
@@ -69,6 +70,7 @@ export const login = async (req, res) => {
     const userData = {
       username: user.username,
       profilePicLink: user.profilePicLink,
+      id: user.id,
     };
 
     await generateTokenandSetCookie(userData, res);

@@ -14,7 +14,7 @@ const protectRoute = async (req, res, next) => {
       return res.status(401).json({ error: "Invalid User" });
     }
 
-    const username = decoded.user;
+    const username = decoded.user.username;
 
     const user = await prisma.user.findUnique({
       where: { username },
