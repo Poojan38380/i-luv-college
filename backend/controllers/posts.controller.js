@@ -16,7 +16,6 @@ export const createPost = async (req, res) => {
         postDescription,
         userId,
         collegeId,
-        createdAt: new Date(), // Optional, as it defaults to now()
       },
     });
 
@@ -42,9 +41,11 @@ export const getPostsByCollege = async (req, res) => {
         collegeId,
       },
       select: {
+        id: true,
         createdAt: true,
         postTitle: true,
         postDescription: true,
+
         User: {
           select: {
             username: true, // Only include the username field from User

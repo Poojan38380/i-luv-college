@@ -14,7 +14,7 @@ const CollegePage = () => {
   if (!college) return <div>No college found</div>;
 
   return (
-    <div className="min-h-screen  px-10 mq725:px-5  py-24 mq725:pb-24">
+    <div className="min-h-screen   pt-24 mq725:pb-24">
       <CollegeProfile college={college} />
     </div>
   );

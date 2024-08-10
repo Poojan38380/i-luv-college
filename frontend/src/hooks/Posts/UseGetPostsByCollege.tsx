@@ -2,7 +2,8 @@ import ErrorToast from "@/components/Toasts/ErrorToast";
 import { useEffect, useState } from "react";
 
 export type Post = {
-  createdAt: string;
+  id: string;
+  createdAt: Date;
   postTitle: string;
   postDescription: string;
   User: {

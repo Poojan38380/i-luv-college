@@ -1,7 +1,8 @@
 import { College } from "@/hooks/Colleges/UseGetAllColleges";
 import Carousel from "./Carousel";
 import LikeCollege from "./LikeCollege";
-import AddPost from "./AddPost";
+import AddPost from "../Posts/AddPost";
+import PostContainer from "../Posts/PostContainer";
 
 interface CollegeProfileProps {
   college: College;
@@ -19,7 +20,7 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
 
   return (
     <div className="">
-      <div className="flex items-center  mq800:flex-col gap-10">
+      <div className="flex  px-10 mq725:px-5 items-center  mq800:flex-col gap-10">
         <div className="">
           {college.images.length > 0 && (
             <Carousel images={college.images.slice(0, 5)} />
@@ -53,8 +54,9 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
           </div>
         </div>
       </div>
-      <div className="mt-8">
+      <div className="mt-8 py-20 bg-base-200 flex mq800:flex-col px-10 mq725:px-5 gap-10 ">
         <AddPost collegeId={college.id} />
+        <PostContainer collegeId={college.id} />
       </div>
     </div>
   );
