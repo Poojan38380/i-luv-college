@@ -54,8 +54,8 @@ const LikeCollege = ({
         onClick={toggleLike}
         disabled={toggling}
         className={`text-4xl ${
-          hasLiked ? "text-primary" : "text-gray-400"
-        }    ${!hasLiked ? "animate-bounce  " : ""}`}
+          hasLiked ? "text-primary" : "text-gray-400 animate-bounce"
+        }    `}
       >
         {hasLiked ? <AiFillHeart /> : <AiOutlineHeart />}
       </button>

@@ -85,7 +85,7 @@ const Carousel = ({ images }: CarouselProps) => {
       setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 7000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [images.length]);

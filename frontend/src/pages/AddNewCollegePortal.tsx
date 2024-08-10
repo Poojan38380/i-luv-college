@@ -153,13 +153,11 @@ const AddNewCollegePortal: React.FC = () => {
 
           <div className="form-control mt-8">
             <button
-              className="btn btn-accent btm-nav-lg w-full text-xl my-6 mb-16"
+              className="btn btn-accent btn-lg w-full text-xl my-6 mb-16"
               type="submit"
               disabled={loading}
             >
-              {loading
-                ? "Sharing Your Dumprack College..."
-                : "Share Your Dumprack College with the World"}
+              {loading ? "Sharing Your sh*tty College..." : "Add your College"}
             </button>
           </div>
         </form>

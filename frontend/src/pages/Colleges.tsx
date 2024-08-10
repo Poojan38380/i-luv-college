@@ -2,12 +2,14 @@ import { useState } from "react";
 import AddNew from "@/components/Colleges/AddNew";
 import UseGetAllColleges from "@/hooks/Colleges/UseGetAllColleges";
 import CollegeCard from "@/components/Colleges/CollegeCard";
-import SearchBar from "./SearchBar";
+import SearchBar from "../components/utils/SearchBar";
 import WelcomeUser from "@/components/utils/WelcomeUser";
+import { useAuthContext } from "@/contexts/useAuthContext";
 
 const Colleges = () => {
   const { loading, colleges } = UseGetAllColleges();
   const [searchQuery, setSearchQuery] = useState("");
+  const { authUser } = useAuthContext();
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -21,7 +23,7 @@ const Colleges = () => {
     <div className="min-h-screen px-10 mq725:px-5 py-24 mq725:pb-24">
       <div className="flex  justify-between mq725:flex-col gap-10">
         <WelcomeUser />
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} authUser={authUser} />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 lg:grid-cols-3 gap-8">
