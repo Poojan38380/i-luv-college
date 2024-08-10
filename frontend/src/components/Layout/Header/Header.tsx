@@ -40,7 +40,7 @@ const Header: React.FC<HeaderProps> = ({
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 ">
-          <HeaderMenu />
+          <HeaderMenu mobile={false} />
         </ul>
       </div>
       <div className="navbar-end gap-2 mq450:gap-0 flex items-center">

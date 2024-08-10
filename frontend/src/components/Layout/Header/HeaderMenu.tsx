@@ -2,14 +2,17 @@ import { Link } from "react-router-dom";
 import { FaUniversity } from "react-icons/fa";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
-const HeaderMenu = () => {
+const HeaderMenu = ({ mobile }: { mobile: boolean }) => {
   return (
     <>
       <li>
-        <Link to={"/"} className="flex items-center">
+        <Link
+          to={"/"}
+          className={`flex items-center ${mobile ? "text-lg" : ""} `}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-4 w-4"
+            className={`h-4 w-4`}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -26,7 +29,10 @@ const HeaderMenu = () => {
       </li>
 
       <li>
-        <Link to={"/colleges"} className="flex items-center">
+        <Link
+          to={"/colleges"}
+          className={`flex items-center ${mobile ? "text-lg" : ""} `}
+        >
           <FaUniversity />
           Colleges
         </Link>
@@ -34,7 +40,7 @@ const HeaderMenu = () => {
       <li>
         <Link
           to={"https://insigh.to/b/i-luv-college"}
-          className="flex items-center"
+          className={`flex items-center ${mobile ? "text-lg" : ""} `}
           target="_blank"
           rel="noopener noreferrer"
         >

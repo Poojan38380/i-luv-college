@@ -62,8 +62,8 @@ const MobileDrawer = ({ theme }: { theme: string }) => {
             setNavactive(false);
           }}
         >
-          <ul className="menu px-1 font-semibold">
-            <HeaderMenu />
+          <ul className="menu px-1 font-semibold flex flex-col gap-3 mt-12  ">
+            <HeaderMenu mobile={true} />
           </ul>
         </div>
       </div>
