@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useAuthContext } from "@/contexts/useAuthContext";
+import { toast } from "react-toastify";
 
 interface UseToggleUpvoteParams {
   postId: string;
@@ -12,7 +13,6 @@ interface UseToggleUpvoteResult {
   upvoteCount: number;
   toggleUpvote: () => Promise<void>;
   loading: boolean;
-  error: string | null;
 }
 
 export const useToggleUpvote = ({
@@ -23,17 +23,15 @@ export const useToggleUpvote = ({
   const [hasUpvoted, setHasUpvoted] = useState<boolean>(false);
   const [upvoteCount, setUpvoteCount] = useState<number>(initialUpvoteCount);
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
 
   const toggleUpvote = async () => {
     if (!authUser) {
-      setError("User must be logged in to upvote");
+      toast.error(`Log in to upvote`);
       return;
     }
 
     try {
       setLoading(true);
-      setError(null);
 
       const response = await axios.post(`/api/posts/togglevote/${postId}`, {
         userId: authUser.id,
@@ -47,7 +45,6 @@ export const useToggleUpvote = ({
         setUpvoteCount((prevCount) => prevCount - 1);
       }
     } catch (err) {
-      setError("Failed to toggle upvote");
     } finally {
       setLoading(false);
     }
@@ -58,6 +55,5 @@ export const useToggleUpvote = ({
     upvoteCount,
     toggleUpvote,
     loading,
-    error,
   };
 };
