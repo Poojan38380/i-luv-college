@@ -2,19 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuthContext } from "@/contexts/useAuthContext";
 
-interface UseUpvoteStatusParams {
-  postId: string;
-}
-
 interface UseUpvoteStatusResult {
   hasUpvoted: boolean;
   loading: boolean;
   error: string | null;
 }
 
-export const useUpvoteStatus = ({
-  postId,
-}: UseUpvoteStatusParams): UseUpvoteStatusResult => {
+export const useUpvoteStatus = (postId: string): UseUpvoteStatusResult => {
   const [hasUpvoted, setHasUpvoted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
