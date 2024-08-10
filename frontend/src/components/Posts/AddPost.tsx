@@ -3,6 +3,7 @@ import UseCreatePost from "@/hooks/Posts/UseCreatePost";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const AddPost = ({ collegeId }: { collegeId: string }) => {
   const [title, setTitle] = useState("");
@@ -13,10 +14,31 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
   // State to control the modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  // Character limits
+  const MAX_TITLE_LENGTH = 200;
+  const MAX_DESCRIPTION_LENGTH = 3000;
+
+  const handleSubmit = async () => {
+    if (!title || !description) {
+      return toast.error("Please fill in all required fields.");
+    }
+
+    if (title.length > MAX_TITLE_LENGTH) {
+      return toast.error("Title exceeds the maximum character limit.");
+    }
+
+    if (description.length > MAX_DESCRIPTION_LENGTH) {
+      return toast.error("Description exceeds the maximum character limit.");
+    }
+
+    await createPost(title, description, collegeId);
+    setIsModalOpen(false); // Close the modal after post creation
+  };
+
   return (
     <>
       {/* Hidden on screens larger than 800px */}
-      <div className="card bg-base-100 text-base-content h-min  mq800:hidden hover:shadow-lg">
+      <div className="card bg-base-100 text-base-content h-min mq800:hidden hover:shadow-lg">
         <div className="card-body min-w-[450px] mq1000:min-w-[350px]">
           <h2 className="card-title font-bold">Add a Post</h2>
 
@@ -30,8 +52,12 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
               className="input input-bordered mt-1 w-full"
               value={title}
               required
+              maxLength={MAX_TITLE_LENGTH}
               onChange={(e) => setTitle(e.target.value)}
             />
+            <span className="label-text-alt text-gray-500 ">
+              {title.length}/{MAX_TITLE_LENGTH} characters
+            </span>
           </div>
 
           <div className="mt-4">
@@ -39,19 +65,24 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
               Description
             </label>
             <textarea
-              placeholder="The login button color should be green to match our brand colors."
+              placeholder="Any dirty secret about your college or your college life."
               className="textarea textarea-bordered mt-1 w-full"
               value={description}
               required
+              maxLength={MAX_DESCRIPTION_LENGTH}
               onChange={(e) => setDescription(e.target.value)}
               rows={3}
             />
+            <span className="label-text-alt text-gray-500 ">
+              {description.length}/{MAX_DESCRIPTION_LENGTH} characters
+            </span>
           </div>
+
           {!authUser ? (
             <Link to={"/auth/login"}>
               <button
                 onClick={() => {}}
-                className={`btn btn-primary btn-block mt-4 `}
+                className={`btn btn-primary btn-block mt-4`}
                 type="button"
               >
                 Log In to Post
@@ -59,9 +90,7 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
             </Link>
           ) : (
             <button
-              onClick={async () => {
-                await createPost(title, description, collegeId);
-              }}
+              onClick={handleSubmit}
               className={`btn btn-primary btn-block mt-4 ${
                 loading ? "loading" : ""
               }`}
@@ -77,7 +106,7 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
       {/* Display on screens smaller than 800px */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className="btn btn-primary btn-block    mq800:block hidden"
+        className="btn btn-primary btn-block mq800:block hidden"
       >
         Add a Post
       </button>
@@ -98,8 +127,12 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
                 className="input input-bordered mt-1 w-full"
                 value={title}
                 required
+                maxLength={MAX_TITLE_LENGTH}
                 onChange={(e) => setTitle(e.target.value)}
               />
+              <span className="label-text-alt text-gray-500 ">
+                {title.length}/{MAX_TITLE_LENGTH} characters
+              </span>
             </div>
 
             <div className="mt-4">
@@ -107,13 +140,17 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
                 Description
               </label>
               <textarea
-                placeholder="The login button color should be green to match our brand colors."
+                placeholder="Any dirty secret about your college or your college life."
                 className="textarea textarea-bordered mt-1 w-full"
                 value={description}
                 required
+                maxLength={MAX_DESCRIPTION_LENGTH}
                 onChange={(e) => setDescription(e.target.value)}
                 rows={3}
               />
+              <span className="label-text-alt text-gray-500 ">
+                {description.length}/{MAX_DESCRIPTION_LENGTH} characters
+              </span>
             </div>
 
             <div className="modal-action">
@@ -129,7 +166,7 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
                     onClick={() => {
                       setIsModalOpen(false);
                     }}
-                    className={`btn btn-primary `}
+                    className={`btn btn-primary`}
                     type="button"
                   >
                     Log In to Post
@@ -137,10 +174,7 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
                 </Link>
               ) : (
                 <button
-                  onClick={async () => {
-                    await createPost(title, description, collegeId);
-                    setIsModalOpen(false);
-                  }}
+                  onClick={handleSubmit}
                   className={`btn btn-primary ${loading ? "loading" : ""}`}
                   disabled={loading}
                   type="button"

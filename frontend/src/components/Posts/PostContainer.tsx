@@ -14,7 +14,16 @@ const PostContainer: FC<PostContainerProps> = ({ collegeId }) => {
   }
 
   if (posts.length === 0) {
-    return <div className="text-center py-8">No posts available.</div>;
+    return (
+      <div className="card bg-primary w-full text-primary-content h-min mq800:mt-3">
+        <div className="card-body gap-4 py-10 ">
+          <h2 className="card-title  text-3xl">
+            No posts about this college yet!
+          </h2>
+          <p className=" ">Be the first person to write about this college!</p>
+        </div>
+      </div>
+    );
   }
 
   return (
