@@ -18,6 +18,7 @@ model User {
 
   // Relation to track which colleges this user has liked
   likedColleges UserCollegeLike[]
+  upvotedPosts  UserPostUpvote[]
 }
 
 model College {
@@ -80,4 +81,19 @@ model Post {
 
   postTitle       String
   postDescription String
+  upvotes         Int              @default(0)
+  upvoteData      UserPostUpvote[]
+}
+
+model UserPostUpvote {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  postId String @db.ObjectId
+
+  user User @relation(fields: [userId], references: [id])
+  post Post @relation(fields: [postId], references: [id])
+
+  createdAt DateTime @default(now()) @db.Date
+
+  @@unique([userId, postId]) // Ensure a user can upvote a post only once
 }

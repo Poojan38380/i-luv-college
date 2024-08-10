@@ -45,6 +45,7 @@ export const getPostsByCollege = async (req, res) => {
         createdAt: true,
         postTitle: true,
         postDescription: true,
+        upvotes: true,
 
         User: {
           select: {
