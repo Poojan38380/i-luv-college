@@ -19,6 +19,7 @@ model User {
   // Relation to track which colleges this user has liked
   likedColleges UserCollegeLike[]
   upvotedPosts  UserPostUpvote[]
+  comments      Comment[]
 }
 
 model College {
@@ -83,6 +84,7 @@ model Post {
   postDescription String
   upvotes         Int              @default(0)
   upvoteData      UserPostUpvote[]
+  comments        Comment[]
 }
 
 model UserPostUpvote {
@@ -96,4 +98,20 @@ model UserPostUpvote {
   createdAt DateTime @default(now()) @db.Date
 
   @@unique([userId, postId]) // Ensure a user can upvote a post only once
+}
+
+model Comment {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  content   String
+  createdAt DateTime @default(now()) @db.Date
+
+  // Reference to the User who made the comment
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id])
+
+  // Reference to the Post on which the comment was made
+  postId String @db.ObjectId
+  post   Post   @relation(fields: [postId], references: [id])
+
+  @@index([userId, postId])
 }

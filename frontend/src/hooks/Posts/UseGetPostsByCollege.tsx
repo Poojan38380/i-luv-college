@@ -5,6 +5,8 @@ type User = {
   username: string;
 };
 
+type Comment = { content: string };
+
 export type Post = {
   id: string;
   createdAt: Date;
@@ -12,6 +14,7 @@ export type Post = {
   postDescription: string;
   upvotes: number;
   User: User;
+  comments: Comment[];
 };
 const UseGetPostsByCollege = (collegeId: string) => {
   const [loading, setLoading] = useState(false);

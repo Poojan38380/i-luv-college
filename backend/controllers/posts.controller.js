@@ -52,6 +52,11 @@ export const getPostsByCollege = async (req, res) => {
             username: true, // Only include the username field from User
           },
         },
+        comments: {
+          select: {
+            content: true,
+          },
+        },
       },
     });
 
@@ -160,6 +165,98 @@ export const toggleUpvote = async (req, res) => {
     }
   } catch (error) {
     console.error("Error in toggleUpvote controller", error.message);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const getPostDetails = async (req, res) => {
+  const { postId } = req.params;
+
+  try {
+    const post = await prisma.post.findUnique({
+      where: {
+        id: postId,
+      },
+      include: {
+        User: {
+          select: {
+            username: true,
+            profilePicLink: true,
+          },
+        },
+        College: {
+          select: {
+            name: true,
+            id: true,
+          },
+        },
+        comments: {
+          select: {
+            content: true,
+            createdAt: true,
+            user: {
+              select: {
+                username: true,
+                profilePicLink: true,
+              },
+            },
+          },
+        },
+        upvoteData: true,
+      },
+    });
+
+    if (!post) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+
+    return res.json({
+      id: post.id,
+      postTitle: post.postTitle,
+      postDescription: post.postDescription,
+      createdAt: post.createdAt,
+      username: post.User?.username,
+      profilePicLink: post.User?.profilePicLink,
+      collegeName: post.College?.name,
+      collegeId: post.College?.id,
+      upvotes: post.upvotes,
+      comments: post.comments,
+    });
+  } catch (error) {
+    console.error("Error in getPostDetails controller", error.message);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const addComment = async (req, res) => {
+  const { postId } = req.params;
+  const { userId, content } = req.body;
+
+  try {
+    // Check if the post exists
+    const post = await prisma.post.findUnique({
+      where: {
+        id: postId,
+      },
+    });
+
+    if (!post) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+
+    await prisma.comment.create({
+      data: {
+        content,
+        postId,
+        userId,
+      },
+    });
+
+    return res.status(201).json({
+      message: "Comment added successfully",
+    });
+  } catch (error) {
+    console.error("Error in addComment controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };

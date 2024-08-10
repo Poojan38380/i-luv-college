@@ -10,22 +10,25 @@ interface PostCardProps {
 
 const PostCard: FC<PostCardProps> = ({ post }) => {
   return (
-    <Link to={`/post/comments/${post.id}`}>
-      <div className="card bg-base-100 hover:shadow-lg duration-500  ">
-        <div className="card-body flex flex-row justify-between items-center gap-3">
+    <div className="card bg-base-100 hover:shadow-lg duration-500  ">
+      <div className="card-body flex flex-row justify-between items-center gap-3">
+        <Link to={`/post/comments/${post.id}`} className="grow">
           <div>
             <h2 className="card-title  font-bold mq500:text-lg ">
               {post.postTitle}
             </h2>
             <p className="text-sm text-gray-500 mt-1">{post.postDescription}</p>
-            <FaRegCommentAlt className="text-gray-500 mt-5" />
+            <div className="flex flex-row items-center mt-5 gap-2">
+              <FaRegCommentAlt className="text-gray-500 " />
+              <div className="">{post.comments.length}</div>
+            </div>
           </div>
-          <div>
-            <UpvoteButton postId={post.id} initialUpvoteLength={post.upvotes} />
-          </div>
+        </Link>
+        <div>
+          <UpvoteButton postId={post.id} initialUpvoteLength={post.upvotes} />
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
