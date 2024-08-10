@@ -1,10 +1,10 @@
-import CollegePageSkeleton from "@/components/CollegeProfile/CollegePageSkeleton";
 import CommentForm from "@/components/Comments/CommentForm";
 import CommentHeroPostCard from "@/components/Comments/CommentHeroPostCard";
 import CommentSection from "@/components/Comments/CommentSection";
 import UseGetSinglePost from "@/hooks/Posts/UseGetSinglePost";
 import { Link, useParams } from "react-router-dom";
 import { RiArrowGoBackLine } from "react-icons/ri";
+import CommentPageSkeleton from "@/components/Comments/CommentPageSkeleton";
 
 const CommentPage = () => {
   const { postId } = useParams<{ postId: string }>();
@@ -13,7 +13,7 @@ const CommentPage = () => {
 
   const { loading, post } = UseGetSinglePost({ postId });
 
-  if (loading) return <CollegePageSkeleton />;
+  if (loading) return <CommentPageSkeleton />;
   if (!post) return <div>No post found</div>;
 
   return (
@@ -28,7 +28,7 @@ const CommentPage = () => {
         <div className="font-semibold">{post.collegeName}</div>
       </Link>
       <div className="grid grid-cols-2 gap-6 mq800:grid-cols-1 mt-16">
-        <div className="flex justify-center mx-auto mq800:mx-0 ">
+        <div className="flex justify-center  mq800:mx-0 ">
           <CommentHeroPostCard post={post} />
         </div>
         <div>
