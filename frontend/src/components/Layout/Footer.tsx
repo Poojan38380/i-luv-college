@@ -1,25 +1,52 @@
+import { useState } from "react";
 import { FooterLogoDark, FooterLogoLight } from "@/constants/images";
 import { Link } from "react-router-dom";
+import UseSubscribe from "@/hooks/Subscribe/UseSubscribe";
+import { toast } from "react-toastify";
 
 const Footer = ({ theme }: { theme: string }) => {
+  const { loading, subscribe } = UseSubscribe();
+  const [email, setEmail] = useState("");
+
+  const validateEmail = (email: string) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  };
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email.length > 200) {
+      toast.error("Email address must be under 200 characters.");
+      return;
+    }
+    if (!validateEmail(email)) {
+      toast.error("Please enter a valid email address.");
+      return;
+    }
+    if (email) {
+      subscribe(email).then(() => setEmail("")); // Clear the field after successful subscription
+    }
+  };
+
   return (
-    <footer className="footer footer-center bg-base-300 text-base-content p-10 py-24">
-      <aside className="flex flex-col gap-5">
+    <footer className="footer bg-neutral text-neutral-content p-10 py-24">
+      <aside>
         <Link to={"/"}>
           {theme === "dark-theme" || theme === "synthwave" ? (
-            <img src={FooterLogoDark} className="h-14 mq725:h-10" />
-          ) : (
             <img src={FooterLogoLight} className="h-14 mq725:h-10" />
+          ) : (
+            <img src={FooterLogoDark} className="h-14 mq725:h-10" />
           )}
         </Link>
-        <p className="font-bold ">
+        <div className="font-bold">
           I 🖤 College
           <br />
           Providing this anonymous platform since August 2024
-        </p>
+        </div>
         <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
       </aside>
       <nav>
+        <h6 className="footer-title">Social</h6>
         <div className="grid grid-flow-col gap-4">
           <a>
             <svg
@@ -56,6 +83,35 @@ const Footer = ({ theme }: { theme: string }) => {
           </a>
         </div>
       </nav>
+      <form onSubmit={handleSubscribe}>
+        <h6 className="footer-title">Newsletter</h6>
+        <p className="max-w-96 mq600:max-w-full">
+          Subscribe to the developer's newsletter to get early access to such
+          platforms
+        </p>
+        <fieldset className="form-control w-80">
+          <label className="label">
+            <span className="label-text">Enter your email address</span>
+          </label>
+          <div className="join">
+            <input
+              type="text"
+              placeholder="username@site.com"
+              className="input input-bordered join-item "
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <button
+              className="btn btn-primary join-item"
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? "Subscribing..." : "Subscribe"}
+            </button>
+          </div>
+        </fieldset>
+      </form>
     </footer>
   );
 };

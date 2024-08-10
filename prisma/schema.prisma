@@ -115,3 +115,10 @@ model Comment {
 
   @@index([userId, postId])
 }
+
+model MailingList {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now()) @db.Date
+
+  email String @unique
+}

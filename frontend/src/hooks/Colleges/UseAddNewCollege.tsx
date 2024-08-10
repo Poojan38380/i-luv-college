@@ -1,8 +1,7 @@
-import ErrorToast from "@/components/Toasts/ErrorToast";
-import SuccessToast from "@/components/Toasts/SuccessToast";
 import { useAuthContext } from "@/contexts/useAuthContext";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UseAddNewCollege = () => {
   const [loading, setLoading] = useState(false);
@@ -69,10 +68,10 @@ const UseAddNewCollege = () => {
       }
 
       navigate("/colleges");
-      SuccessToast("College added successfully");
+      toast.success("College added successfully");
     } catch (error: any) {
       console.error("Error in UseAddNewCollege hook ", error.message);
-      ErrorToast(error.message);
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }

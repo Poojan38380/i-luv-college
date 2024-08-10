@@ -1,7 +1,6 @@
-import ErrorToast from "@/components/Toasts/ErrorToast";
-import SuccessToast from "@/components/Toasts/SuccessToast";
 import { useAuthContext } from "@/contexts/useAuthContext";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const useLogOut = () => {
   const [loading, setLoading] = useState(false);
@@ -20,14 +19,14 @@ const useLogOut = () => {
 
       setAuthUser(null);
 
-      SuccessToast("Come back soon...");
+      toast.success("Come back soon...");
     } catch (error) {
       console.error("Error in UseLogout hook ");
 
       if (error instanceof Error) {
-        ErrorToast(error.message);
+        toast.error(error.message);
       } else {
-        ErrorToast("An unexpected error occurred.");
+        toast.error("An unexpected error occurred.");
       }
     } finally {
       setLoading(false);

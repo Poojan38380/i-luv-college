@@ -1,7 +1,6 @@
-import ErrorToast from "@/components/Toasts/ErrorToast";
-import SuccessToast from "@/components/Toasts/SuccessToast";
 import { useAuthContext } from "@/contexts/useAuthContext";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const UseLogin = () => {
   const [loading, setLoading] = useState(false);
@@ -27,11 +26,11 @@ const UseLogin = () => {
       localStorage.setItem("i-luv-college-local-token", JSON.stringify(data));
 
       setAuthUser(data);
-      SuccessToast("Welcome back to hate your college!");
+      toast.success("Welcome back to hate your college!");
     } catch (error: any) {
       console.error("Error in Uselogin hook ");
 
-      ErrorToast(error.message);
+      toast.error(error.message);
     } finally {
       setLoading(false);
     }
