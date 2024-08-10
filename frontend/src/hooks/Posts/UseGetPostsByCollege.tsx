@@ -1,16 +1,25 @@
 import ErrorToast from "@/components/Toasts/ErrorToast";
 import { useEffect, useState } from "react";
 
+type Upvote = {
+  id: string;
+  createdAt: Date;
+  userId: string;
+  postId: string;
+};
+
+type User = {
+  username: string;
+};
+
 export type Post = {
   id: string;
   createdAt: Date;
   postTitle: string;
   postDescription: string;
-  User: {
-    username: string;
-  };
+  upvotes: Upvote[];
+  User: User;
 };
-
 const UseGetPostsByCollege = (collegeId: string) => {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState<Post[]>([]);

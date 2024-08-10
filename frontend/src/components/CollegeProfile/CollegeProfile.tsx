@@ -54,7 +54,7 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
           </div>
         </div>
       </div>
-      <div className="mt-8 py-20 bg-base-200 flex mq800:flex-col px-10 mq725:px-5 gap-10 ">
+      <div className="mt-20 py-20 bg-base-200 flex mq800:flex-col px-10 mq725:px-5 gap-6 ">
         <AddPost collegeId={college.id} />
         <PostContainer collegeId={college.id} />
       </div>

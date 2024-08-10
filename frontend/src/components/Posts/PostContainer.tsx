@@ -18,7 +18,7 @@ const PostContainer: FC<PostContainerProps> = ({ collegeId }) => {
   }
 
   return (
-    <div className=" grow flex flex-col gap-6 mq800:gap-4 ">
+    <div className=" grow flex flex-col gap-5 mq800:gap-4 ">
       {posts.map((post) => (
         <PostCard key={post.id} post={post} />
       ))}

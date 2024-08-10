@@ -1,11 +1,14 @@
+import { useAuthContext } from "@/contexts/useAuthContext";
 import UseCreatePost from "@/hooks/Posts/UseCreatePost";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const AddPost = ({ collegeId }: { collegeId: string }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const { loading, createPost } = UseCreatePost();
+  const { authUser } = useAuthContext();
 
   // State to control the modal visibility
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,7 +17,7 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
     <>
       {/* Hidden on screens larger than 800px */}
       <div className="card bg-base-100 text-base-content h-min  mq800:hidden">
-        <div className="card-body min-w-[400px] mq1000:min-w-[350px]">
+        <div className="card-body min-w-[450px] mq1000:min-w-[350px]">
           <h2 className="card-title font-bold">Add a Post</h2>
 
           <div className="mt-4">
@@ -44,26 +47,37 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
               rows={3}
             />
           </div>
-
-          <button
-            onClick={async () => {
-              await createPost(title, description, collegeId);
-            }}
-            className={`btn btn-primary btn-block mt-4 ${
-              loading ? "loading" : ""
-            }`}
-            disabled={loading}
-            type="button"
-          >
-            Create Post
-          </button>
+          {!authUser ? (
+            <Link to={"/auth/login"}>
+              <button
+                onClick={() => {}}
+                className={`btn btn-primary btn-block mt-4 `}
+                type="button"
+              >
+                Log In to Post
+              </button>
+            </Link>
+          ) : (
+            <button
+              onClick={async () => {
+                await createPost(title, description, collegeId);
+              }}
+              className={`btn btn-primary btn-block mt-4 ${
+                loading ? "loading" : ""
+              }`}
+              disabled={loading}
+              type="button"
+            >
+              Create Post
+            </button>
+          )}
         </div>
       </div>
 
       {/* Display on screens smaller than 800px */}
       <button
         onClick={() => setIsModalOpen(true)}
-        className="btn btn-primary btn-block btn-lg  mq800:block hidden"
+        className="btn btn-primary btn-block    mq800:block hidden"
       >
         Add a Post
       </button>
@@ -109,17 +123,31 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
               >
                 Cancel
               </button>
-              <button
-                onClick={async () => {
-                  await createPost(title, description, collegeId);
-                  setIsModalOpen(false);
-                }}
-                className={`btn btn-primary ${loading ? "loading" : ""}`}
-                disabled={loading}
-                type="button"
-              >
-                Create Post
-              </button>
+              {!authUser ? (
+                <Link to={"/auth/login"}>
+                  <button
+                    onClick={() => {
+                      setIsModalOpen(false);
+                    }}
+                    className={`btn btn-primary `}
+                    type="button"
+                  >
+                    Log In to Post
+                  </button>
+                </Link>
+              ) : (
+                <button
+                  onClick={async () => {
+                    await createPost(title, description, collegeId);
+                    setIsModalOpen(false);
+                  }}
+                  className={`btn btn-primary ${loading ? "loading" : ""}`}
+                  disabled={loading}
+                  type="button"
+                >
+                  Create Post
+                </button>
+              )}
             </div>
           </div>
         </div>
