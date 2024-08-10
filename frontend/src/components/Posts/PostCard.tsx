@@ -2,14 +2,22 @@ import { Post } from "@/hooks/Posts/UseGetPostsByCollege";
 import { FC } from "react";
 import { FaRegCommentAlt } from "react-icons/fa";
 import UpvoteButton from "./UpvoteButton";
+import { useNavigate } from "react-router-dom";
 
 interface PostCardProps {
   post: Post;
 }
 
 const PostCard: FC<PostCardProps> = ({ post }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="card bg-base-100 ">
+    <div
+      className="card bg-base-100 hover:shadow-lg duration-500  "
+      onClick={() => {
+        navigate(`/post/comments/${post.id}`);
+      }}
+    >
       <div className="card-body flex flex-row justify-between items-center gap-3">
         <div>
           <h2 className="card-title  font-bold mq500:text-lg ">

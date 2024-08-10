@@ -16,7 +16,7 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
   return (
     <>
       {/* Hidden on screens larger than 800px */}
-      <div className="card bg-base-100 text-base-content h-min  mq800:hidden">
+      <div className="card bg-base-100 text-base-content h-min  mq800:hidden hover:shadow-lg">
         <div className="card-body min-w-[450px] mq1000:min-w-[350px]">
           <h2 className="card-title font-bold">Add a Post</h2>
 

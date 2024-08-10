@@ -20,7 +20,7 @@ const Colleges = () => {
   );
 
   return (
-    <div className="min-h-screen px-10 mq725:px-5 py-24 mq725:pb-24">
+    <div className="min-h-screen px-10 mq725:px-5 py-24 ">
       <div className="flex  justify-between mq725:flex-col gap-10">
         <WelcomeUser />
         <SearchBar onSearch={handleSearch} authUser={authUser} />
