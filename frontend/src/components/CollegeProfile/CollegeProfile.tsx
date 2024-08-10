@@ -1,7 +1,7 @@
 import { College } from "@/hooks/Colleges/UseGetAllColleges";
-import Tabs from "./Tabs";
 import Carousel from "./Carousel";
 import LikeCollege from "./LikeCollege";
+import AddPost from "./AddPost";
 
 interface CollegeProfileProps {
   college: College;
@@ -54,7 +54,7 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
         </div>
       </div>
       <div className="mt-8">
-        <Tabs />
+        <AddPost collegeId={college.id} />
       </div>
     </div>
   );

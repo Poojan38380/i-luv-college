@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import UseGetSingleCollege from "@/hooks/Colleges/UseGetSingleCollege";
 import CollegeProfile from "@/components/CollegeProfile/CollegeProfile";
+import CollegePageSkeleton from "@/components/CollegeProfile/CollegePageSkeleton";
 
 const CollegePage = () => {
   const { collegeId } = useParams<{ collegeId: string }>();
@@ -9,22 +10,7 @@ const CollegePage = () => {
 
   const { loading, college } = UseGetSingleCollege({ collegeId });
 
-  if (loading)
-    return (
-      <div className="flex w-full min-h-screen flex-col gap-4 px-10 py-24">
-        <div className="flex items-center mq800:flex-col gap-4">
-          <div className="skeleton h-96 w-[400px]"></div>
-          <div className="flex flex-col gap-3 ">
-            <div className="skeleton h-4  w-28"></div>
-            <div className="skeleton h-4  w-28"></div>
-            <div className="skeleton h-4  w-28"></div>
-          </div>
-        </div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
-      </div>
-    );
+  if (loading) return <CollegePageSkeleton />;
   if (!college) return <div>No college found</div>;
 
   return (

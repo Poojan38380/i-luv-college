@@ -132,7 +132,7 @@ export const likeCollege = async (req, res) => {
     if (existingLike) {
       return res
         .status(400)
-        .json({ message: "You have already liked this college." });
+        .json({ error: "You have already liked this college." });
     }
 
     // Create a new like
@@ -160,7 +160,7 @@ export const likeCollege = async (req, res) => {
 
       res.status(200).json({ message: "College liked successfully." });
     } else {
-      res.status(404).json({ message: "College not found." });
+      res.status(404).json({ error: "College not found." });
     }
   } catch (error) {
     console.error("Error in likeCollege controller", error.message);
@@ -185,7 +185,7 @@ export const unlikeCollege = async (req, res) => {
     if (!existingLike) {
       return res
         .status(400)
-        .json({ message: "You have not liked this college yet." });
+        .json({ error: "You have not liked this college yet." });
     }
 
     // Remove the like
@@ -215,7 +215,7 @@ export const unlikeCollege = async (req, res) => {
 
       res.status(200).json({ message: "Like removed successfully." });
     } else {
-      res.status(404).json({ message: "College not found." });
+      res.status(404).json({ error: "College not found." });
     }
   } catch (error) {
     console.error("Error in unlikeCollege controller", error.message);

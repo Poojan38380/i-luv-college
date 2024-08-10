@@ -1,5 +1,7 @@
+import { ToastContainer } from "react-toastify";
 import "./App.css";
 import CommonRoutes from "./routes/CommonRoutes";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -7,6 +9,7 @@ function App() {
       <CommonRoutes />
       {/*  TODO:Implement a notification system for users when their posts receive comments. */}
       {/*  TODO: Display all the latest topics on homepage */}
+      <ToastContainer />
     </div>
   );
 }

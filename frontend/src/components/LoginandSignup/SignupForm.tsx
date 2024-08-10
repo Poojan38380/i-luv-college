@@ -1,5 +1,5 @@
 import { useState } from "react";
-import UseSignup from "@/hooks/UseSignup";
+import UseSignup from "@/hooks/Auth/UseSignup";
 import ErrorToast from "../Toasts/ErrorToast";
 
 const SignupForm = () => {

@@ -6,7 +6,7 @@ export const createPost = async (req, res) => {
 
     // Validate the required fields
     if (!userId || !collegeId || !postTitle || !postDescription) {
-      return res.status(400).json({ message: "All fields are required." });
+      return res.status(400).json({ error: "All fields are required." });
     }
 
     // Create a new post
@@ -20,9 +20,7 @@ export const createPost = async (req, res) => {
       },
     });
 
-    return res
-      .status(201)
-      .json({ message: "Post created successfully.", post: newPost });
+    return res.status(201).json({ message: "Post created successfully." });
   } catch (error) {
     console.error("Error in createPost controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
@@ -35,7 +33,7 @@ export const getPostsByCollege = async (req, res) => {
 
     // Validate that collegeId is provided
     if (!collegeId) {
-      return res.status(400).json({ message: "collegeId is required." });
+      return res.status(400).json({ error: "collegeId is required." });
     }
 
     // Find all posts related to the specified college
@@ -55,7 +53,7 @@ export const getPostsByCollege = async (req, res) => {
       },
     });
 
-    return res.status(200).json({ posts });
+    return res.status(200).json(posts);
   } catch (error) {
     console.error("Error in getPostsByCollege controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });

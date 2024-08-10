@@ -1,4 +1,4 @@
-import useLogOut from "@/hooks/UseLogout";
+import useLogOut from "@/hooks/Auth/UseLogout";
 import { IoLogOut } from "react-icons/io5";
 
 const LogOutDialog = () => {
