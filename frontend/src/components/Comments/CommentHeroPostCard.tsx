@@ -11,7 +11,7 @@ const CommentHeroPostCard = ({ post }: { post: SinglePost }) => {
   return (
     <div className="card w-full ">
       <div className="card-body p-0 ">
-        <div className="flex flex-row gap-12  justify-between  ">
+        <div className="flex flex-row gap-12    ">
           <div className="card-actions">
             <UpvoteButton postId={post.id} initialUpvoteLength={post.upvotes} />
           </div>

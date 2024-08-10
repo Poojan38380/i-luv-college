@@ -10,7 +10,7 @@ const CommentCard = ({ comment }: { comment: Comment }) => {
     }
   );
   return (
-    <div className="card  bg-primary text-primary-content p  ">
+    <div className="card  bg-base-200 text-base-content  ">
       <div className="card-body ">
         <p className="">{comment.content}</p>
         <div className="flex items-center gap-2 text-sm ">

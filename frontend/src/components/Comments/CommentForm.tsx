@@ -1,9 +1,12 @@
+import { useAuthContext } from "@/contexts/useAuthContext";
 import UseAddComment from "@/hooks/Comments/UseAddComment";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const CommentForm = ({ postId }: { postId: string }) => {
   const [content, setContent] = useState("");
   const { loading, AddComment } = UseAddComment(postId);
+  const { authUser } = useAuthContext();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,7 +17,7 @@ const CommentForm = ({ postId }: { postId: string }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full ">
+    <form onSubmit={handleSubmit} className="w-full">
       <div className="form-control">
         <label className="text-sm font-medium text-gray-500">
           Leave a Comment
@@ -26,18 +29,33 @@ const CommentForm = ({ postId }: { postId: string }) => {
           rows={2}
           onChange={(e) => setContent(e.target.value)}
           required
-          disabled={loading}
+          disabled={loading || !authUser}
         />
       </div>
-      {content && (
+      {authUser ? (
+        content && (
+          <div className="form-control mt-4">
+            <button
+              type="submit"
+              className={`btn btn-primary ${
+                loading ? "loading" : "animate-pop"
+              }`}
+              disabled={loading}
+            >
+              {loading ? "Adding..." : "Add Comment"}
+            </button>
+          </div>
+        )
+      ) : (
         <div className="form-control mt-4">
-          <button
-            type="submit"
-            className={`btn btn-primary ${loading ? "loading" : "animate-pop"}`}
-            disabled={loading}
-          >
-            {loading ? "Adding..." : "Add Comment"}
-          </button>
+          <Link to={"/auth/login"}>
+            <button
+              type="button"
+              className="btn btn-primary animate-pop w-full"
+            >
+              Login to Comment
+            </button>
+          </Link>
         </div>
       )}
     </form>
