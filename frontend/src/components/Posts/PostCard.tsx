@@ -2,7 +2,7 @@ import { Post } from "@/hooks/Posts/UseGetPostsByCollege";
 import { FC } from "react";
 import { FaRegCommentAlt } from "react-icons/fa";
 import UpvoteButton from "./UpvoteButton";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface PostCardProps {
   post: Post;
