@@ -9,7 +9,15 @@ const CommentSection = ({ comments }: { comments: Comment[] }) => {
           <CommentCard key={comment.createdAt} comment={comment} />
         ))
       ) : (
-        <p className="text-center text-gray-500">No comments yet.</p>
+        <div className="card bg-primary text-primary-content ">
+          <div className="card-body">
+            <h2 className="card-title">No comments yet!</h2>
+            <p>
+              Be the first one to leave a comment on this post. Make sure it's
+              funny ;)
+            </p>
+          </div>
+        </div>
       )}
     </div>
   );

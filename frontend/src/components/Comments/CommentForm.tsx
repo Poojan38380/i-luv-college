@@ -16,9 +16,12 @@ const CommentForm = ({ postId }: { postId: string }) => {
   return (
     <form onSubmit={handleSubmit} className="w-full ">
       <div className="form-control">
+        <label className="text-sm font-medium text-gray-500">
+          Leave a Comment
+        </label>
         <textarea
           className="textarea textarea-bordered w-full"
-          placeholder="Leave a comment..."
+          placeholder="A funny comment will be appreciated"
           value={content}
           rows={2}
           onChange={(e) => setContent(e.target.value)}

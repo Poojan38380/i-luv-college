@@ -25,6 +25,8 @@ const CommentHeroPostCard = ({ post }: { post: SinglePost }) => {
               <div>{post.username}</div>
               <div> • </div>
               <div>{formattedDate}</div>
+              <div> • </div>
+              <div>{post.collegeName}</div>
             </div>
             <h2 className="card-title font-bold text-2xl">{post.postTitle}</h2>
             <div className="mt-4 mb-10">{post.postDescription}</div>
