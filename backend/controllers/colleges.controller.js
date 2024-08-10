@@ -53,6 +53,7 @@ export const AllColleges = async (req, res) => {
           },
         },
         images: true, // Include all associated images
+        posts: true, // Include all associated posts
       },
     });
 
