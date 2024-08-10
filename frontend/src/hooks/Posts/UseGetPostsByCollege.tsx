@@ -1,13 +1,6 @@
 import ErrorToast from "@/components/Toasts/ErrorToast";
 import { useEffect, useState } from "react";
 
-type Upvote = {
-  id: string;
-  createdAt: Date;
-  userId: string;
-  postId: string;
-};
-
 type User = {
   username: string;
 };
@@ -17,7 +10,7 @@ export type Post = {
   createdAt: Date;
   postTitle: string;
   postDescription: string;
-  upvotes: Upvote[];
+  upvotes: number;
   User: User;
 };
 const UseGetPostsByCollege = (collegeId: string) => {

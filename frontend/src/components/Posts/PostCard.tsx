@@ -19,7 +19,7 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
           <FaRegCommentAlt className="text-gray-500 mt-5" />
         </div>
         <div>
-          <UpvoteButton postId={post.id} upvoteLength={post.upvotes.length} />
+          <UpvoteButton postId={post.id} upvoteLength={post.upvotes} />
         </div>
       </div>
     </div>
