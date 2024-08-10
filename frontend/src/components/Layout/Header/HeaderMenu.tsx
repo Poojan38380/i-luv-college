@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaUniversity } from "react-icons/fa";
+import { AiOutlinePlusCircle } from "react-icons/ai";
 
 const HeaderMenu = () => {
   return (
@@ -30,8 +31,19 @@ const HeaderMenu = () => {
           Colleges
         </Link>
       </li>
-
       <li>
+        <Link
+          to={"https://insigh.to/b/i-luv-college"}
+          className="flex items-center"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <AiOutlinePlusCircle />
+          Suggest a Feature
+        </Link>
+      </li>
+
+      {/* <li>
         <details>
           <summary>Parent</summary>
           <ul className="p-2">
@@ -43,7 +55,7 @@ const HeaderMenu = () => {
             </li>
           </ul>
         </details>
-      </li>
+      </li> */}
     </>
   );
 };

@@ -1,6 +1,7 @@
 import { FC } from "react";
 import PostCard from "./PostCard";
 import UseGetPostsByCollege from "@/hooks/Posts/UseGetPostsByCollege";
+import PostSkeleton from "./PostSkeleton";
 
 interface PostContainerProps {
   collegeId: string;
@@ -10,7 +11,7 @@ const PostContainer: FC<PostContainerProps> = ({ collegeId }) => {
   const { loading, posts } = UseGetPostsByCollege(collegeId);
 
   if (loading) {
-    return <div className="text-center py-8">Loading...</div>;
+    return <PostSkeleton />;
   }
 
   if (posts.length === 0) {
