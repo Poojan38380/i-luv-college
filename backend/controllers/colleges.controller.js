@@ -89,8 +89,46 @@ export const SingleCollege = async (req, res) => {
   }
 };
 
-export const hasUserLikedCollege = async (req, res) => {
-  const { userId, collegeId } = req.body;
+export const checkUserLikeCollege = async (req, res) => {
+  const { collegeId } = req.params;
+  const { userId } = req.body;
+
+  // Check if userId is provided
+  if (!userId) {
+    return res.json({ hasLiked: false });
+  }
+
+  try {
+    // Check if the user has liked the college
+    const like = await prisma.userCollegeLike.findUnique({
+      where: {
+        userId_collegeId: {
+          userId: userId,
+          collegeId: collegeId,
+        },
+      },
+    });
+
+    // Return the result
+    if (like) {
+      return res.json({ hasLiked: true });
+    } else {
+      return res.json({ hasLiked: false });
+    }
+  } catch (error) {
+    console.error("Error in checkUserLikeCollege controller", error.message);
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+export const toggleCollegeLike = async (req, res) => {
+  const { collegeId } = req.params;
+  const { userId } = req.body;
+
+  // Check if userId is provided
+  if (!userId) {
+    return res.status(400).json({ error: "User ID is required" });
+  }
 
   try {
     // Check if the user has already liked the college
@@ -103,122 +141,52 @@ export const hasUserLikedCollege = async (req, res) => {
       },
     });
 
-    // If existingLike is found, it means the user has liked the college
-    const hasLiked = existingLike !== null;
-
-    return res.status(200).json({ hasLiked });
-  } catch (error) {
-    console.error("Error checking if user liked the college:", error);
-    return res
-      .status(500)
-      .json({ error: "An error occurred while processing your request." });
-  }
-};
-
-export const likeCollege = async (req, res) => {
-  const { userId, collegeId } = req.body;
-
-  try {
-    // Check if the user has already liked the college
-    const existingLike = await prisma.userCollegeLike.findUnique({
-      where: {
-        userId_collegeId: {
-          userId,
-          collegeId,
-        },
-      },
-    });
-
     if (existingLike) {
-      return res
-        .status(400)
-        .json({ error: "You have already liked this college." });
-    }
-
-    // Create a new like
-    await prisma.userCollegeLike.create({
-      data: {
-        userId,
-        collegeId,
-      },
-    });
-
-    // Get the current likes count
-    const college = await prisma.college.findUnique({
-      where: { id: collegeId },
-      select: { likes: true },
-    });
-
-    if (college) {
-      // Update the likes count
-      await prisma.college.update({
-        where: { id: collegeId },
-        data: {
-          likes: college.likes + 1,
+      // If the like exists, remove it (toggle off)
+      await prisma.userCollegeLike.delete({
+        where: {
+          id: existingLike.id,
         },
       });
 
-      res.status(200).json({ message: "College liked successfully." });
-    } else {
-      res.status(404).json({ error: "College not found." });
-    }
-  } catch (error) {
-    console.error("Error in likeCollege controller", error.message);
-    return res.status(500).json({ error: "Internal Server Error" });
-  }
-};
+      // Manually update the likes count by querying and setting the new value
+      const college = await prisma.college.findUnique({
+        where: { id: collegeId },
+      });
 
-export const unlikeCollege = async (req, res) => {
-  const { userId, collegeId } = req.body;
+      const newLikeCount = college.likes - 1;
 
-  try {
-    // Check if the user has already liked the college
-    const existingLike = await prisma.userCollegeLike.findUnique({
-      where: {
-        userId_collegeId: {
-          userId,
-          collegeId,
-        },
-      },
-    });
-
-    if (!existingLike) {
-      return res
-        .status(400)
-        .json({ error: "You have not liked this college yet." });
-    }
-
-    // Remove the like
-    await prisma.userCollegeLike.delete({
-      where: {
-        userId_collegeId: {
-          userId,
-          collegeId,
-        },
-      },
-    });
-
-    // Get the current likes count
-    const college = await prisma.college.findUnique({
-      where: { id: collegeId },
-      select: { likes: true },
-    });
-
-    if (college) {
-      // Update the likes count
       await prisma.college.update({
         where: { id: collegeId },
+        data: { likes: newLikeCount },
+      });
+
+      return res.json({ message: "Like removed" });
+    } else {
+      // If the like does not exist, add it (toggle on)
+      await prisma.userCollegeLike.create({
         data: {
-          likes: college.likes - 1,
+          userId: userId,
+          collegeId: collegeId,
         },
       });
 
-      res.status(200).json({ message: "Like removed successfully." });
-    } else {
-      res.status(404).json({ error: "College not found." });
+      // Manually update the likes count by querying and setting the new value
+      const college = await prisma.college.findUnique({
+        where: { id: collegeId },
+      });
+
+      const newLikeCount = college.likes + 1;
+
+      await prisma.college.update({
+        where: { id: collegeId },
+        data: { likes: newLikeCount },
+      });
+
+      return res.json({ message: "Like added" });
     }
   } catch (error) {
-    console.error("Error in unlikeCollege controller", error.message);
+    console.error("Error in toggleCollegeLike controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };

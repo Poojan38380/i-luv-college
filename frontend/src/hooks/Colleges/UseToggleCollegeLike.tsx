@@ -1,37 +1,66 @@
+import { useState } from "react";
 import axios from "axios";
 import { useAuthContext } from "@/contexts/useAuthContext";
-import ErrorToast from "@/components/Toasts/ErrorToast";
-import { useState } from "react";
+import { toast } from "react-toastify";
 
-const UseToggleLike = (collegeId: string, hasLiked: boolean) => {
+interface UseToggleCollegeLikeParams {
+  collegeId: string;
+  initialHasLiked: boolean;
+  initialLikeCount: number;
+}
+
+interface UseToggleCollegeLikeResult {
+  hasLiked: boolean;
+  likeCount: number;
+  toggleLike: () => Promise<void>;
+  loading: boolean;
+}
+
+export const useToggleCollegeLike = ({
+  collegeId,
+  initialHasLiked,
+  initialLikeCount,
+}: UseToggleCollegeLikeParams): UseToggleCollegeLikeResult => {
   const { authUser } = useAuthContext();
-  const [toggling, setToggling] = useState(false);
+  const [hasLiked, setHasLiked] = useState<boolean>(initialHasLiked);
+  const [likeCount, setLikeCount] = useState<number>(initialLikeCount);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const toggleLike = async () => {
+    if (!authUser) {
+      toast.error("Log in to like");
+      return;
+    }
+
     try {
-      setToggling(true);
-      if (hasLiked) {
-        await axios.post(`/api/colleges/unlike`, {
+      setLoading(true);
+
+      const response = await axios.post(
+        `/api/colleges/togglelike/${collegeId}`,
+        {
           userId: authUser.id,
-          collegeId,
-        });
-        window.location.reload();
+        }
+      );
+
+      if (response.data.message === "Like added") {
+        setHasLiked(true);
+        setLikeCount((prevCount) => prevCount + 1);
       } else {
-        await axios.post(`/api/colleges/like`, {
-          userId: authUser.id,
-          collegeId,
-        });
-        window.location.reload();
+        setHasLiked(false);
+        setLikeCount((prevCount) => prevCount - 1);
       }
     } catch (err) {
-      ErrorToast("Failed to update like status");
-      console.error("Error in UseToggleLike hook ");
+      toast.error("An error occurred while toggling the like");
+      console.error("Error toggling like:", err);
     } finally {
-      setToggling(false);
+      setLoading(false);
     }
   };
 
-  return { toggleLike, toggling };
+  return {
+    hasLiked,
+    likeCount,
+    toggleLike,
+    loading,
+  };
 };
-
-export default UseToggleLike;

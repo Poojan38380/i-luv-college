@@ -1,41 +1,70 @@
-import ErrorToast from "@/components/Toasts/ErrorToast";
-import { useAuthContext } from "@/contexts/useAuthContext";
-import { useEffect, useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
+import { useAuthContext } from "@/contexts/useAuthContext";
 
-const UseLikeCollegeCheck = (collegeId: string) => {
-  const [loading, setLoading] = useState(true);
-  const [hasLiked, setHasLiked] = useState<boolean>(false); // Default to false
+interface UseLikeCollegeCheckResult {
+  hasLiked: boolean;
+  toggleLike: () => Promise<void>;
+  loading: boolean;
+  error: string | null;
+}
+
+export const UseLikeCollegeCheck = (
+  collegeId: string
+): UseLikeCollegeCheckResult => {
+  const [hasLiked, setHasLiked] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
   const { authUser } = useAuthContext();
 
-  useEffect(() => {
-    const checkIfLiked = async () => {
-      if (!authUser) {
-        // If authUser is null, set hasLiked to false and stop loading
-        setHasLiked(false);
-        setLoading(false);
-        return;
-      }
+  const fetchLikeStatus = async () => {
+    try {
+      setLoading(true);
+      setError(null);
 
-      try {
-        const response = await axios.post("/api/colleges/checkliked", {
+      const response = await axios.post(
+        `/api/colleges/checklike/${collegeId}`,
+        {
           userId: authUser.id,
-          collegeId,
-        });
+        }
+      );
 
-        setHasLiked(response.data.hasLiked);
-      } catch (error: any) {
-        console.error("Error in UseLikeCollegeCheck hook ");
-        ErrorToast(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+      setHasLiked(response.data.hasLiked);
+    } catch (err) {
+      setError("Failed to fetch like status");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    checkIfLiked();
-  }, [authUser, collegeId]);
+  useEffect(() => {
+    if (authUser) {
+      fetchLikeStatus();
+    }
+  }, [collegeId, authUser]);
 
-  return { hasLiked, loading };
+  const toggleLike = useCallback(async () => {
+    if (!authUser) return;
+
+    try {
+      setLoading(true);
+      setError(null);
+
+      const response = await axios.post(
+        `/api/colleges/togglelike/${collegeId}`,
+        {
+          userId: authUser.id,
+        }
+      );
+
+      setHasLiked(response.data.hasLiked);
+    } catch (err) {
+      setError("Failed to toggle like status");
+    } finally {
+      setLoading(false);
+    }
+  }, [collegeId, authUser]);
+
+  return { hasLiked, toggleLike, loading, error };
 };
-
-export default UseLikeCollegeCheck;
