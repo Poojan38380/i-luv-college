@@ -11,6 +11,8 @@ const CollegePage = () => {
 
   const { loading, college } = UseGetSingleCollege({ collegeId });
 
+  console.log(college);
+
   if (loading) return <CollegePageSkeleton />;
   if (!college) return <NotFound />;
 

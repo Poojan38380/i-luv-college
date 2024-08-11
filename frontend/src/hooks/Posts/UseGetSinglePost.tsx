@@ -1,5 +1,6 @@
-import ErrorToast from "@/components/Toasts/ErrorToast";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export type Comment = {
   content: string;
@@ -26,6 +27,7 @@ export type SinglePost = {
 const UseGetSinglePost = ({ postId }: { postId: string }) => {
   const [loading, setLoading] = useState(false);
   const [post, setPost] = useState<SinglePost>();
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     const getPost = async () => {
@@ -41,8 +43,8 @@ const UseGetSinglePost = ({ postId }: { postId: string }) => {
         setPost(data);
       } catch (error: any) {
         console.error("Error in UseGetSinglePost hook ");
-
-        ErrorToast(error);
+        toast.error(error);
+        navigate("/notfound");
       } finally {
         setLoading(false);
       }

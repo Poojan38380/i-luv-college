@@ -1,5 +1,6 @@
-import ErrorToast from "@/components/Toasts/ErrorToast";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 type User = {
   username: string;
@@ -19,6 +20,7 @@ export type Post = {
 const UseGetPostsByCollege = (collegeId: string) => {
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState<Post[]>([]);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     const getPosts = async () => {
@@ -37,7 +39,8 @@ const UseGetPostsByCollege = (collegeId: string) => {
       } catch (error: any) {
         console.error("Error in UseGetPostsByCollege hook ");
 
-        ErrorToast(error);
+        toast.error(error);
+        navigate("/notfound");
       } finally {
         setLoading(false);
       }

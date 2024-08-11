@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import WelcomeUser from "@/components/utils/WelcomeUser";
-import ErrorToast from "@/components/Toasts/ErrorToast";
 import UseAddNewCollege from "@/hooks/Colleges/UseAddNewCollege";
+import { toast } from "react-toastify";
 
 const AddNewCollegePortal: React.FC = () => {
   const [collegeName, setCollegeName] = useState<string>("");
@@ -19,12 +19,12 @@ const AddNewCollegePortal: React.FC = () => {
 
       selectedFiles.forEach((file) => {
         if (!file.type.startsWith("image/")) {
-          ErrorToast("Only image files are allowed.");
+          toast.error("Only image files are allowed.");
           return;
         }
 
         if (file.size > 10 * 1024 * 1024) {
-          ErrorToast(
+          toast.error(
             `${file.name} is too large. Please upload images smaller than 10MB.`
           );
           return;
@@ -43,15 +43,15 @@ const AddNewCollegePortal: React.FC = () => {
     event.preventDefault();
 
     if (!collegeName || !description) {
-      return ErrorToast("Please fill in all required fields.");
+      return toast.error("Please fill in all required fields.");
     }
 
     if (collegeName.length > MAX_COLLEGE_NAME_LENGTH) {
-      return ErrorToast("College name exceeds the maximum character limit.");
+      return toast.error("College name exceeds the maximum character limit.");
     }
 
     if (description.length > MAX_DESCRIPTION_LENGTH) {
-      return ErrorToast("Description exceeds the maximum character limit.");
+      return toast.error("Description exceeds the maximum character limit.");
     }
 
     await createCollege(collegeName, description, files);

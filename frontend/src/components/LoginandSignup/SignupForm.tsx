@@ -1,6 +1,6 @@
 import { useState } from "react";
 import UseSignup from "@/hooks/Auth/UseSignup";
-import ErrorToast from "../Toasts/ErrorToast";
+import { toast } from "react-toastify";
 
 const SignupForm = () => {
   const [username, setUsername] = useState("");
@@ -13,7 +13,7 @@ const SignupForm = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      ErrorToast("Passwords do not match");
+      toast.error("Passwords do not match");
       return;
     }
     await signup(username, password);
