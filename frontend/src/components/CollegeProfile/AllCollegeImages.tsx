@@ -18,9 +18,9 @@ const AllCollegeImages: React.FC<{ collegeId: string }> = ({ collegeId }) => {
   const generateRandomSize = () => {
     const sizes = [
       { height: "100px", width: "100%" },
-      { height: "120px", width: "90%" },
-      { height: "140px", width: "95%" },
-      { height: "160px", width: "85%" },
+      { height: "120px", width: "100%" },
+      { height: "140px", width: "100%" },
+      { height: "160px", width: "100%" },
       { height: "180px", width: "100%" },
       { height: "200px", width: "100%" },
     ];
@@ -30,10 +30,10 @@ const AllCollegeImages: React.FC<{ collegeId: string }> = ({ collegeId }) => {
   if (loading) {
     return (
       <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
-        {Array.from({ length: 5 }).map((_, index) => (
+        {Array.from({ length: 6 }).map((_, index) => (
           <div
             key={index}
-            className="skeleton bg-gray-200 rounded"
+            className="skeleton "
             style={generateRandomSize()}
           ></div>
         ))}
