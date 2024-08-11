@@ -13,8 +13,8 @@ const AboutSection = () => {
         <div className="font-bangers  text-right mq725:text-center   text-9xl mq725:text-7xl">
           Find your <span className="text-accent "> tribe</span>
         </div>
-        <div className="text-2xl mq725:text-xl mt-6 font-medium text-right  flex flex-col  items-end mq725:items-center  ">
-          Find your college, listen what others are saying,
+        <div className="text-2xl mq725:text-xl mt-6 font-medium text-right mq725:text-center  flex flex-col  items-end mq725:items-center  ">
+          Find your college, listen to what others are saying,
           <span className="text-accent ">upvote their ideas</span>or express
           your own.
           <button
