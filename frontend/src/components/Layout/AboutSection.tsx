@@ -5,15 +5,15 @@ const AboutSection = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="grid grid-cols-2 mq725:grid-cols-1 items-center gap-10 mt-20">
+    <div className="px-10 mq725:px-5  grid grid-cols-2 mq725:grid-cols-1 items-center gap-10 mt-20">
       <div>
         <img src={AboutSectionImg} alt="Hero" />
       </div>
       <div>
-        <div className="font-bangers  text-right text-9xl mq725:text-7xl">
-          <span className="text-accent ">Let it all out</span> !!!
+        <div className="font-bangers  text-right mq725:text-center   text-9xl mq725:text-7xl">
+          Find your <span className="text-accent "> tribe</span>
         </div>
-        <div className="text-2xl mq725:text-xl font-medium text-right flex flex-col justify-end items-end ">
+        <div className="text-2xl mq725:text-xl mt-6 font-medium text-right  flex flex-col  items-end mq725:items-center  ">
           Find your college, listen what others are saying,
           <span className="text-accent ">upvote their ideas</span>or express
           your own.
