@@ -66,11 +66,11 @@ const AddImages = ({ collegeId }: AddImagesProps) => {
               multiple
               accept="image/*"
               onChange={handleFileChange}
-              className="file-input file-input-bordered w-full mt-4 mq450:file-input-xs "
+              className="file-input file-input-bordered w-full mt-4 mq450:file-input-sm "
             />
             <div className="modal-action">
               <button
-                className="btn btn-success mq450:btn-sm"
+                className="btn btn-success "
                 onClick={handleUpload}
                 disabled={loading}
               >
