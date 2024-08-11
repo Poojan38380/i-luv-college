@@ -18,11 +18,11 @@ const AllCollegeImages: React.FC<{ collegeId: string }> = ({ collegeId }) => {
   const generateRandomSize = () => {
     const sizes = [
       { height: "100px", width: "100%" },
-      { height: "120px", width: "100%" },
-      { height: "140px", width: "100%" },
-      { height: "160px", width: "100%" },
-      { height: "180px", width: "100%" },
       { height: "200px", width: "100%" },
+      { height: "300px", width: "100%" },
+      { height: "50px", width: "100%" },
+      { height: "400px", width: "100%" },
+      { height: "250px", width: "100%" },
     ];
     return sizes[Math.floor(Math.random() * sizes.length)];
   };
