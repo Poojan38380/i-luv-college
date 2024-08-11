@@ -54,6 +54,13 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
               <p className="text-sm text-base-content">
                 Created at {formattedDate}
               </p>
+              <div className=" my-5 ">
+                <ShareButtons
+                  center={false}
+                  title={pageTitle}
+                  message={"Check out this college hate page"}
+                />
+              </div>
             </div>
             <div className="mt-[-15px]">
               <LikeCollege
@@ -64,13 +71,7 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-center my-5 px-10 mq725:px-5 text-center">
-        <ShareButtons
-          center={true}
-          title={pageTitle}
-          message={"Check out this college hate page"}
-        />
-      </div>
+
       <div className="mt-10">
         <Tabs collegeId={college.id} />
       </div>

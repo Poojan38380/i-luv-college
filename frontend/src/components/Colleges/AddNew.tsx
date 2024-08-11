@@ -1,7 +1,7 @@
 import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const AddNew = () => {
+const AddNew = ({ authUser }: { authUser: any }) => {
   return (
     <div className="card bg-primary shadow-xl  text-primary-content mq450:w-full">
       <div className="card-body flex flex-col justify-between">
@@ -19,11 +19,19 @@ const AddNew = () => {
         </div>
 
         <div className="card-actions mt-3  justify-center">
-          <Link to={"add"} className="w-full">
-            <button className="btn btn-block  ">
-              <FaPlus /> Add Your College
-            </button>
-          </Link>
+          {!authUser ? (
+            <Link to={"/auth/login"} className="w-full">
+              <button className="btn btn-block  ">
+                <FaPlus /> Login to add a College
+              </button>
+            </Link>
+          ) : (
+            <Link to={"add"} className="w-full">
+              <button className="btn btn-block  ">
+                <FaPlus /> Add Your College
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

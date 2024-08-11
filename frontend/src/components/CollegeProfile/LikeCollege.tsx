@@ -3,8 +3,7 @@ import UseLikeCollegeCheck from "@/hooks/Colleges/UseLikeCollegeCheck";
 import UseToggleLike from "@/hooks/Colleges/UseToggleCollegeLike";
 import { Loader } from "lucide-react";
 import { useAuthContext } from "@/contexts/useAuthContext";
-import { useNavigate } from "react-router-dom";
-import ErrorToast from "../Toasts/ErrorToast";
+import { toast } from "react-toastify";
 
 const LikeCollege = ({
   collegeId,
@@ -14,12 +13,6 @@ const LikeCollege = ({
   collegeLikes: number;
 }) => {
   const { authUser } = useAuthContext();
-  const navigate = useNavigate();
-
-  const redirectToLogin = () => {
-    navigate("/auth/login");
-    ErrorToast("Create an Anonymous Account First");
-  };
 
   const { hasLiked, loading } = UseLikeCollegeCheck(collegeId);
   const { toggleLike, toggling } = UseToggleLike(collegeId, hasLiked!);
@@ -37,7 +30,9 @@ const LikeCollege = ({
       return (
         <div className="flex flex-col items-center space-y-2">
           <button
-            onClick={redirectToLogin}
+            onClick={() => {
+              toast.error("Login to Like");
+            }}
             className="text-4xl text-gray-400    animate-bounce"
           >
             <AiOutlineHeart />

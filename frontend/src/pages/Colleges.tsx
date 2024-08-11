@@ -27,7 +27,7 @@ const Colleges = () => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 lg:grid-cols-3 gap-8">
-        <AddNew />
+        <AddNew authUser={authUser} />
         {loading
           ? Array.from({ length: 5 }).map((_, index) => (
               <div key={index} className="flex flex-col gap-4">

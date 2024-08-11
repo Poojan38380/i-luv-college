@@ -4,7 +4,6 @@ import Home from "@/pages/Home";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
 import { Navigate, Route, Routes } from "react-router-dom";
-import ProtectGaurd from "./Gaurds/ProtectGaurd";
 import NoFooterLayout from "@/components/Layout/NoFooterLayout";
 import Colleges from "@/pages/Colleges";
 import AddNewCollegePortal from "@/pages/AddNewCollegePortal";
@@ -21,10 +20,7 @@ const CommonRoutes = () => {
         <Route path="/colleges/page/:collegeId" element={<CollegePage />} />
         <Route path="/colleges/images/:collegeId" element={<CollegePage />} />
         <Route path="/post/comments/:postId" element={<CommentPage />} />
-        <Route
-          path="/colleges/add"
-          element={<ProtectGaurd element={<AddNewCollegePortal />} />}
-        />
+        <Route path="/colleges/add" element={<AddNewCollegePortal />} />
       </Route>
       // Routes with no footer
       <Route path="/auth" element={<NoFooterLayout />}>
