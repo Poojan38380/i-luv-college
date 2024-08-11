@@ -36,7 +36,7 @@ const CommentPage = () => {
         </div>
         <div>
           <div>
-            <div className="flex flex-col mb-6">
+            <div className="flex flex-col mb-10">
               <ShareButtons
                 center={false}
                 title={pageTitle}

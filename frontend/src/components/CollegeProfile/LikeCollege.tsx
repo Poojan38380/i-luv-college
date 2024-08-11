@@ -50,7 +50,7 @@ const LikeCollege = ({
 
   if (!authUser) {
     return (
-      <div className="flex flex-col items-center space-y-2">
+      <div className="flex flex-col text-center items-center space-y-2">
         <button
           onClick={() => toast.error("Login to Like")}
           className="text-4xl text-gray-400 animate-bounce"

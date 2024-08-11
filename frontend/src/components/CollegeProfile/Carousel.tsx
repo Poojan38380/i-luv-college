@@ -1,74 +1,6 @@
-// import { Image } from "@/hooks/Colleges/UseGetAllColleges";
-// import { useEffect, useState } from "react";
-// import { GoDotFill, GoDot } from "react-icons/go"; // Importing the icons
-
-// interface CarouselProps {
-//   images: Image[];
-// }
-
-// const Carousel = ({ images }: CarouselProps) => {
-//   const [currentIndex, setCurrentIndex] = useState(0);
-
-//   useEffect(() => {
-//     // Automatically move to the next slide every 10 seconds
-//     const interval = setInterval(() => {
-//       setCurrentIndex((prevIndex) =>
-//         prevIndex === images.length - 1 ? 0 : prevIndex + 1
-//       );
-//     }, 7000);
-
-//     return () => clearInterval(interval);
-//   }, [images.length]);
-
-//   const goToSlide = (index: number) => {
-//     setCurrentIndex(index);
-//   };
-
-//   return (
-//     <div className="carousel mq800:w-full w-96 relative bg-base-200 rounded-box shadow-lg overflow-hidden">
-//       <div
-//         className="carousel-inner flex transition-transform duration-700 ease-in-out"
-//         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-//       >
-//         {images.map((image, index) => (
-//           <div
-//             key={index}
-//             className="carousel-item flex-shrink-0 w-full h-96 touch-pan-x"
-//           >
-//             <img
-//               src={image.imageURL}
-//               className="w-full object-contain h-full rounded-2xl"
-//               alt={`Slide ${index + 1}`}
-//             />
-//           </div>
-//         ))}
-//       </div>
-
-//       {/* Dots indicators */}
-//       <div className="absolute flex justify-center left-2 gap-1 bottom-3">
-//         {images.map((_, index) => (
-//           <button
-//             key={index}
-//             onClick={() => goToSlide(index)}
-//             className="opacity-70 hover:opacity-100 transition-opacity"
-//           >
-//             {currentIndex === index ? (
-//               <GoDotFill className="text-accent" />
-//             ) : (
-//               <GoDot className="text-gray-400" />
-//             )}
-//           </button>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Carousel;
-
 import { Image } from "@/hooks/Colleges/UseGetAllColleges";
 import { useEffect, useState } from "react";
-import { GoDotFill, GoDot } from "react-icons/go"; // Importing the icons
+import { GoDotFill, GoDot } from "react-icons/go";
 
 interface CarouselProps {
   images: Image[];
@@ -80,7 +12,6 @@ const Carousel = ({ images }: CarouselProps) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
-    // Automatically move to the next slide every 10 seconds
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
@@ -90,9 +21,7 @@ const Carousel = ({ images }: CarouselProps) => {
     return () => clearInterval(interval);
   }, [images.length]);
 
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
+  const goToSlide = (index: number) => setCurrentIndex(index);
 
   const openModal = (imageURL: string) => {
     setSelectedImage(imageURL);
@@ -105,7 +34,7 @@ const Carousel = ({ images }: CarouselProps) => {
   };
 
   return (
-    <div className="carousel mq500:w-full w-96 relative  rounded-box  overflow-hidden">
+    <div className="carousel mq450:w-full h-96 w-96 relative rounded-box overflow-hidden">
       <div
         className="carousel-inner flex transition-transform duration-700 ease-in-out"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -113,25 +42,24 @@ const Carousel = ({ images }: CarouselProps) => {
         {images.map((image, index) => (
           <div
             key={index}
-            className="carousel-item flex-shrink-0 w-full h-full touch-pan-x"
+            className="carousel-item flex-shrink-0 w-full "
             onClick={() => openModal(image.imageURL)}
           >
             <img
               src={image.imageURL}
-              className="w-full object-contain h-full rounded-2xl cursor-pointer"
+              className="w-full object-contain rounded-2xl cursor-pointer"
               alt={`Slide ${index + 1}`}
             />
           </div>
         ))}
       </div>
 
-      {/* Dots indicators */}
-      <div className="absolute flex  items-center left-2 gap-1 bottom-3">
+      <div className="absolute flex items-center left-2 gap-1 bottom-3">
         {images.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className=" hover:text-xl "
+            className="hover:text-xl"
           >
             {currentIndex === index ? (
               <GoDotFill className="text-accent text-xl" />
@@ -142,7 +70,6 @@ const Carousel = ({ images }: CarouselProps) => {
         ))}
       </div>
 
-      {/* Modal for full image view */}
       {isModalOpen && selectedImage && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
           <div className="relative">
@@ -153,7 +80,7 @@ const Carousel = ({ images }: CarouselProps) => {
             />
             <button
               onClick={closeModal}
-              className="absolute top-2 right-2 text-white btn btn-accent  btn-xs"
+              className="absolute top-2 right-2 text-white btn btn-accent btn-xs"
             >
               &times;
             </button>
