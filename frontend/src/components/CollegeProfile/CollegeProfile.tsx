@@ -44,7 +44,9 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
         <div className="flex flex-col w-full     ">
           <div>
             <h1 className="text-3xl font-bold">{college.name}</h1>
-            <h1 className="text-lg font-semibold">{college.description}</h1>
+            <h1 className="text-lg font-semibold text-gray-500">
+              {college.description}
+            </h1>
           </div>
           <div className="mt-7 flex justify-between">
             <div>
