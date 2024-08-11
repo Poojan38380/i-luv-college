@@ -153,7 +153,7 @@ const Carousel = ({ images }: CarouselProps) => {
             />
             <button
               onClick={closeModal}
-              className="absolute top-2 right-2 text-white text-3xl"
+              className="absolute top-2 right-2 text-white btn btn-accent  btn-xs"
             >
               &times;
             </button>

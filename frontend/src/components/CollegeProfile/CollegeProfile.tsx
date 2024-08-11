@@ -4,6 +4,7 @@ import LikeCollege from "./LikeCollege";
 import AddPost from "../Posts/AddPost";
 import PostContainer from "../Posts/PostContainer";
 import ShareButtons from "../utils/ShareButtons";
+import AddImages from "./AddImages";
 
 interface CollegeProfileProps {
   college: College;
@@ -65,7 +66,12 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
         />
       </div>
       <div className="mt-20 py-20 bg-base-200 flex mq800:flex-col px-10 mq725:px-5 gap-6 ">
-        <AddPost collegeId={college.id} />
+        <div>
+          <AddPost collegeId={college.id} />
+          <div className="px-10 mt-5">
+            <AddImages collegeId={college.id} />
+          </div>
+        </div>
         <PostContainer collegeId={college.id} />
       </div>
     </div>
