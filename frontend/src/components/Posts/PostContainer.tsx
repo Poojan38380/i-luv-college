@@ -21,7 +21,9 @@ const PostContainer: FC<PostContainerProps> = ({ collegeId }) => {
           <h2 className="card-title  text-3xl">
             No posts about this college yet!
           </h2>
-          <p className=" ">Be the first person to write about this college!</p>
+          <p className=" ">
+            Share this page or be the first person to write about this college!
+          </p>
         </div>
       </div>
     );

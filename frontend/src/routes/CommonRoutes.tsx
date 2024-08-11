@@ -19,6 +19,7 @@ const CommonRoutes = () => {
         <Route index element={<Home />} />
         <Route path="/colleges" element={<Colleges />} />
         <Route path="/colleges/page/:collegeId" element={<CollegePage />} />
+        <Route path="/colleges/images/:collegeId" element={<CollegePage />} />
         <Route path="/post/comments/:postId" element={<CommentPage />} />
         <Route
           path="/colleges/add"

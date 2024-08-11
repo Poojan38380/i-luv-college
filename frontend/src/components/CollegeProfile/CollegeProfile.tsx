@@ -6,12 +6,17 @@ import PostContainer from "../Posts/PostContainer";
 import ShareButtons from "../utils/ShareButtons";
 import AddImages from "./AddImages";
 import AllCollegeImages from "./AllCollegeImages";
+import Tabs from "./Tabs";
+import { useLocation, useParams } from "react-router-dom";
 
 interface CollegeProfileProps {
   college: College;
 }
 
 const CollegeProfile = ({ college }: CollegeProfileProps) => {
+  const location = useLocation();
+  const { collegeId } = useParams();
+
   const formattedDate = new Date(college.createdAt).toLocaleDateString(
     "en-US",
     {
@@ -66,16 +71,25 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
           message={"Check out this college hate page"}
         />
       </div>
-      <div className="mt-20 py-20 bg-base-200 flex mq800:flex-col px-10 mq725:px-5 gap-6 ">
-        <div>
-          <AddPost collegeId={college.id} />
-          <div className="px-10 mt-5">
+      <div className="mt-10">
+        <Tabs collegeId={college.id} />
+      </div>
+      {location.pathname === `/colleges/page/${collegeId}` && (
+        <div className="pt-10 py-20 bg-base-200 flex mq800:flex-col px-10 mq725:px-5 gap-6 ">
+          <div>
+            <AddPost collegeId={college.id} />
+          </div>
+          <PostContainer collegeId={college.id} />
+        </div>
+      )}
+      {location.pathname === `/colleges/images/${collegeId}` && (
+        <div className="px-10 mq725:px-5  pt-10 py-20 bg-base-200 ">
+          <div className="mb-10">
             <AddImages collegeId={college.id} />
           </div>
+          <AllCollegeImages collegeId={college.id} />
         </div>
-        <PostContainer collegeId={college.id} />
-      </div>
-      <AllCollegeImages collegeId={college.id} />
+      )}
     </div>
   );
 };

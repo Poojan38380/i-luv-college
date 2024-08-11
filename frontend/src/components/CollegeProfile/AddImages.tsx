@@ -1,5 +1,7 @@
+import { useAuthContext } from "@/contexts/useAuthContext";
 import AddNewImages from "@/hooks/Colleges/AddNewImages";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 interface AddImagesProps {
@@ -9,6 +11,7 @@ interface AddImagesProps {
 const AddImages = ({ collegeId }: AddImagesProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const { authUser } = useAuthContext();
   const { loading, addImages } = AddNewImages();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,12 +42,20 @@ const AddImages = ({ collegeId }: AddImagesProps) => {
 
   return (
     <div>
-      <button
-        className="btn  btn-outine btn-primary w-full "
-        onClick={() => setIsModalOpen(true)}
-      >
-        Upload College Images
-      </button>
+      {!authUser ? (
+        <Link to={"/auth/login"}>
+          <button className="btn  btn-outine btn-primary w-full ">
+            Login to Upload Images
+          </button>
+        </Link>
+      ) : (
+        <button
+          className="btn  btn-outine btn-primary w-full "
+          onClick={() => setIsModalOpen(true)}
+        >
+          Upload College Images
+        </button>
+      )}
 
       {isModalOpen && (
         <div className="modal modal-open">
