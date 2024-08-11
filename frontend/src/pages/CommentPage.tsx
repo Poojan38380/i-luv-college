@@ -6,16 +6,17 @@ import { Link, useParams } from "react-router-dom";
 import { RiArrowGoBackLine } from "react-icons/ri";
 import CommentPageSkeleton from "@/components/Comments/CommentPageSkeleton";
 import ShareButtons from "@/components/utils/ShareButtons";
+import NotFound from "./NotFound";
 
 const CommentPage = () => {
   const { postId } = useParams<{ postId: string }>();
 
-  if (!postId) return <div>Invalid Id</div>;
+  if (!postId) return <NotFound />;
 
   const { loading, post } = UseGetSinglePost({ postId });
 
   if (loading) return <CommentPageSkeleton />;
-  if (!post) return <div>No post found</div>;
+  if (!post) return <NotFound />;
 
   const pageTitle = `${post.postTitle} • ${post.collegeName} •`;
 
