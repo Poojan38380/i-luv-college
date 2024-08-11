@@ -20,6 +20,7 @@ model User {
   likedColleges UserCollegeLike[]
   upvotedPosts  UserPostUpvote[]
   comments      Comment[]
+  likedImages   UserImageLike[]
 }
 
 model College {
@@ -66,8 +67,9 @@ model Image {
   uploadedBy String    @db.ObjectId
   uploadedAt DateTime? @default(now()) @db.Date
 
-  College   College? @relation(fields: [collegeId], references: [id])
-  collegeId String?  @db.ObjectId
+  College   College?        @relation(fields: [collegeId], references: [id])
+  collegeId String?         @db.ObjectId
+  likedBy   UserImageLike[]
 
   @@index([uploadedBy])
 }
@@ -121,4 +123,17 @@ model MailingList {
   createdAt DateTime @default(now()) @db.Date
 
   email String @unique
+}
+
+model UserImageLike {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  userId  String @db.ObjectId
+  imageId String @db.ObjectId
+
+  user  User  @relation(fields: [userId], references: [id])
+  image Image @relation(fields: [imageId], references: [id])
+
+  createdAt DateTime @default(now()) @db.Date
+
+  @@unique([userId, imageId]) // Ensure a user can like an image only once
 }
