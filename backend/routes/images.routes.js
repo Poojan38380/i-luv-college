@@ -1,8 +1,13 @@
 import express from "express";
-import { addImageToCollege } from "../controllers/images.controller.js";
+import {
+  addImageToCollege,
+  getCollegeImages,
+} from "../controllers/images.controller.js";
+import protectRoute from "../middlewares/ProtectRoute.js";
 
 const ImageRouter = express.Router();
 
-ImageRouter.post("/college/:collegeId", addImageToCollege);
+ImageRouter.post("/add/:collegeId", protectRoute, addImageToCollege);
+ImageRouter.get("/allimages/:collegeId", getCollegeImages);
 
 export default ImageRouter;

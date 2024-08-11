@@ -5,6 +5,7 @@ import AddPost from "../Posts/AddPost";
 import PostContainer from "../Posts/PostContainer";
 import ShareButtons from "../utils/ShareButtons";
 import AddImages from "./AddImages";
+import AllCollegeImages from "./AllCollegeImages";
 
 interface CollegeProfileProps {
   college: College;
@@ -74,6 +75,7 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
         </div>
         <PostContainer collegeId={college.id} />
       </div>
+      <AllCollegeImages collegeId={college.id} />
     </div>
   );
 };

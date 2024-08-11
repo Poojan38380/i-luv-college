@@ -44,7 +44,7 @@ const AddNewImages = () => {
     try {
       const imageURLs = await uploadImagesToCloudinary(files);
 
-      const res = await fetch(`/api/images/college/${collegeId}`, {
+      const res = await fetch(`/api/images/add/${collegeId}`, {
         method: "POST",
         credentials: "include",
         headers: {

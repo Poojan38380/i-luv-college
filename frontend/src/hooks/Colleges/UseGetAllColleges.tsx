@@ -1,5 +1,5 @@
-import ErrorToast from "@/components/Toasts/ErrorToast";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export type College = {
   id: string;
@@ -31,9 +31,7 @@ const UseGetAllColleges = () => {
       setLoading(true);
 
       try {
-        const res = await fetch(`/api/colleges/getall`, {
-          credentials: "include",
-        });
+        const res = await fetch(`/api/colleges/getall`);
         const data = await res.json();
         if (data.error) {
           throw new Error(data.error);
@@ -41,9 +39,8 @@ const UseGetAllColleges = () => {
 
         setColleges(data);
       } catch (error: any) {
-        console.error("Error in UseGetAllColleges hook ");
-
-        ErrorToast(error);
+        console.error("Error in UseGetAllColleges hook", error);
+        toast.error(error);
       } finally {
         setLoading(false);
       }
