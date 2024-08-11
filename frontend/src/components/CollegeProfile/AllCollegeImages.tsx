@@ -60,8 +60,9 @@ const AllCollegeImages: React.FC<{ collegeId: string }> = ({ collegeId }) => {
         {images.map((image) => (
           <ImageCard
             key={image.id}
+            id={image.id}
             imageURL={image.imageURL}
-            likes={image.likes}
+            initialLikes={image.likes}
             onClick={() => setSelectedImage(image)}
           />
         ))}
