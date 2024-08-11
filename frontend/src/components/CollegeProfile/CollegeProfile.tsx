@@ -3,6 +3,7 @@ import Carousel from "./Carousel";
 import LikeCollege from "./LikeCollege";
 import AddPost from "../Posts/AddPost";
 import PostContainer from "../Posts/PostContainer";
+import ShareButtons from "../utils/ShareButtons";
 
 interface CollegeProfileProps {
   college: College;
@@ -17,6 +18,8 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
       day: "numeric",
     }
   );
+
+  const pageTitle = `${college.name} • Hate Page •`;
 
   return (
     <div className="">
@@ -53,6 +56,13 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex flex-col items-center justify-center my-5 px-10 mq725:px-5 text-center">
+        <ShareButtons
+          center={true}
+          title={pageTitle}
+          message={"Check out this college hate page"}
+        />
       </div>
       <div className="mt-20 py-20 bg-base-200 flex mq800:flex-col px-10 mq725:px-5 gap-6 ">
         <AddPost collegeId={college.id} />

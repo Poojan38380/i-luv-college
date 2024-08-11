@@ -5,6 +5,7 @@ import UseGetSinglePost from "@/hooks/Posts/UseGetSinglePost";
 import { Link, useParams } from "react-router-dom";
 import { RiArrowGoBackLine } from "react-icons/ri";
 import CommentPageSkeleton from "@/components/Comments/CommentPageSkeleton";
+import ShareButtons from "@/components/utils/ShareButtons";
 
 const CommentPage = () => {
   const { postId } = useParams<{ postId: string }>();
@@ -15,6 +16,8 @@ const CommentPage = () => {
 
   if (loading) return <CommentPageSkeleton />;
   if (!post) return <div>No post found</div>;
+
+  const pageTitle = `${post.postTitle} • ${post.collegeName} •`;
 
   return (
     <div className="min-h-screen px-10 mq725:px-5 py-24  ">
@@ -32,9 +35,19 @@ const CommentPage = () => {
           <CommentHeroPostCard post={post} />
         </div>
         <div>
+          <div>
+            <div className="flex flex-col mb-6">
+              <ShareButtons
+                center={false}
+                title={pageTitle}
+                message={"Check out this college hate page"}
+              />
+            </div>
+          </div>
           <div className="">
             <CommentForm postId={postId} />
           </div>
+
           <div>
             <h2 className="text-3xl font-semibold mt-10">Comments</h2>
             <CommentSection comments={post.comments} />

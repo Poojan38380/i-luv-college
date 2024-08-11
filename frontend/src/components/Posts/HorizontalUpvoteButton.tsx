@@ -4,7 +4,7 @@ import { useToggleUpvote } from "@/hooks/Posts/UseToggleUpvote";
 import { useUpvoteStatus } from "@/hooks/Posts/UseCheckUpvote";
 import { Loader } from "lucide-react";
 
-const UpvoteButton = ({
+const HorizontalUpvoteButton = ({
   postId,
   initialUpvoteLength,
 }: {
@@ -35,7 +35,7 @@ const UpvoteButton = ({
 
   return (
     <button
-      className={`btn flex flex-col items-center justify-center w-14 h-20 mq500:w-12 mq500:h-16 mq500:text-sm   font-bold text-md ${
+      className={`btn w-full flex flex-row items-center  font-bold text-md ${
         voted ? "btn-primary" : "btn-outline"
       }  gap-2  `}
       onClick={handleToggleUpvote}
@@ -47,14 +47,15 @@ const UpvoteButton = ({
         </div>
       ) : (
         <>
-          <div>
-            <MdOutlineKeyboardArrowUp />
-          </div>
+          {voted ? "" : <div>UPVOTE</div>}
           <div>{upvoteCount}</div>
+          <div>
+            <MdOutlineKeyboardArrowUp className="" />
+          </div>
         </>
       )}
     </button>
   );
 };
 
-export default UpvoteButton;
+export default HorizontalUpvoteButton;

@@ -35,18 +35,25 @@ export const getPostsByCollege = async (req, res) => {
       return res.status(400).json({ error: "collegeId is required." });
     }
 
-    // Find all posts related to the specified college
+    // Find all posts related to the specified college, sorted by upvotes in descending order, and then by createdAt in descending order
     const posts = await prisma.post.findMany({
       where: {
         collegeId,
       },
+      orderBy: [
+        {
+          upvotes: "desc", // Sort posts by upvotes in descending order
+        },
+        {
+          createdAt: "desc", // Sort posts by createdAt in descending order
+        },
+      ],
       select: {
         id: true,
         createdAt: true,
         postTitle: true,
         postDescription: true,
         upvotes: true,
-
         User: {
           select: {
             username: true, // Only include the username field from User
@@ -191,6 +198,9 @@ export const getPostDetails = async (req, res) => {
           },
         },
         comments: {
+          orderBy: {
+            createdAt: "desc",
+          },
           select: {
             content: true,
             createdAt: true,
