@@ -36,13 +36,17 @@ export const getCollegeImages = async (req, res) => {
   const { collegeId } = req.params;
 
   try {
-    // Fetch the college with its images
+    // Fetch the college with its images, sorted by likes first and then by uploadedAt
     const college = await prisma.college.findUnique({
       where: { id: collegeId },
       select: {
         id: true,
         name: true,
         images: {
+          orderBy: [
+            { likes: "desc" }, // Sort by most likes first
+            { uploadedAt: "desc" }, // Then by most recent
+          ],
           select: {
             id: true,
             imageURL: true,
