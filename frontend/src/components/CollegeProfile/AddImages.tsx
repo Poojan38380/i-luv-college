@@ -1,6 +1,7 @@
 import { useAuthContext } from "@/contexts/useAuthContext";
 import AddNewImages from "@/hooks/Colleges/AddNewImages";
 import { useState } from "react";
+import { FaFileUpload } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -69,18 +70,26 @@ const AddImages = ({ collegeId }: AddImagesProps) => {
               className="file-input file-input-bordered w-full mt-4 mq450:file-input-sm "
             />
             <div className="modal-action">
-              <button
-                className="btn btn-success "
-                onClick={handleUpload}
-                disabled={loading}
-              >
-                {loading ? "Uploading..." : "Upload"}
-              </button>
+              {" "}
               <button
                 className="btn mq450:btn-sm"
                 onClick={() => setIsModalOpen(false)}
               >
                 Cancel
+              </button>
+              <button
+                className="btn btn-success "
+                onClick={handleUpload}
+                disabled={loading}
+              >
+                {loading ? (
+                  "Uploading..."
+                ) : (
+                  <div className="flex items-center gap-3">
+                    Upload
+                    <FaFileUpload />
+                  </div>
+                )}
               </button>
             </div>
           </div>
