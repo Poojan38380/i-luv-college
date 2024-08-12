@@ -24,7 +24,7 @@ const LoginForm = () => {
           <input
             className="mb-4   block w-full  input input-bordered  rounded  "
             type="text"
-            placeholder="Genghis Canned"
+            placeholder="ass-ass-sin"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />

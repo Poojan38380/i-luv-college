@@ -19,10 +19,11 @@ const PostContainer: FC<PostContainerProps> = ({ collegeId }) => {
       <div className="card bg-primary w-full text-primary-content h-min mq800:mt-3">
         <div className="card-body gap-4 py-10 ">
           <h2 className="card-title  text-3xl">
-            No posts about this college yet!
+            No crazy posts about this college yet!
           </h2>
           <p className=" ">
-            Share this page or be the first person to write about this college!
+            Share this page or be the first person to write sh*t about this
+            college!
           </p>
         </div>
       </div>

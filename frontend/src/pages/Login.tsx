@@ -58,10 +58,10 @@ export default function Login() {
             </h1>
           </div>
           <LoginForm />
-          <div className="flex px-8 w-full text-center text-sm text-muted-foreground space-x-2 ">
+          <div className="flex flex-col  px-8 w-full text-center text-sm text-muted-foreground space-x-2 ">
             <p>Don't have an account ?</p>
             <Link to={"/auth/signup"}>
-              <p className=" font-semibold">Sign Up</p>
+              <p className=" font-semibold">Create an anonymous account</p>
             </Link>
           </div>
           {/* <p className="px-8 text-center text-sm text-muted-foreground">

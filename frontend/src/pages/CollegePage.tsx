@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import UseGetSingleCollege from "@/hooks/Colleges/UseGetSingleCollege";
 import CollegeProfile from "@/components/CollegeProfile/CollegeProfile";
 import CollegePageSkeleton from "@/components/CollegeProfile/CollegePageSkeleton";
-import NotFound from "./NotFound";
 
 const CollegePage = () => {
   const { collegeId } = useParams<{ collegeId: string }>();
@@ -11,10 +10,13 @@ const CollegePage = () => {
 
   const { loading, college } = UseGetSingleCollege({ collegeId });
 
-  console.log(college);
-
   if (loading) return <CollegePageSkeleton />;
-  if (!college) return <NotFound />;
+  if (!college)
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        No college found
+      </div>
+    );
 
   return (
     <div className="min-h-screen   pt-24 ">

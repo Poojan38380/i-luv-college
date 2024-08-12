@@ -48,7 +48,10 @@ const AllCollegeImages: React.FC<{ collegeId: string }> = ({ collegeId }) => {
           <h2 className="card-title text-3xl">
             No images about this college yet!
           </h2>
-          <p>Share this page or be the first person to upload!</p>
+          <p>
+            Share this page or be the first person to upload some crazy
+            memories!
+          </p>
         </div>
       </div>
     );
