@@ -65,7 +65,7 @@ const Colleges = () => {
         <SearchBar onSearch={handleSearch} />
       </div>
 
-      <h1 className="text-3xl font-bold">Most Hated Colleges</h1>
+      <h1 className="text-3xl font-bold hidden">Explore Most Hated Colleges</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 lg:grid-cols-3 gap-8">
         <AddNew authUser={authUser} />

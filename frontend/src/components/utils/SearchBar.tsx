@@ -14,19 +14,22 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   };
 
   return (
-    <label className={`input input-bordered flex items-center gap-2 `}>
+    <label className="input input-bordered flex items-center gap-2">
       <input
         type="text"
         value={query}
         onChange={handleChange}
         placeholder="Search colleges...."
         className="grow"
+        aria-label="Search colleges"
       />
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
         fill="currentColor"
         className="h-4 w-4 opacity-70"
+        width="16"
+        height="16"
       >
         <path
           fillRule="evenodd"

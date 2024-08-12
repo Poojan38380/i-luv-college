@@ -7,6 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Toaster } from "./components/ui/toaster.tsx";
 import { AuthContextProvider } from "./contexts/useAuthContext.tsx";
 import * as Sentry from "@sentry/react";
+import { HelmetProvider } from "react-helmet-async";
 
 Sentry.init({
   dsn: "https://05501806db0a745c9e60ae58c795b9ab@o4507652807327744.ingest.us.sentry.io/4507764446330880",
@@ -25,15 +26,17 @@ Sentry.init({
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Sentry.ErrorBoundary fallback={<p>An error has occurred</p>}>
-      <BrowserRouter>
-        <AuthContextProvider>
-          <App />
-        </AuthContextProvider>
-        <Toaster />
-      </BrowserRouter>
+    <HelmetProvider>
+      <Sentry.ErrorBoundary fallback={<p>An error has occurred</p>}>
+        <BrowserRouter>
+          <AuthContextProvider>
+            <App />
+          </AuthContextProvider>
+          <Toaster />
+        </BrowserRouter>
 
-      <SpeedInsights />
-    </Sentry.ErrorBoundary>
+        <SpeedInsights />
+      </Sentry.ErrorBoundary>
+    </HelmetProvider>
   </React.StrictMode>
 );
