@@ -15,7 +15,7 @@ const CommentCard = ({ comment }: { comment: Comment }) => {
         <p className="">{comment.content}</p>
         <div className="flex items-center gap-2 text-sm text-gray-500 ">
           <div className="avatar">
-            <div className="w-7 rounded-full">
+            <div className="w-6 rounded-full">
               <img src={comment.user.profilePicLink} alt="Profile" />
             </div>
           </div>

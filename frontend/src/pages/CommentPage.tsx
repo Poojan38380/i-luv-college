@@ -36,22 +36,20 @@ const CommentPage = () => {
         </button>
         <div className="font-semibold">{post.collegeName}</div>
       </Link>
-      <div className="grid grid-cols-2 gap-6 mq800:grid-cols-1 mt-16">
+      <div className="grid grid-cols-2 gap-6 mq800:grid-cols-1 mt-16 mq450:mt-10">
         <div className="flex justify-center  mq800:mx-0 ">
           <CommentHeroPostCard post={post} />
         </div>
         <div>
-          <div>
-            <div className="flex flex-col mb-10">
-              <ShareButtons
-                center={false}
-                title={pageTitle}
-                message={"Check out this college hate page"}
-              />
-            </div>
-          </div>
-          <div className="">
+          <div className="mb-5">
             <CommentForm postId={postId} />
+          </div>
+          <div className="flex flex-col ">
+            <ShareButtons
+              center={false}
+              title={pageTitle}
+              message={"Check out this college hate page"}
+            />
           </div>
 
           <div>

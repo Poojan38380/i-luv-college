@@ -35,7 +35,7 @@ const UpvoteButton = ({
 
   return (
     <button
-      className={`btn flex flex-col items-center justify-center w-14 h-20 mq500:w-12 mq500:h-16 mq500:text-sm   font-bold text-md ${
+      className={`btn flex flex-col items-center justify-center w-12 h-16 mq500:w-12 mq500:h-16 mq500:text-sm   font-bold text-md ${
         voted ? "btn-primary" : "btn-outline"
       }  gap-2  `}
       onClick={handleToggleUpvote}
