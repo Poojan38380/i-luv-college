@@ -5,8 +5,6 @@ import LogOutDialog from "./LogOutDialog";
 const UserProfileIcon = () => {
   const { authUser } = useAuthContext();
   const location = useLocation();
-
-  // Check if the current path starts with '/auth'
   const isAuthPath = location.pathname.startsWith("/auth");
 
   return (
@@ -15,7 +13,11 @@ const UserProfileIcon = () => {
         <div className="dropdown dropdown-end">
           <div tabIndex={0} className="avatar cursor-pointer">
             <div className="ring-accent ring-offset-base-100 w-10 mq725:w-8 rounded-full ring ring-offset-2">
-              <img src={authUser.profilePicLink} alt="User Profile" />
+              <img
+                src={authUser.profilePicLink}
+                alt={`${authUser.name}'s Profile`}
+                aria-label="User Profile"
+              />
             </div>
           </div>
           <ul
@@ -27,7 +29,7 @@ const UserProfileIcon = () => {
         </div>
       ) : (
         !isAuthPath && (
-          <Link to={"/auth/login"}>
+          <Link to="/auth/login">
             <button className="btn btn-primary mq450:btn-ghost">Login</button>
           </Link>
         )

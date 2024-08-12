@@ -4,31 +4,24 @@ import Header from "./Header/Header";
 import Footer from "./Footer";
 
 const CommonLayout = () => {
-  const [theme, setTheme] = useState("light-theme");
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("selectedTheme") || "light-theme"
+  );
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("selectedTheme") || "light-theme";
-    setTheme(savedTheme);
-    document.body.setAttribute("data-theme", savedTheme);
-  }, []);
+    document.body.setAttribute("data-theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setShowHeader(false);
-      } else {
-        setShowHeader(true);
-      }
-
+      setShowHeader(currentScrollY <= lastScrollY || currentScrollY <= 100);
       setLastScrollY(currentScrollY);
     };
 
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -36,19 +29,20 @@ const CommonLayout = () => {
 
   const handleThemeChange = (newTheme: string) => {
     setTheme(newTheme);
+    localStorage.setItem("selectedTheme", newTheme);
     document.body.setAttribute("data-theme", newTheme);
   };
 
   return (
-    <div className="" data-theme={theme}>
+    <div data-theme={theme}>
       <Header
         theme={theme}
         onThemeChange={handleThemeChange}
         showHeader={showHeader}
       />
-      <div className="">
+      <main>
         <Outlet />
-      </div>
+      </main>
       <Footer theme={theme} />
     </div>
   );

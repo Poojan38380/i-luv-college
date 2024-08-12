@@ -3,7 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { Analytics } from "@vercel/analytics/react";
 import { BrowserRouter } from "react-router-dom";
 import { Toaster } from "./components/ui/toaster.tsx";
 import { AuthContextProvider } from "./contexts/useAuthContext.tsx";
@@ -33,7 +32,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </AuthContextProvider>
         <Toaster />
       </BrowserRouter>
-      <Analytics />
 
       <SpeedInsights />
     </Sentry.ErrorBoundary>
