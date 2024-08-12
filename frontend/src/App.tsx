@@ -1,17 +1,17 @@
+import { Suspense, lazy } from "react";
 import { ToastContainer } from "react-toastify";
-import "./App.css";
-import CommonRoutes from "./routes/CommonRoutes";
 import "react-toastify/dist/ReactToastify.css";
 import ScrollToTop from "./components/utils/ScrollToTop";
+
+const CommonRoutes = lazy(() => import("./routes/CommonRoutes"));
 
 function App() {
   return (
     <div className="font-poppins">
       <ScrollToTop />
-
-      <CommonRoutes />
-      {/*  TODO:Implement a notification system for users when their posts receive comments. */}
-      {/*  TODO: Display all the latest topics on homepage */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <CommonRoutes />
+      </Suspense>
       <ToastContainer />
     </div>
   );
