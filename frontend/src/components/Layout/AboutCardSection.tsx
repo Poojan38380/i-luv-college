@@ -2,7 +2,7 @@ import { FaCommentDots, FaThumbsUp, FaUniversity } from "react-icons/fa";
 
 const AboutCardSection = () => {
   return (
-    <div className="py-20 bg-base-200 mt-20  pb-24">
+    <div className="py-20 min-h-screen flex justify-center items-center bg-base-200 mt-20  pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-base text-primary font-semibold tracking-wide uppercase">
