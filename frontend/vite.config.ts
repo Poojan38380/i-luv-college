@@ -1,9 +1,13 @@
+import { sentryVitePlugin } from "@sentry/vite-plugin";
 import path from "path";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), sentryVitePlugin({
+    org: "poojan-goyani",
+    project: "javascript-react"
+  })],
   server: {
     port: 3000,
     proxy: {
@@ -19,5 +23,6 @@ export default defineConfig({
   },
   build: {
     outDir: "dist",
+    sourcemap: true
   },
 });

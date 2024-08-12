@@ -10,6 +10,7 @@ import AddNewCollegePortal from "@/pages/AddNewCollegePortal";
 import CollegePage from "@/pages/CollegePage";
 import CommentPage from "@/pages/CommentPage";
 import NotFound from "@/pages/NotFound";
+import { withProfiler } from "@sentry/react";
 
 const CommonRoutes = () => {
   const { authUser } = useAuthContext();
@@ -41,4 +42,4 @@ const CommonRoutes = () => {
   );
 };
 
-export default CommonRoutes;
+export default withProfiler(CommonRoutes);
