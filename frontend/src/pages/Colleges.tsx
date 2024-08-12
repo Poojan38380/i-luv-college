@@ -58,6 +58,10 @@ const Colleges = () => {
           content="https://i-luv-college.vercel.app/colleges"
         />
         <meta name="twitter:card" content="summary_large_image" />
+        <link
+          rel="canonical"
+          href={`https://i-luv-college.vercel.app/colleges`}
+        />
       </Helmet>
 
       <div className="flex justify-between mq725:flex-col gap-10">
