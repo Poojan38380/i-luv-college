@@ -28,7 +28,7 @@ const CommentPage = () => {
   return (
     <div className="min-h-screen px-10 mq725:px-5 py-24  ">
       <Link
-        to={`/colleges/page/${post.collegeId}`}
+        to={`/colleges/${post.collegeId}/posts`}
         className="flex gap-4 items-center"
       >
         <button className="btn btn-square">
