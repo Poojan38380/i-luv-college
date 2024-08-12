@@ -4,10 +4,14 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: [react(), sentryVitePlugin({
-    org: "poojan-goyani",
-    project: "javascript-react"
-  })],
+  plugins: [
+    react(),
+    sentryVitePlugin({
+      org: "poojan-goyani",
+      project: "javascript-react",
+      authToken: process.env.VITE_SENTRY_AUTH_TOKEN,
+    }),
+  ],
   server: {
     port: 3000,
     proxy: {
@@ -23,6 +27,6 @@ export default defineConfig({
   },
   build: {
     outDir: "dist",
-    sourcemap: true
+    sourcemap: true,
   },
 });
