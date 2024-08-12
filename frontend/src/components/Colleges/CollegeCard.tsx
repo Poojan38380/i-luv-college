@@ -18,7 +18,7 @@ const CollegeCard: React.FC<CollegeCardProps> = ({
     description.length > 200 ? `${description.slice(0, 200)}...` : description;
 
   return (
-    <Link to={`/colleges/page/${id}`} className="w-full">
+    <Link to={`/colleges/${id}/posts`} className="w-full">
       <div
         key={id}
         className="card  shadow-md hover:shadow-xl transition-all duration-500"

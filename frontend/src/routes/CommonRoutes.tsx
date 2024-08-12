@@ -12,6 +12,9 @@ import CommentPage from "@/pages/CommentPage";
 import NotFound from "@/pages/NotFound";
 import { withProfiler } from "@sentry/react";
 
+import ImagesParent from "@/components/CollegeProfile/ImagesParent";
+import PostParent from "@/components/CollegeProfile/PostParent";
+
 const CommonRoutes = () => {
   const { authUser } = useAuthContext();
   return (
@@ -19,8 +22,10 @@ const CommonRoutes = () => {
       <Route path="/" element={<CommonLayout />}>
         <Route index element={<Home />} />
         <Route path="/colleges" element={<Colleges />} />
-        <Route path="/colleges/page/:collegeId" element={<CollegePage />} />
-        <Route path="/colleges/images/:collegeId" element={<CollegePage />} />
+        <Route path="colleges/:collegeId" element={<CollegePage />}>
+          <Route path="posts" element={<PostParent />} />
+          <Route path="images" element={<ImagesParent />} />
+        </Route>
         <Route path="/post/comments/:postId" element={<CommentPage />} />
         <Route path="/colleges/add" element={<AddNewCollegePortal />} />
         {/* other routes */}

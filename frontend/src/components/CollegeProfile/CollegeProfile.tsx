@@ -1,22 +1,16 @@
 import { College } from "@/hooks/Colleges/UseGetAllColleges";
 import Carousel from "./Carousel";
 import LikeCollege from "./LikeCollege";
-import AddPost from "../Posts/AddPost";
-import PostContainer from "../Posts/PostContainer";
 import ShareButtons from "../utils/ShareButtons";
-import AddImages from "./AddImages";
-import AllCollegeImages from "./AllCollegeImages";
+
 import Tabs from "./Tabs";
-import { useLocation, useParams } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 interface CollegeProfileProps {
   college: College;
 }
 
 const CollegeProfile = ({ college }: CollegeProfileProps) => {
-  const location = useLocation();
-  const { collegeId } = useParams();
-
   const formattedDate = new Date(college.createdAt).toLocaleDateString(
     "en-US",
     {
@@ -77,7 +71,11 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
       <div className="mt-10">
         <Tabs collegeId={college.id} />
       </div>
-      {location.pathname === `/colleges/page/${collegeId}` && (
+
+      <div className="px-10 mq725:px-5 pt-10 py-20 bg-base-200">
+        <Outlet />
+      </div>
+      {/* {location.pathname === `/colleges/page/${collegeId}` && (
         <div className="pt-10 py-20 bg-base-200 flex mq800:flex-col px-10 mq725:px-5 gap-6 ">
           <div>
             <AddPost collegeId={college.id} />
@@ -92,7 +90,7 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
           </div>
           <AllCollegeImages collegeId={college.id} />
         </div>
-      )}
+      )} */}
     </div>
   );
 };
