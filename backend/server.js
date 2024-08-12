@@ -15,6 +15,12 @@ const __dirname = path.resolve();
 dotenv.config();
 const app = express();
 
+// Set Document-Policy header for js-profiling
+app.use((req, res, next) => {
+  res.set("Document-Policy", "js-profiling");
+  next();
+});
+
 app.use(express.json());
 app.use(cookieParser());
 
