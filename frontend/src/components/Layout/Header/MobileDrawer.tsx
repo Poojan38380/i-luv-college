@@ -42,12 +42,19 @@ const MobileDrawer = ({ theme }: { theme: string }) => {
       >
         <div className="navbar bg-base-100 fixed w-full z-[99]  shadow-md px-5   ">
           <div className="navbar-start gap-2">
-            <Link to={"/"}>
-              {theme === "dark-theme" || theme === "synthwave" ? (
-                <img src={NavLogoDark} className="h-14 mq725:h-10" />
-              ) : (
-                <img src={NavLogoLight} className="h-14 mq725:h-10" />
-              )}
+            <Link to="/" aria-label="Home">
+              <img
+                src={
+                  theme === "dark-theme" || theme === "synthwave"
+                    ? NavLogoDark
+                    : NavLogoLight
+                }
+                alt="I LUV COLLEGE Navigation Logo"
+                width="100%"
+                title="I LUV COLLEGE"
+                height="auto"
+                className="h-14 mq725:h-10"
+              />
             </Link>
           </div>
           <div className="navbar-end gap-1">

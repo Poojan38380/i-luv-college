@@ -32,6 +32,7 @@ const Header: React.FC<HeaderProps> = ({
                 : NavLogoLight
             }
             alt="I LUV COLLEGE Navigation Logo"
+            title="I LUV COLLEGE"
             width="100%"
             height="auto"
             className="h-14 mq725:h-10 mq500:h-8 mq450:h-7 mq375:h-5"

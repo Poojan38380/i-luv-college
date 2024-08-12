@@ -38,6 +38,7 @@ const HeaderThemeToggle: React.FC<HeaderThemeToggleProps> = ({
           alt="Theme Icon"
           width="100%"
           height="auto"
+          title="I LUV COLLEGE Theme Icon"
           className={`w-5 ${
             selectedTheme === "dark-theme" || selectedTheme === "synthwave"
               ? "invert"

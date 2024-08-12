@@ -3,10 +3,9 @@ import React, { useState } from "react";
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
-  authUser: any;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch, authUser }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [query, setQuery] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,11 +14,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch, authUser }) => {
   };
 
   return (
-    <label
-      className={`input input-bordered flex items-center gap-2 ${
-        !authUser ? "w-full" : ""
-      }`}
-    >
+    <label className={`input input-bordered flex items-center gap-2 `}>
       <input
         type="text"
         value={query}
