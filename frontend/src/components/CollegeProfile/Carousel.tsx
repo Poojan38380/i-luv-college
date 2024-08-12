@@ -33,6 +33,11 @@ const Carousel = ({ images }: CarouselProps) => {
     setSelectedImage(null);
   };
 
+  const addCloudinaryTransformations = (url: string) => {
+    const parts = url.split("/upload/");
+    return `${parts[0]}/upload/q_auto/f_auto/${parts[1]}`;
+  };
+
   return (
     <div className="carousel mq450:w-full h-96 w-96 relative rounded-box overflow-hidden">
       <div
@@ -42,11 +47,13 @@ const Carousel = ({ images }: CarouselProps) => {
         {images.map((image, index) => (
           <div
             key={index}
-            className="carousel-item flex-shrink-0 w-full "
-            onClick={() => openModal(image.imageURL)}
+            className="carousel-item flex-shrink-0 w-full"
+            onClick={() =>
+              openModal(addCloudinaryTransformations(image.imageURL))
+            }
           >
             <img
-              src={image.imageURL}
+              src={addCloudinaryTransformations(image.imageURL)}
               className="w-full object-contain rounded-2xl cursor-pointer"
               alt={`Slide ${index + 1}`}
             />
@@ -80,7 +87,7 @@ const Carousel = ({ images }: CarouselProps) => {
             />
             <button
               onClick={closeModal}
-              className="absolute top-2 right-2 text-white btn btn-accent btn-xs"
+              className="absolute top-2 right-2 text-white btn btn-accent btn-sm"
             >
               &times;
             </button>

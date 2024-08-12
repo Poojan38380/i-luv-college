@@ -16,7 +16,12 @@ const CommentPage = () => {
   const { loading, post } = UseGetSinglePost({ postId });
 
   if (loading) return <CommentPageSkeleton />;
-  if (!post) return <NotFound />;
+  if (!post)
+    return (
+      <div className="min-h-screen flex justify-center items-center">
+        No college found
+      </div>
+    );
 
   const pageTitle = `${post.postTitle} • ${post.collegeName} •`;
 

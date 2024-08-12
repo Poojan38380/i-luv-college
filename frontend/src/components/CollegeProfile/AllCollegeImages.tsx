@@ -27,13 +27,18 @@ const AllCollegeImages: React.FC<{ collegeId: string }> = ({ collegeId }) => {
     return sizes[Math.floor(Math.random() * sizes.length)];
   };
 
+  const addCloudinaryTransformations = (url: string) => {
+    const parts = url.split("/upload/");
+    return `${parts[0]}/upload/q_auto/f_auto/${parts[1]}`;
+  };
+
   if (loading) {
     return (
       <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
         {Array.from({ length: 6 }).map((_, index) => (
           <div
             key={index}
-            className="skeleton "
+            className="skeleton"
             style={generateRandomSize()}
           ></div>
         ))}
@@ -64,7 +69,7 @@ const AllCollegeImages: React.FC<{ collegeId: string }> = ({ collegeId }) => {
           <ImageCard
             key={image.id}
             id={image.id}
-            imageURL={image.imageURL}
+            imageURL={addCloudinaryTransformations(image.imageURL)}
             initialLikes={image.likes}
             onClick={() => setSelectedImage(image)}
           />
@@ -73,7 +78,10 @@ const AllCollegeImages: React.FC<{ collegeId: string }> = ({ collegeId }) => {
 
       {selectedImage && (
         <ImageModal
-          image={selectedImage}
+          image={{
+            ...selectedImage,
+            imageURL: addCloudinaryTransformations(selectedImage.imageURL),
+          }}
           onClose={() => setSelectedImage(null)}
         />
       )}
