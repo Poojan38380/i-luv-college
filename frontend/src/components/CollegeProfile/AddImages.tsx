@@ -71,10 +71,7 @@ const AddImages = ({ collegeId }: AddImagesProps) => {
             />
             <div className="modal-action">
               {" "}
-              <button
-                className="btn mq450:btn-sm"
-                onClick={() => setIsModalOpen(false)}
-              >
+              <button className="btn " onClick={() => setIsModalOpen(false)}>
                 Cancel
               </button>
               <button
