@@ -23,7 +23,7 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
   const pageTitle = `${college.name} • Hate Page •`;
 
   return (
-    <div className="">
+    <div>
       <div className="flex  px-10 mq725:px-5 items-center  mq800:flex-col gap-10">
         <div className="">
           {college.images.length > 0 && (
@@ -35,12 +35,12 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
             </div>
           )}
         </div>
-        <div className="flex flex-col w-full     ">
+        <article className="flex flex-col w-full     ">
           <div>
             <h1 className="text-3xl font-bold">{college.name}</h1>
-            <h1 className="text-lg font-semibold text-gray-500">
+            <h2 className="text-lg font-semibold text-gray-500">
               {college.description}
-            </h1>
+            </h2>
           </div>
           <div className="mt-7 flex justify-between">
             <div>
@@ -65,7 +65,7 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
               />
             </div>
           </div>
-        </div>
+        </article>
       </div>
 
       <div className="mt-10">
@@ -75,22 +75,6 @@ const CollegeProfile = ({ college }: CollegeProfileProps) => {
       <div className="px-10 mq725:px-5 pt-10 py-20 bg-base-200">
         <Outlet />
       </div>
-      {/* {location.pathname === `/colleges/page/${collegeId}` && (
-        <div className="pt-10 py-20 bg-base-200 flex mq800:flex-col px-10 mq725:px-5 gap-6 ">
-          <div>
-            <AddPost collegeId={college.id} />
-          </div>
-          <PostContainer collegeId={college.id} />
-        </div>
-      )}
-      {location.pathname === `/colleges/images/${collegeId}` && (
-        <div className="px-10 mq725:px-5  pt-10 py-20 bg-base-200 ">
-          <div className="mb-10">
-            <AddImages collegeId={college.id} />
-          </div>
-          <AllCollegeImages collegeId={college.id} />
-        </div>
-      )} */}
     </div>
   );
 };

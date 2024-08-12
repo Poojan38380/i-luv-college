@@ -54,8 +54,12 @@ const Carousel = ({ images }: CarouselProps) => {
           >
             <img
               src={addCloudinaryTransformations(image.imageURL)}
-              className="w-full object-contain rounded-2xl cursor-pointer"
-              alt={`Slide ${index + 1}`}
+              className="w-full object-contain rounded-3xl cursor-pointer"
+              alt={`Slide ${index + 1} of ${images.length}`}
+              title={`Image ${index + 1}`}
+              loading="lazy"
+              width="100%"
+              height="auto"
             />
           </div>
         ))}
@@ -84,6 +88,10 @@ const Carousel = ({ images }: CarouselProps) => {
               src={selectedImage}
               className="max-w-full max-h-[550px] rounded-2xl"
               alt="Full view"
+              title="Full view"
+              loading="lazy"
+              width="100%"
+              height="auto"
             />
             <button
               onClick={closeModal}

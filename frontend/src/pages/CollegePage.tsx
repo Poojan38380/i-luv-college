@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import UseGetSingleCollege from "@/hooks/Colleges/UseGetSingleCollege";
 import CollegeProfile from "@/components/CollegeProfile/CollegeProfile";
@@ -20,7 +21,35 @@ const CollegePage = () => {
     );
 
   return (
-    <div className="min-h-screen   pt-24 ">
+    <div className="min-h-screen pt-24">
+      <Helmet>
+        <title>{college.name} - Sh*t Posts and Images | I LUV COLLEGE</title>
+        <meta
+          name="description"
+          content={`Explore sh*t posts and images about ${college.name}. Join the conversation, upvote, and comment anonymously.`}
+        />
+        <meta
+          name="keywords"
+          content={`sh*t posts, college hate, ${college.name}, upvote, comment`}
+        />
+        <meta
+          property="og:title"
+          content={`${college.name} - Sh*t Posts and Images | I LUV COLLEGE`}
+        />
+        <meta
+          property="og:description"
+          content={`Explore sh*t posts and images about ${college.name}. Join the conversation, upvote, and comment anonymously.`}
+        />
+        <meta
+          property="og:image"
+          content={college.images[0]?.imageURL || "/favicon.png"}
+        />
+        <meta
+          property="og:url"
+          content={`https://i-luv-college.vercel.app/colleges/${collegeId}`}
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
       <CollegeProfile college={college} />
     </div>
   );

@@ -48,8 +48,12 @@ const ImageCard: React.FC<ImageCardProps> = ({
     >
       <img
         src={imageURL}
-        alt="College Image"
+        alt="I LUV COLLEGE College Image"
+        title="I LUV COLLEGE College Image"
         className="w-full h-auto object-cover rounded-3xl"
+        width="100%"
+        height="auto"
+        loading="lazy"
       />
       <button
         className="absolute bottom-2 right-2 bg-white rounded-full p-2 flex items-center"

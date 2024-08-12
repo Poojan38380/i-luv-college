@@ -29,7 +29,15 @@ const ImageModal: React.FC<ImageModalProps> = ({ image, onClose }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="card glass card-compact bg-base-300 bg-opacity-50 max-h-[80%] shadow-xl mx-10 mq725:mx-5">
         <figure>
-          <img src={image.imageURL} alt="Uploaded Image" className="" />
+          <img
+            src={image.imageURL}
+            alt="I LUV COLLEGE College Image"
+            title="I LUV COLLEGE College Image"
+            className=""
+            width="100%"
+            loading="lazy"
+            height="auto"
+          />
         </figure>
         <div className="card-body font-semibold">
           <p>Uploaded by: {image.uploadedBy}</p>
