@@ -70,7 +70,6 @@ const AddImages = ({ collegeId }: AddImagesProps) => {
               className="file-input file-input-bordered w-full mt-4 mq450:file-input-sm "
             />
             <div className="modal-action">
-              {" "}
               <button className="btn " onClick={() => setIsModalOpen(false)}>
                 Cancel
               </button>
