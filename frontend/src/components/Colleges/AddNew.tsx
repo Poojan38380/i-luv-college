@@ -10,7 +10,6 @@ const AddNew = ({ authUser }: { authUser: any }) => {
             Can't find your sh*tty college?
           </h2>
           <div className="flex flex-col  mt-3 gap-1 justify-center">
-            <span>Add your college !!!</span>
             <span>Add your college so that everyone can sh*tpost on it !</span>
           </div>
         </div>

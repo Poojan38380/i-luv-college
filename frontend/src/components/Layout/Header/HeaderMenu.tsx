@@ -3,7 +3,7 @@ import { FaUniversity, FaHome } from "react-icons/fa";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 
 const HeaderMenu = ({ mobile }: { mobile: boolean }) => {
-  const menuItemClass = `flex items-center ${mobile ? "text-lg" : ""}`;
+  const menuItemClass = `flex items-center ml-1 ${mobile ? "text-lg" : ""}`;
 
   return (
     <>
