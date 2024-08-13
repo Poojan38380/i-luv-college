@@ -30,9 +30,7 @@ export const createCollege = async (req, res) => {
       },
     });
 
-    return res.status(201).json({
-      college: newCollege,
-    });
+    return res.status(201).json(newCollege);
   } catch (error) {
     console.error("Error in createCollege controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });

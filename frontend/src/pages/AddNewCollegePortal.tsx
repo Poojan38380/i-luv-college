@@ -64,9 +64,9 @@ const AddNewCollegePortal: React.FC = () => {
       <div className="mx-auto">
         <div className="card bg-primary mt-7 text-primary-content shadow-xl mb-8">
           <div className="card-body">
-            <h2 className="card-title text-4xl font-bold mb-4">
+            <h1 className="card-title text-4xl font-bold mb-4">
               Add Your College
-            </h2>
+            </h1>
             <p className="text-lg">
               Ready to spill the tea? Add your college here, so that everyone
               can see the real side of your useless college.

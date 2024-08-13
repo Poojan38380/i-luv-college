@@ -67,7 +67,8 @@ const UseAddNewCollege = () => {
         throw new Error(data.error);
       }
 
-      navigate("/colleges");
+      // Navigate to the newly created college's posts page
+      navigate(`/colleges/${data.id}/posts`);
       toast.success("College added successfully");
     } catch (error: any) {
       console.error("Error in UseAddNewCollege hook ", error.message);
