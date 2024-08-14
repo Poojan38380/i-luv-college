@@ -55,12 +55,12 @@ const Colleges = () => {
         <meta property="og:image" content="/favicon.png" />
         <meta
           property="og:url"
-          content="https://i-luv-college.vercel.app/colleges"
+          content="https://iluvcollege.vercel.app/colleges"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <link
           rel="canonical"
-          href={`https://i-luv-college.vercel.app/colleges`}
+          href={`https://iluvcollege.vercel.app/colleges`}
         />
       </Helmet>
 

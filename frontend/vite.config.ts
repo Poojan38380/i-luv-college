@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     react(),
     sitemap({
-      hostname: "https://i-luv-college.vercel.app", // Replace with your domain
+      hostname: "https://iluvcollege.vercel.app", // Replace with your domain
       outDir: "dist", // Output directory where the sitemap will be generated
     }),
     sentryVitePlugin({

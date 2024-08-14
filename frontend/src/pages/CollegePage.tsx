@@ -46,12 +46,12 @@ const CollegePage = () => {
         />
         <meta
           property="og:url"
-          content={`https://i-luv-college.vercel.app/colleges/${collegeId}`}
+          content={`https://iluvcollege.vercel.app/colleges/${collegeId}`}
         />
         <meta name="twitter:card" content="summary_large_image" />
         <link
           rel="canonical"
-          href={`https://i-luv-college.vercel.app/colleges/${collegeId}`}
+          href={`https://iluvcollege.vercel.app/colleges/${collegeId}`}
         />
       </Helmet>
       <CollegeProfile college={college} />

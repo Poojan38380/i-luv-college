@@ -51,7 +51,7 @@ const CommentPage = () => {
         <meta name="twitter:image" content={post.profilePicLink} />
         <link
           rel="canonical"
-          href={`https://i-luv-college.vercel.app/post/comments/${postId}`}
+          href={`https://iluvcollege.vercel.app/post/comments/${postId}`}
         />
       </Helmet>
 
