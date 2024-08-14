@@ -45,12 +45,15 @@ export const AllColleges = async (req, res) => {
       },
       include: {
         creator: {
-          // Use the correct relation name here
           select: {
             username: true, // Include only the username of the creator
           },
         },
-        images: true, // Include all associated images
+        images: {
+          orderBy: {
+            likes: "desc", // Sort images by most liked first
+          },
+        },
         posts: true, // Include all associated posts
       },
     });
