@@ -10,7 +10,7 @@ const AddNewCollegePortal: React.FC = () => {
   const { createCollege, loading } = UseAddNewCollege();
 
   const MAX_COLLEGE_NAME_LENGTH = 200;
-  const MAX_DESCRIPTION_LENGTH = 500;
+  const MAX_DESCRIPTION_LENGTH = 200;
 
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
