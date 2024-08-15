@@ -26,7 +26,7 @@ export const useToggleUpvote = ({
 
   const toggleUpvote = async () => {
     if (!authUser) {
-      toast.error(`Log in to upvote`);
+      toast.error(`Create an anonymous account to upvote`);
       return;
     }
 

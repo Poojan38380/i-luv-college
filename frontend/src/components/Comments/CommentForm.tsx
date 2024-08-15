@@ -59,7 +59,7 @@ const CommentForm = ({ postId }: { postId: string }) => {
               type="button"
               className="btn btn-primary animate-pop w-full"
             >
-              Login to Comment
+              Create an anonymous account to Comment
             </button>
           </Link>
         </div>

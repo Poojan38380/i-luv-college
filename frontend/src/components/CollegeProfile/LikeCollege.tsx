@@ -52,7 +52,7 @@ const LikeCollege = ({
     return (
       <div className="flex flex-col text-center items-center space-y-2">
         <button
-          onClick={() => toast.error("Login to Like")}
+          onClick={() => toast.error("Create an anonymous account to Like")}
           className="text-4xl text-gray-400 animate-bounce"
         >
           <AiOutlineHeart />

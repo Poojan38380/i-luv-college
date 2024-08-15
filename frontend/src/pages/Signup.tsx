@@ -53,12 +53,12 @@ const Signup = () => {
           <img src={AuthHero} className="w-72 mx-auto" />
           <div className="flex flex-col space-y-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">
-              Create an account
+              Create an anonymous account
             </h1>
           </div>
           <SignupForm />
           <div className="flex px-8 text-center text-sm text-muted-foreground space-x-2 ">
-            <p>Already have an account ?</p>
+            <p>Already have an anonymous account ?</p>
             <Link to={"/auth/login"}>
               <p className="font-semibold">Log In</p>
             </Link>

@@ -54,7 +54,7 @@ export default function Login() {
 
           <div className="flex flex-col space-y-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">
-              Login to your account
+              Login to your anonymous account
             </h1>
           </div>
           <LoginForm />

@@ -28,7 +28,7 @@ export const useToggleCollegeLike = ({
 
   const toggleLike = async () => {
     if (!authUser) {
-      toast.error("Log in to like");
+      toast.error("Create an anonymous account to like");
       return;
     }
 
