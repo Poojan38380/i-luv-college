@@ -46,7 +46,7 @@ const AddImages = ({ collegeId }: AddImagesProps) => {
       {!authUser ? (
         <Link to={"/auth/login"}>
           <button className="btn  btn-outine btn-primary w-full ">
-            Create an anonymous account to Upload Images
+            Upload Images
           </button>
         </Link>
       ) : (

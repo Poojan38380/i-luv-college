@@ -85,7 +85,7 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
                 className={`btn btn-primary btn-block mt-4`}
                 type="button"
               >
-                Create an anonymous account to Post
+                Create a Post
               </button>
             </Link>
           ) : (
@@ -169,7 +169,7 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
                     className={`btn btn-primary`}
                     type="button"
                   >
-                    Create an anonymous account to Post
+                    Add a Post
                   </button>
                 </Link>
               ) : (
@@ -179,7 +179,7 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
                   disabled={loading}
                   type="button"
                 >
-                  Create Post
+                  Add a Post
                 </button>
               )}
             </div>
