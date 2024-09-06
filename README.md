@@ -1,4 +1,4 @@
-# I LUV COLLEGE 🎓❤️
+# [I LUV COLLEGE 🎓❤️](https://iluvcollege.vercel.app/)
 
 **I LUV COLLEGE** is a web application that provides a platform for students to anonymously share their experiences, opinions, and images of their colleges. It allows students to write reviews, upvote posts, comment anonymously, and post images, helping others discover the real side of any college. This platform also helps future college goers to get authentic and honest reviews about colleges.
 
