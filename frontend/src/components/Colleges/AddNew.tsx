@@ -18,7 +18,7 @@ const AddNew = ({ authUser }: { authUser: any }) => {
           {!authUser ? (
             <Link to={"/auth/login"} className="w-full">
               <button className="btn btn-block  ">
-                <FaPlus /> Create an anonymous account to add a College
+                <FaPlus /> Add your College
               </button>
             </Link>
           ) : (
