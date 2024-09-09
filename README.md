@@ -33,20 +33,32 @@
    ```bash
    npm install
    ```
-3. **Create a .env file**
+   2.1. **Simultaneosly open another CLI and open frontend folder**
+   ```bash
+   cd frontend
+   npm install
+   ```
+   2.2 **Close the frontend route terminal**
+
+   
+4. **Create a .env file**
    
    Example.env is given in the files.
 
-4. **Build the app**
+5. **Build the app**
    
    ```bash
    npm run prisma
    npm run build
    ```
-5. **Start the App**
+6. **Start the App**
    
    ```bash
    npm run devstart
+   ```
+7. For every change done make sure to build the app again
+   ```bash
+   npm run build
    ```
 
 ## Contribution 🛠️
