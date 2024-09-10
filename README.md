@@ -27,18 +27,21 @@
    git clone https://github.com/Poojan38380/i-luv-college.git
    cd i-luv-college
    ```
+1.1 **Open the frontend path and install frontend**
+   ```bash
+   cd frontend
+   npm install
+   ```
+   **Close the frontend route terminal**
+   ```bash
+   cd ..
+   ```
 
 2. **Install dependencies**
 
    ```bash
    npm install
    ```
-   2.1. **Simultaneosly open another CLI and open frontend folder**
-   ```bash
-   cd frontend
-   npm install
-   ```
-   2.2 **Close the frontend route terminal**
 
    
 4. **Create a .env file**
