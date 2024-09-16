@@ -8,7 +8,8 @@
     "postinstall": "prisma generate",
     "devstart": "nodemon backend/server.js",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend ",
-    "prisma": "npx prisma generate"
+    "prisma": "npx prisma generate",
+    "frontend-build": "npm run build --prefix frontend"
   },
   "author": "",
   "license": "ISC",

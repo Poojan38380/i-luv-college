@@ -12,14 +12,12 @@ const PostContainer: FC = () => {
 
   if (posts.length === 0) {
     return (
-      <div className="card bg-primary w-full text-primary-content h-min mq800:mt-3">
+      <div className="card bg-base-100 w-full text-base-content h-min mq800:mt-3">
         <div className="card-body gap-4 py-10">
           <h2 className="card-title text-3xl">
-            No posts available yet!
+            No top ranking posts this week!
           </h2>
-          <p>
-            Be the first to share something interesting!
-          </p>
+          <p>Be the first to share something interesting!</p>
         </div>
       </div>
     );

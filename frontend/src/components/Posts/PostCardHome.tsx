@@ -9,7 +9,7 @@ interface PostCardProps {
 
 const PostCard: FC<PostCardProps> = ({ post }) => {
   return (
-    <div className="card bg-gray-300 text-gray-800 hover:shadow-lg duration-500">
+    <div className="card bg-base-200 text-base-content hover:shadow-lg duration-500">
       <div className="card-body flex flex-row justify-between items-center gap-3">
         <Link to={`/post/comments/${post.id}`} className="grow">
           <div>

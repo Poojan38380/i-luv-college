@@ -30,7 +30,7 @@ const SignupForm = () => {
           <input
             className="mb-4   w-full input input-bordered "
             type="text"
-            placeholder="ass-ass-sin"
+            placeholder="A weird username"
             value={username}
             required
             onChange={(e) => setUsername(e.target.value)}

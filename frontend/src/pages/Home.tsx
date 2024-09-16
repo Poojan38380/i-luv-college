@@ -11,8 +11,7 @@ import { useNavigate } from "react-router-dom";
 import PostContainer from "@/components/Posts/PostContainerhome";
 const Home = () => {
   const navigate = useNavigate();
- 
- 
+
   const heroImages = [HeroImage1, HeroImage2, HeroImage3, HeroImage4];
   const randomImage = heroImages[Math.floor(Math.random() * heroImages.length)];
 
@@ -49,16 +48,15 @@ const Home = () => {
           />
         </div>
       </div>
-      <div className="px-6">
-  <h1 className="text-3xl font-bold text-center mb-6">Most Upvoted Posts</h1>
-  <div className="pt-10 py-20 flex mq800:flex-col gap-6">
-    <PostContainer />
-  </div>
-</div>
-
-    
-
       <AboutSection />
+      <div className="px-10 mq725:px-5 mt-14">
+        <div className="pt-10 py-20 flex-col gap-6">
+          <h2 className="text-3xl font-bold text-center mb-6">
+            Top 3 Posts this Week !!!
+          </h2>
+          <PostContainer />
+        </div>
+      </div>
       <AboutCardSection />
     </div>
   );
