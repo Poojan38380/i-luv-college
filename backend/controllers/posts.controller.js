@@ -270,3 +270,44 @@ export const addComment = async (req, res) => {
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
+export const weekly_most_upvoted = async (req, res) => {
+  try {
+    const now = new Date();
+    const startOfWeek = new Date(now);
+    startOfWeek.setDate(now.getDate() - 7);
+
+    const posts = await prisma.post.findMany({
+      where: {
+        createdAt: {
+          gte: startOfWeek,
+        },
+      },
+      orderBy: {
+        upvotes: 'desc',
+      },
+      take: 3,
+      select: {
+        id: true,
+        createdAt: true,
+        postTitle: true,
+        postDescription: true,
+        upvotes: true,
+        User: {
+          select: {
+            username: true,
+          },
+        },
+        College: {
+          select: {
+            name: true,
+          },
+        }
+      },
+    });
+
+    res.json(posts);
+  } catch (error) {
+    console.error('Error fetching most upvoted posts of the week:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
