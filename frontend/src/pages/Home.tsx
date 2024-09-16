@@ -1,3 +1,4 @@
+// Home.tsx
 import AboutCardSection from "@/components/Layout/AboutCardSection";
 import AboutSection from "@/components/Layout/AboutSection";
 import {
@@ -7,10 +8,11 @@ import {
   HeroImage4,
 } from "@/constants/images";
 import { useNavigate } from "react-router-dom";
-
+import PostContainer from "@/components/Posts/PostContainerhome";
 const Home = () => {
   const navigate = useNavigate();
-
+ 
+ 
   const heroImages = [HeroImage1, HeroImage2, HeroImage3, HeroImage4];
   const randomImage = heroImages[Math.floor(Math.random() * heroImages.length)];
 
@@ -47,6 +49,15 @@ const Home = () => {
           />
         </div>
       </div>
+      <div className="px-6">
+  <h1 className="text-3xl font-bold text-center mb-6">Most Upvoted Posts</h1>
+  <div className="pt-10 py-20 flex mq800:flex-col gap-6">
+    <PostContainer />
+  </div>
+</div>
+
+    
+
       <AboutSection />
       <AboutCardSection />
     </div>
