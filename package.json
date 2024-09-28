@@ -1,7 +1,7 @@
 {
   "name": "i-luv-college",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "backend/server.js",
   "type": "module",
   "scripts": {
     "start": "node backend/server.js",
@@ -20,7 +20,8 @@
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "jsonwebtoken": "^9.0.2"
+    "jsonwebtoken": "^9.0.2",
+    "prerender-node": "^3.8.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.4",
