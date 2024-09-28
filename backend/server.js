@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import path from "path";
-
+import prerender from "prerender-node";
 import UserRouter from "./routes/user.routes.js";
 import CollegeRouter from "./routes/college.routes.js";
 import PostRouter from "./routes/post.routes.js";
@@ -20,6 +20,7 @@ app.use((req, res, next) => {
   res.set("Document-Policy", "js-profiling");
   next();
 });
+app.use(prerender.set("prerenderToken", "process.env.PRERENDER_TOKEN"));
 
 app.use(express.json());
 app.use(cookieParser());
