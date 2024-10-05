@@ -146,7 +146,7 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
                 required
                 maxLength={MAX_DESCRIPTION_LENGTH}
                 onChange={(e) => setDescription(e.target.value)}
-                rows={3}
+                rows={5}
               />
               <span className="label-text-alt text-gray-500 ">
                 {description.length}/{MAX_DESCRIPTION_LENGTH} characters
