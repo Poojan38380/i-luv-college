@@ -13,7 +13,7 @@ const CommentCard = ({ comment }: { comment: Comment }) => {
   return (
     <div className="card bg-base-200 text-base-content">
       <div className="card-body p-5">
-        <p>{comment.content}</p>
+        <p style={{ whiteSpace: "pre-line" }}>{comment.content}</p>
         <div className="flex items-center gap-2 text-sm text-gray-500">
           <div className="avatar">
             <div className="w-6 h-6 rounded-full">
