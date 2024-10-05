@@ -19,7 +19,6 @@ const app = express();
 app.use(
   prerender.set("prerenderToken", process.env.PRERENDER_TOKEN) // Ensure you have your Prerender.io token in the .env file
 );
-console.log(process.env.PRERENDER_TOKEN);
 
 // Set Document-Policy header for js-profiling
 app.use((req, res, next) => {

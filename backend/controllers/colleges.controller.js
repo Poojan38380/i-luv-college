@@ -40,9 +40,6 @@ export const createCollege = async (req, res) => {
 export const AllColleges = async (req, res) => {
   try {
     const allColleges = await prisma.college.findMany({
-      orderBy: {
-        createdAt: "desc",
-      },
       include: {
         creator: {
           select: {
@@ -58,7 +55,23 @@ export const AllColleges = async (req, res) => {
       },
     });
 
-    return res.status(200).json(allColleges);
+    // Sort the colleges by the latest post's creation date, and then by the college creation date
+    const sortedColleges = allColleges.sort((a, b) => {
+      const latestPostA = a.posts.length
+        ? new Date(a.posts[a.posts.length - 1].createdAt)
+        : new Date(0);
+      const latestPostB = b.posts.length
+        ? new Date(b.posts[b.posts.length - 1].createdAt)
+        : new Date(0);
+
+      if (latestPostA > latestPostB) return -1;
+      if (latestPostA < latestPostB) return 1;
+
+      // If both colleges have no posts or have the same latest post time, fallback to college creation date
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+
+    return res.status(200).json(sortedColleges);
   } catch (error) {
     console.error("Error in AllColleges controller", error.message);
     return res.status(500).json({ error: "Internal Server Error" });
