@@ -31,7 +31,10 @@ const AddPost = ({ collegeId }: { collegeId: string }) => {
       return toast.error("Description exceeds the maximum character limit.");
     }
 
-    await createPost(title, description, collegeId);
+    // Replace line breaks with '\n'
+    const formattedDescription = description.replace(/\r?\n/g, "\\n");
+
+    await createPost(title, formattedDescription, collegeId);
     setIsModalOpen(false); // Close the modal after post creation
   };
 
