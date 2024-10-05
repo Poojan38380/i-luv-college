@@ -20,7 +20,9 @@ const CommentHeroPostCard = ({ post }: { post: SinglePost }) => {
             <h1 className="card-title font-bold text-2xl mq450:text-xl">
               {post.postTitle}
             </h1>
-            <h2 className="mt-2">{post.postDescription}</h2>
+            <h2 className="mt-2" style={{ whiteSpace: "pre-line" }}>
+              {post.postDescription}
+            </h2>
           </div>
         </div>
         <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500">
