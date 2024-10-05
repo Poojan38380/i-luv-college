@@ -11,8 +11,8 @@ interface PostCardProps {
 const PostCard: FC<PostCardProps> = ({ post }) => {
   // Limit the post description to 400 characters
   const truncatedDescription =
-    post.postDescription.length > 400
-      ? post.postDescription.slice(0, 400) + "..."
+    post.postDescription.length > 200
+      ? post.postDescription.slice(0, 200) + "..."
       : post.postDescription;
 
   return (
